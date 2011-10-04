@@ -32,6 +32,7 @@ class Never_Let_Me_Go extends Hametuha_Library{
 	 * Action hook for admin panel.
 	 */
 	public function admin_init(){
+		//Update options
 		if($this->verify_nonce('nlmg_option')){
 			$this->option['enable'] = (int) $this->post('nlmg_enable');
 			$this->option['resign_page'] = (int) $this->post('nlmg_resign_page');
@@ -42,10 +43,19 @@ class Never_Let_Me_Go extends Hametuha_Library{
 				$this->add_message($this->_('Option failed to updated.', true));
 			}
 		}
+		//Delete account on admin panel
+		if(defined('IS_PROFILE_PAGE') && is_user_logged_in() && wp_verify_nonce($this->get('_wpnonce'), 'nlmg_delete_on_admin')){
+			$this->delete_current_user();
+		}
+		//Add resign button on admin panel
+		if($this->option['enable']){
+			add_action('profile_personal_options', array($this, 'resign_button'));
+		}
 	}
 	
 	/**
 	 * Hook for admin_menu
+	 * @return void
 	 */
 	public function admin_menu(){
 		add_options_page($this->_('Never Let Me Go setting'), $this->_("Resign Setting"), 'delete_users', 'nlmg', array($this, 'render'));
@@ -59,4 +69,40 @@ class Never_Let_Me_Go extends Hametuha_Library{
 		require_once $this->dir.DIRECTORY_SEPARATOR."templates".DIRECTORY_SEPARATOR."setting.php";
 	}
 	
+	/**
+	 * Create resign button on admin panel
+	 * @return void
+	 */
+	public function resign_button($user){
+		?>
+			<h3><?php $this->e('Delete Account'); ?></h3>
+			<p>
+				<?php $this->e('You can delete your account by putting the button below.'); ?>
+			</p>
+			<p class="right">
+				<a class="button" href="<?php echo wp_nonce_url(admin_url('profile.php'), 'nlmg_delete_on_admin');?>" onclick="if(!confirm('<?php $this->e('Are you sure to delete your account?'); ?>')) return false;"><?php $this->e("Delete"); ?></a>
+			</p>
+		<?php
+	}
+	
+	/**
+	 * Delete current user account
+	 * @global wpdb $wpdb
+	 * @global int $user_ID
+	 * @return void
+	 */
+	public function delete_current_user(){
+		global $user_ID, $wpdb;
+		$url = wp_login_url();
+		wp_logout();
+		if($this->option['keep_account']){
+			delete_user_meta($user_ID, $wpdb->prefix."capabilities");
+			delete_user_meta($user_ID, $wpdb->prefix."user_level");
+			do_action('never_let_me_go', $user_ID);
+		}else{
+			require_once ABSPATH."/wp-admin/includes/user.php";
+			wp_delete_user($user_ID);
+		}
+		header('Location: '.$url);
+	}
 }

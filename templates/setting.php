@@ -32,7 +32,7 @@
 						<?php endwhile; endif; wp_reset_query(); ?>
 					</select>
 					<p class="description">
-						<?php $this->e('Resign page means the static page which have form to delete. If not specified, user can delete himself on profile page of admin panel.');?>
+						<?php $this->e('Resign page means the static page which have form to resign. If not specified, user can delete himself on profile page of admin panel.');?>
 					</p>
 				</td>
 			</tr>
@@ -58,3 +58,10 @@
 	<?php submit_button(); ?>
 </form>
 <h3><?php $this->e('How to treat user data'); ?></h3>
+<p>
+	<?php $this->e('In case you choose "%s", Your user\'s data will remain on your database. But in most cases, you might want personal data like email or address to be deleted.'); ?>
+	<?php $this->e('For this purpose, action hook is available. Write the code below in your theme\'s <em>functions.php</em>.'); ?>
+</p>
+<pre>
+
+</pre>
