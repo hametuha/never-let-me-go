@@ -22,10 +22,65 @@ class Never_Let_Me_Go extends Hametuha_Library{
 	);
 	
 	/**
-	 * init hook
+	 * Public Hook
 	 */
-	public function init(){
-		
+	public function template_redirect(){
+		//Register Hook on Resign page
+		if($this->option['resign_page'] && is_page($this->option['resign_page'])){
+			if(is_user_logged_in() && !is_paged()){
+				if((FORCE_SSL_ADMIN || FORCE_SSL_LOGIN) && !is_ssl){
+					header("Location: ".  str_replace('http:', 'https:', get_permalink($this->option['resign_page'])));
+				}else{
+					if($this->verify_nonce('resign_public')){
+						//Completed resigning and show message.
+						$this->delete_current_user();
+						add_filter('the_content', array($this, 'show_thankyou'), 1);
+					}else{
+						//On resign and display resign form.
+						add_filter('the_content', array($this, 'show_resign_form'));
+					}
+				}
+			}else{
+				//User is not logged in so redirected to login page.
+				header('Location: '.wp_login_url());
+			}
+		}
+	}
+	
+	/**
+	 * Filter hook for functions page.
+	 * @global array $pages
+	 * @param string $content
+	 * @return string
+	 */
+	public function show_thankyou($content){
+		global $pages;
+		if(isset($pages[1])){
+			return $pages[1];
+		}else{
+			return $content;
+		}
+	}
+	
+	/**
+	 * Filter hook for resign page
+	 * @param string $content 
+	 * @return string
+	 */
+	public function show_resign_form($content){
+		$perma_link = (FORCE_SSL_LOGIN || FORCE_SSL_ADMIN) ? str_replace('http:', 'https:', get_permalink()) : get_permalink();
+		$url = (false !== strpos('?', $perma_link)) ? $perma_link."&amp;resign=complete": $perma_link."?resign=complete";
+		$nonce = wp_nonce_field($this->nonce_action('resign_public'), "_".$this->name."_nonce", false, false);
+		$label = $this->_("Delete Account");
+		$form = <<<EOS
+			<form id="nlmg-resign-form" method="post" action="{$url}">
+				{$nonce}
+				<p class="submit">
+					<input type="submit" value="{$label}" />
+				</p>
+			</form>
+EOS;
+		return $content.$form;
 	}
 	
 	/**
@@ -46,6 +101,8 @@ class Never_Let_Me_Go extends Hametuha_Library{
 		//Delete account on admin panel
 		if(defined('IS_PROFILE_PAGE') && is_user_logged_in() && wp_verify_nonce($this->get('_wpnonce'), 'nlmg_delete_on_admin')){
 			$this->delete_current_user();
+			$url = wp_login_url();
+			header('Location: '.$url);
 		}
 		//Add resign button on admin panel
 		if($this->option['enable']){
@@ -104,7 +161,6 @@ class Never_Let_Me_Go extends Hametuha_Library{
 	 */
 	public function delete_current_user(){
 		global $user_ID, $wpdb;
-		$url = wp_login_url();
 		wp_logout();
 		if($this->option['keep_account']){
 			delete_user_meta($user_ID, $wpdb->prefix."capabilities");
@@ -114,6 +170,5 @@ class Never_Let_Me_Go extends Hametuha_Library{
 			require_once ABSPATH."/wp-admin/includes/user.php";
 			wp_delete_user($user_ID);
 		}
-		header('Location: '.$url);
 	}
 }
