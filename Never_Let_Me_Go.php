@@ -51,6 +51,8 @@ class Never_Let_Me_Go extends Hametuha_Library{
 		if($this->option['enable']){
 			add_action('profile_personal_options', array($this, 'resign_button'));
 		}
+		//Add Assets
+		add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
 	}
 	
 	/**
@@ -67,6 +69,15 @@ class Never_Let_Me_Go extends Hametuha_Library{
 	 */
 	public function render(){
 		require_once $this->dir.DIRECTORY_SEPARATOR."templates".DIRECTORY_SEPARATOR."setting.php";
+	}
+	
+	/**
+	 * Enqueue Javascripts on admin panel
+	 * @param string $hook
+	 */
+	public function enqueue_scripts($hook){
+		wp_enqueue_script('syntax-init', $this->url."/assets/onload.js", array('syntax-php'), $this->version);
+		wp_enqueue_style('syntax-theme-default');
 	}
 	
 	/**

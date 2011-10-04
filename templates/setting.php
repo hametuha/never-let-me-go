@@ -59,9 +59,23 @@
 </form>
 <h3><?php $this->e('How to treat user data'); ?></h3>
 <p>
-	<?php $this->e('In case you choose "%s", Your user\'s data will remain on your database. But in most cases, you might want personal data like email or address to be deleted.'); ?>
+	<?php printf($this->_('In case you choose <strong>"%s"</strong>, Your user\'s data will remain on your database.'), $this->_('Make user account unavailable and keep data')); ?><br />
+	<?php $this->e('But in most cases, you might want personal data like email or address to be deleted.'); ?><br />
 	<?php $this->e('For this purpose, action hook is available. Write the code below in your theme\'s <em>functions.php</em>.'); ?>
 </p>
-<pre>
-
+<pre class="brush: php">
+/**
+ * <?php $this->e('This function are executed when user delete himself with this plugin'); ?> 
+ * @param int $user_id <?php $this->e('User id to delete'); ?> 
+ * @return void
+ */
+function _my_delete_func($user_id){
+	//<?php $this->e('Now you get user_id and manage data how you like.'); ?> 
+	//<?php $this->e('For example, you can delete user_meta &quot;address&quot;'); ?> 
+	delete_user_meta($user_id, 'address'); 
+	//<?php $this->e('Furthermore, You can call action hook for other plugins.'); ?> 
+	do_action('delete_user', $user_id); 
+	do_action('deleted_user', $user_id); 
+}
+add_action('never_let_me_go', '_my_delete_func');
 </pre>
