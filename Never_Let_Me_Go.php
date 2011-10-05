@@ -55,7 +55,8 @@ class Never_Let_Me_Go extends Hametuha_Library{
 	 * @return string
 	 */
 	public function show_thankyou($content){
-		global $pages;
+		global $pages, $numpages;
+		$numpages = 1;
 		if(isset($pages[1])){
 			return $pages[1];
 		}else{
@@ -69,6 +70,7 @@ class Never_Let_Me_Go extends Hametuha_Library{
 	 * @return string
 	 */
 	public function show_resign_form($content){
+		global $numpages, $multipage, $more, $pagenow;
 		$perma_link = (FORCE_SSL_LOGIN || FORCE_SSL_ADMIN) ? str_replace('http:', 'https:', get_permalink()) : get_permalink();
 		$url = (false !== strpos('?', $perma_link)) ? $perma_link."&amp;resign=complete": $perma_link."?resign=complete";
 		$nonce = wp_nonce_field($this->nonce_action('resign_public'), "_".$this->name."_nonce", false, false);
@@ -81,6 +83,10 @@ class Never_Let_Me_Go extends Hametuha_Library{
 				</p>
 			</form>
 EOS;
+		if($numpages > 1){
+			$numpages = 1;
+			$multipage = false;
+		}
 		return $content.$form;
 	}
 	

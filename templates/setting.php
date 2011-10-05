@@ -65,7 +65,7 @@
 						<?php endforeach; ?>
 					</select>
 					<p class="description">
-						<?php $this->e('Resign page means the static page which have form to resign. <br />If not specified, user can delete himself on profile page of admin panel.');?>
+						<?php printf($this->_('User information will be changed when user delete his own account.<br />If you don\'t want this, you can keep infomration by select "%s".'), $this->_('Nothing changed.'));?>
 					</p>
 				</td>
 
