@@ -12,7 +12,7 @@
 					<label>
 						<input type="radio" name="nlmg_enable" value="0"<?php if($this->option['enable'] == 0) echo ' checked="checked"'?> />
 						<?php $this->e('Disabled'); ?>
-					</label>
+					</label><br />
 					<label>
 						<input type="radio" name="nlmg_enable" value="1"<?php if($this->option['enable'] == 1) echo ' checked="checked"'?> />
 						<?php $this->e('Enabled'); ?>
@@ -32,7 +32,7 @@
 						<?php endwhile; endif; wp_reset_query(); ?>
 					</select>
 					<p class="description">
-						<?php $this->e('Resign page means the static page which have form to resign. If not specified, user can delete himself on profile page of admin panel.');?>
+						<?php $this->e('Resign page means the static page which have form to resign. <br />If not specified, user can delete himself on profile page of admin panel.');?>
 					</p>
 				</td>
 			</tr>
@@ -41,17 +41,34 @@
 				<td>
 					<label>
 						<input type="radio" name="nlmg_keep_account" value="0"<?php if($this->option['keep_account'] == 0) echo ' checked="checked"'?> />
-						<?php $this->e('Delete from database'); ?>
-					</label>
+						<strong><?php $this->e('Normal'); ?></strong>...<?php $this->e('Delete from database'); ?>
+					</label><br >
 					<label>
 						<input type="radio" name="nlmg_keep_account" value="1"<?php if($this->option['keep_account'] == 1) echo ' checked="checked"'?> />
-						<?php $this->e('Make user account unavailable and keep data'); ?>
+						<strong><?php $this->e('Advanced'); ?></strong>...<?php $this->e('Make user account unavailable and keep data'); ?>
 					</label>
 					<p class="description">
-						<?php printf($this->_('If you choose "%1$s", all data related to the user will be deleted. If not, the user account will be replaced to unavailabe account and whole data will be kept in your database.'), $this->_('Delete from database'));?>
-						<?php $this->e('To delete related information, see description below.');?>
+						<?php printf($this->_('If you choose "%1$s", all data related to the user will be deleted.<br /> If not, the user account will be replaced to unavailabe account and whole data will be kept in your database.'), $this->_('Delete from database'));?><br />
+						<?php $this->e('To delete related information, see description below.<br />Please be carefull with your country\'s low on other\'s privacy.');?>
 					</p>
 				</td>
+			</tr>
+			<tr>
+				<th><label for="nlmg_destroy_level"><?php $this->e('Destroy Level');?></label>
+				<td>
+					<select id="nlmg_destroy_level" name="nlmg_destroy_level">
+						<?php foreach(array(
+							'0' => $this->_('Nothing changed.'),
+							'1' => $this->_('Make credential hashed')
+						) as $level => $desc): ?>
+						<option value="<?php echo $level;?>"<?php if($this->option['destroy_level'] == $level) echo ' selected="selected"'?>><?php echo "{$level} - {$desc}"; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<p class="description">
+						<?php $this->e('Resign page means the static page which have form to resign. <br />If not specified, user can delete himself on profile page of admin panel.');?>
+					</p>
+				</td>
+
 			</tr>
 		</tbody>
 	</table>

@@ -18,7 +18,8 @@ class Never_Let_Me_Go extends Hametuha_Library{
 	protected $default_option = array(
 		'enable' => 0,
 		'resign_page' => 0,
-		'keep_account' => 0
+		'keep_account' => 0,
+		'destroy_level' => 1
 	);
 	
 	/**
@@ -92,6 +93,7 @@ EOS;
 			$this->option['enable'] = (int) $this->post('nlmg_enable');
 			$this->option['resign_page'] = (int) $this->post('nlmg_resign_page');
 			$this->option['keep_account'] = (int) $this->post('nlmg_keep_account');
+			$this->option['destroy_level'] = (int) $this->post('nlmg_destroy_level');
 			if(update_option($this->name.'_option', $this->option)){
 				$this->add_message($this->_('Option updated.'));
 			}else{
@@ -105,7 +107,7 @@ EOS;
 			header('Location: '.$url);
 		}
 		//Add resign button on admin panel
-		if($this->option['enable']){
+		if($this->option['enable'] && $this->option['resign_page'] == 0){
 			add_action('profile_personal_options', array($this, 'resign_button'));
 		}
 		//Add Assets
@@ -165,6 +167,36 @@ EOS;
 		if($this->option['keep_account']){
 			delete_user_meta($user_ID, $wpdb->prefix."capabilities");
 			delete_user_meta($user_ID, $wpdb->prefix."user_level");
+			switch ($this->option['destroy_level']) {
+				case 0:
+					break;
+				default:
+					$login = uniqid("nlmg.", true);
+					$pass = wp_generate_password(20);
+					//Update user table
+					$user_id = wp_update_user(array(
+						'ID' => $user_ID,
+						'user_pass' => $pass,
+						'user_email' => "",
+						'display_name' => $this->_('Deleted User')
+					));
+					//Update user_login
+					$wpdb->update(
+						$wpdb->users,
+						array(
+							'user_login' => $login
+						),
+						array(
+							'ID' => $user_id
+						),
+						array('%s'),
+						array('%d')
+					);
+					//clear current user
+					global $current_user;
+					$current_user = null;
+					break;
+			}
 			do_action('never_let_me_go', $user_ID);
 		}else{
 			require_once ABSPATH."/wp-admin/includes/user.php";
