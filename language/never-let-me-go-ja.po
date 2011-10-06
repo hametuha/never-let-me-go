@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Never Let Me Go\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-06 05:12+0900\n"
-"PO-Revision-Date: 2011-10-06 05:13+0900\n"
+"POT-Creation-Date: 2011-10-06 12:19+0900\n"
+"PO-Revision-Date: 2011-10-06 12:22+0900\n"
 "Last-Translator: Takahashi Fumiki <info@takahashifumiki.com>\n"
 "Language-Team: Hametuha inc. <info@hametuha.co.jp>\n"
 "MIME-Version: 1.0\n"
@@ -17,41 +17,42 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../Never_Let_Me_Go.php:75
-#: ../Never_Let_Me_Go.php:148
+#: ../Never_Let_Me_Go.php:77
+#: ../Never_Let_Me_Go.php:154
 msgid "Delete Account"
 msgstr "アカウントを削除する"
 
-#: ../Never_Let_Me_Go.php:98
+#: ../Never_Let_Me_Go.php:104
 msgid "Option updated."
 msgstr "設定は更新されました。"
 
-#: ../Never_Let_Me_Go.php:100
+#: ../Never_Let_Me_Go.php:106
 msgid "Option failed to updated."
 msgstr "設定を更新できませんでした。"
 
-#: ../Never_Let_Me_Go.php:122
+#: ../Never_Let_Me_Go.php:128
 #: ../templates/setting.php:4
 msgid "Never Let Me Go setting"
 msgstr "Never Let Me Go設定"
 
-#: ../Never_Let_Me_Go.php:122
+#: ../Never_Let_Me_Go.php:128
 msgid "Resign Setting"
 msgstr "退会設定"
 
-#: ../Never_Let_Me_Go.php:150
+#: ../Never_Let_Me_Go.php:156
 msgid "You can delete your account by putting the button below."
 msgstr "下のボタンを押すことでアカウントを削除することができます。"
 
-#: ../Never_Let_Me_Go.php:153
+#: ../Never_Let_Me_Go.php:159
+#: ../templates/setting.php:84
 msgid "Are you sure to delete your account?"
 msgstr "アカウントを削除してよろしいですか？"
 
-#: ../Never_Let_Me_Go.php:153
+#: ../Never_Let_Me_Go.php:159
 msgid "Delete"
 msgstr "削除"
 
-#: ../Never_Let_Me_Go.php:181
+#: ../Never_Let_Me_Go.php:187
 msgid "Deleted User"
 msgstr "削除されたユーザー"
 
@@ -134,7 +135,7 @@ msgid "Advanced"
 msgstr "上級者向け"
 
 #: ../templates/setting.php:48
-#: ../templates/setting.php:79
+#: ../templates/setting.php:94
 msgid "Make user account unavailable and keep data"
 msgstr "アカウントを停止し、データを残す"
 
@@ -166,39 +167,71 @@ msgid "User information will be changed when user delete his own account.<br />I
 msgstr "ユーザー情報はアカウントを停止したときに削除されます。<br />そうしたくない場合は\"%s\"を選んでください。"
 
 #: ../templates/setting.php:77
+msgid "How to create Resign Page"
+msgstr "退会ページの作り方"
+
+#: ../templates/setting.php:79
+msgid "If you choose some resign page to publicly display, you can make show messag before resigning and after."
+msgstr "管理画面以外で表示する退会ページを作成すると、退会前と退会後にメッセージを表示することができます。"
+
+#: ../templates/setting.php:80
+msgid "Split assigned page's content with &lt;!--nextpage--&gt;.<br /> 1st page will be shown before resigning and 2nd after."
+msgstr "割り当てられたページのコンテンツを&lt;!--nextpage--&gt;で分割してください。<br />最初のページが退会前に、2ページ目が退会後に表示されます。"
+
+#: ../templates/setting.php:81
+msgid "Here is an example:"
+msgstr "以下はその例です:"
+
+#: ../templates/setting.php:83
+msgid "You are about to resign from our web magazine."
+msgstr "Webマガジンを退会しようとしています。"
+
+#: ../templates/setting.php:85
+msgid "All of your data on our service will be deleted and can't be restored."
+msgstr "あなたのデータはすべて削除され、元に戻すことはできません。"
+
+#: ../templates/setting.php:87
+msgid "Your account has been deleted successfully."
+msgstr "アカウントは削除されました。"
+
+#: ../templates/setting.php:88
+msgid "We miss you and hope to see you again."
+msgstr "またのご利用をお待ちしています。"
+
+#: ../templates/setting.php:92
 msgid "How to treat user data"
 msgstr "ユーザーデータの取り扱い方法"
 
-#: ../templates/setting.php:79
+#: ../templates/setting.php:94
 #, php-format
 msgid "In case you choose <strong>\"%s\"</strong>, Your user's data will remain on your database."
 msgstr "<strong>\"%s\"</strong>を選んだ場合、ユーザーデータはデータベースに残ります。"
 
-#: ../templates/setting.php:80
+#: ../templates/setting.php:95
 msgid "But in most cases, you might want personal data like email or address to be deleted."
 msgstr "しかし、メールアドレスや住所等の個人情報は削除したいでしょう。"
 
-#: ../templates/setting.php:81
+#: ../templates/setting.php:96
 msgid "For this purpose, action hook is available. Write the code below in your theme's <em>functions.php</em>."
 msgstr "このためにアクションフックが利用可能です。以下のコードをテーマ内の<em>functions.php</em>に記載してください。"
 
-#: ../templates/setting.php:85
+#: ../templates/setting.php:100
 msgid "This function are executed when user delete himself with this plugin"
 msgstr "この関数はユーザーがこのプラグインを利用してアカウントを削除しようとしたときに実行されます。"
 
-#: ../templates/setting.php:86
+#: ../templates/setting.php:101
 msgid "User id to delete"
 msgstr "削除するユーザーID"
 
-#: ../templates/setting.php:90
+#: ../templates/setting.php:105
 msgid "Now you get user_id and manage data how you like."
 msgstr "これでuser_idを取得できたので、好きなようにデータを管理できます"
 
-#: ../templates/setting.php:91
+#: ../templates/setting.php:106
 msgid "For example, you can delete user_meta &quot;address&quot;"
 msgstr "たとえば、&quot;address&quot;というuser_metaを削除できます。"
 
-#: ../templates/setting.php:93
+#: ../templates/setting.php:108
 msgid "Furthermore, You can call action hook for other plugins."
 msgstr "さら、他のプラグインのためにアクションフックを呼び出すこともできます。"
 

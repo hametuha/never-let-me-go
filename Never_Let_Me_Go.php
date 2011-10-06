@@ -27,15 +27,22 @@ class Never_Let_Me_Go extends Hametuha_Library{
 	 */
 	public function template_redirect(){
 		//Register Hook on Resign page
-		if($this->option['resign_page'] && is_page($this->option['resign_page'])){
-			if(is_user_logged_in() && !is_paged()){
+		if($this->option['enable'] && $this->option['resign_page'] && is_page($this->option['resign_page'])){
+			if(is_user_logged_in() ){
 				if((FORCE_SSL_ADMIN || FORCE_SSL_LOGIN) && !is_ssl){
 					header("Location: ".  str_replace('http:', 'https:', get_permalink($this->option['resign_page'])));
 				}else{
 					if($this->verify_nonce('resign_public')){
 						//Completed resigning and show message.
 						$this->delete_current_user();
-						add_filter('the_content', array($this, 'show_thankyou'), 1);
+						//If paged, show 2nd page. If not, redirect to login page.
+						global $numpages;
+						if($numpages > 1){
+							add_filter('the_content', array($this, 'show_thankyou'), 1);
+						}else{
+							header('Location: '.wp_login_url());
+							die();
+						}
 					}else{
 						//On resign and display resign form.
 						add_filter('the_content', array($this, 'show_resign_form'));

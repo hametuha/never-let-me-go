@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Never Let Me Go\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-06 05:12+0900\n"
-"PO-Revision-Date: 2011-10-06 05:12+0900\n"
+"POT-Creation-Date: 2011-10-06 12:19+0900\n"
+"PO-Revision-Date: 2011-10-06 12:19+0900\n"
 "Last-Translator: Takahashi Fumiki <info@takahashifumiki.com>\n"
 "Language-Team: Hametuha inc. <info@hametuha.co.jp>\n"
 "MIME-Version: 1.0\n"
@@ -17,41 +17,42 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../Never_Let_Me_Go.php:75
-#: ../Never_Let_Me_Go.php:148
+#: ../Never_Let_Me_Go.php:77
+#: ../Never_Let_Me_Go.php:154
 msgid "Delete Account"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:98
+#: ../Never_Let_Me_Go.php:104
 msgid "Option updated."
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:100
+#: ../Never_Let_Me_Go.php:106
 msgid "Option failed to updated."
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:122
+#: ../Never_Let_Me_Go.php:128
 #: ../templates/setting.php:4
 msgid "Never Let Me Go setting"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:122
+#: ../Never_Let_Me_Go.php:128
 msgid "Resign Setting"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:150
+#: ../Never_Let_Me_Go.php:156
 msgid "You can delete your account by putting the button below."
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:153
+#: ../Never_Let_Me_Go.php:159
+#: ../templates/setting.php:84
 msgid "Are you sure to delete your account?"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:153
+#: ../Never_Let_Me_Go.php:159
 msgid "Delete"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:181
+#: ../Never_Let_Me_Go.php:187
 msgid "Deleted User"
 msgstr ""
 
@@ -134,7 +135,7 @@ msgid "Advanced"
 msgstr ""
 
 #: ../templates/setting.php:48
-#: ../templates/setting.php:79
+#: ../templates/setting.php:94
 msgid "Make user account unavailable and keep data"
 msgstr ""
 
@@ -166,39 +167,71 @@ msgid "User information will be changed when user delete his own account.<br />I
 msgstr ""
 
 #: ../templates/setting.php:77
-msgid "How to treat user data"
+msgid "How to create Resign Page"
 msgstr ""
 
 #: ../templates/setting.php:79
+msgid "If you choose some resign page to publicly display, you can make show messag before resigning and after."
+msgstr ""
+
+#: ../templates/setting.php:80
+msgid "Split assigned page's content with &lt;!--nextpage--&gt;.<br /> 1st page will be shown before resigning and 2nd after."
+msgstr ""
+
+#: ../templates/setting.php:81
+msgid "Here is an example:"
+msgstr ""
+
+#: ../templates/setting.php:83
+msgid "You are about to resign from our web magazine."
+msgstr ""
+
+#: ../templates/setting.php:85
+msgid "All of your data on our service will be deleted and can't be restored."
+msgstr ""
+
+#: ../templates/setting.php:87
+msgid "Your account has been deleted successfully."
+msgstr ""
+
+#: ../templates/setting.php:88
+msgid "We miss you and hope to see you again."
+msgstr ""
+
+#: ../templates/setting.php:92
+msgid "How to treat user data"
+msgstr ""
+
+#: ../templates/setting.php:94
 #, php-format
 msgid "In case you choose <strong>\"%s\"</strong>, Your user's data will remain on your database."
 msgstr ""
 
-#: ../templates/setting.php:80
+#: ../templates/setting.php:95
 msgid "But in most cases, you might want personal data like email or address to be deleted."
 msgstr ""
 
-#: ../templates/setting.php:81
+#: ../templates/setting.php:96
 msgid "For this purpose, action hook is available. Write the code below in your theme's <em>functions.php</em>."
 msgstr ""
 
-#: ../templates/setting.php:85
+#: ../templates/setting.php:100
 msgid "This function are executed when user delete himself with this plugin"
 msgstr ""
 
-#: ../templates/setting.php:86
+#: ../templates/setting.php:101
 msgid "User id to delete"
 msgstr ""
 
-#: ../templates/setting.php:90
+#: ../templates/setting.php:105
 msgid "Now you get user_id and manage data how you like."
 msgstr ""
 
-#: ../templates/setting.php:91
+#: ../templates/setting.php:106
 msgid "For example, you can delete user_meta &quot;address&quot;"
 msgstr ""
 
-#: ../templates/setting.php:93
+#: ../templates/setting.php:108
 msgid "Furthermore, You can call action hook for other plugins."
 msgstr ""
 

@@ -74,6 +74,21 @@
 	</table>
 	<?php submit_button(); ?>
 </form>
+<h3><?php $this->e('How to create Resign Page'); ?></h3>
+<p>
+	<?php $this->e('If you choose some resign page to publicly display, you can make show messag before resigning and after.'); ?><br />
+	<?php $this->e('Split assigned page\'s content with &lt;!--nextpage--&gt;.<br /> 1st page will be shown before resigning and 2nd after.'); ?><br />
+	<?php $this->e('Here is an example:'); ?>
+<pre class="brush: php">
+<?php $this->e('You are about to resign from our web magazine.'); ?> 
+<?php $this->e('Are you sure to delete your account?'); ?> 
+<?php $this->e('All of your data on our service will be deleted and can\'t be restored.'); ?> 
+&lt;!--nextpage--&gt;
+<?php $this->e('Your account has been deleted successfully.'); ?> 
+<?php $this->e('We miss you and hope to see you again.'); ?> 
+<?php ?>
+</pre>
+</p>
 <h3><?php $this->e('How to treat user data'); ?></h3>
 <p>
 	<?php printf($this->_('In case you choose <strong>"%s"</strong>, Your user\'s data will remain on your database.'), $this->_('Make user account unavailable and keep data')); ?><br />
