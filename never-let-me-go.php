@@ -13,10 +13,9 @@ Author URI: http://hametuha.co.jp
 */
 
 //ユーティリティクラスの読み込み
-require_once dirname(__FILE__).DIRECTORY_SEPARATOR."lib".DIRECTORY_SEPARATOR."Hametuha_Library.php";
 require_once dirname(__FILE__).DIRECTORY_SEPARATOR."Never_Let_Me_Go.php";
 
 /**
  * @var $nlmg Never_Let_Me_Go
  */
-$nlmg = new Never_Let_Me_Go(__FILE__, "0.8", "never-let-me-go");
+$nlmg = new Never_Let_Me_Go(__FILE__, "0.8");
