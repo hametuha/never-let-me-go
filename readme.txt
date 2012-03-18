@@ -2,8 +2,8 @@
 Contributors: Takahashi_Fumiki
 Tags: delete, account
 Requires at least: 3.1
-Tested up to: 3.2
-Stable tag: 0.8
+Tested up to: 3.3.1
+Stable tag: 0.8.1
 
 
 
@@ -37,6 +37,10 @@ Nothing.
 1. Set up your resign option.
 
 == Changelog ==
+
+= 0.8.1 =
+
+* Bugfix. thank-you message is now displayed.
 
 = 0.8 =
 

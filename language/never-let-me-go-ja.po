@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Never Let Me Go\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-06 12:19+0900\n"
-"PO-Revision-Date: 2011-10-06 12:22+0900\n"
+"POT-Creation-Date: 2012-03-19 00:22+0900\n"
+"PO-Revision-Date: 2012-03-19 00:23+0900\n"
 "Last-Translator: Takahashi Fumiki <info@takahashifumiki.com>\n"
 "Language-Team: Hametuha inc. <info@hametuha.co.jp>\n"
 "MIME-Version: 1.0\n"
@@ -17,81 +17,48 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../Never_Let_Me_Go.php:77
-#: ../Never_Let_Me_Go.php:154
+#: ../Never_Let_Me_Go.php:174
+#: ../Never_Let_Me_Go.php:272
 msgid "Delete Account"
 msgstr "アカウントを削除する"
 
-#: ../Never_Let_Me_Go.php:104
+#: ../Never_Let_Me_Go.php:201
 msgid "Option updated."
 msgstr "設定は更新されました。"
 
-#: ../Never_Let_Me_Go.php:106
+#: ../Never_Let_Me_Go.php:203
 msgid "Option failed to updated."
 msgstr "設定を更新できませんでした。"
 
-#: ../Never_Let_Me_Go.php:128
+#: ../Never_Let_Me_Go.php:229
 #: ../templates/setting.php:4
 msgid "Never Let Me Go setting"
 msgstr "Never Let Me Go設定"
 
-#: ../Never_Let_Me_Go.php:128
+#: ../Never_Let_Me_Go.php:229
 msgid "Resign Setting"
 msgstr "退会設定"
 
-#: ../Never_Let_Me_Go.php:156
+#: ../Never_Let_Me_Go.php:274
 msgid "You can delete your account by putting the button below."
 msgstr "下のボタンを押すことでアカウントを削除することができます。"
 
-#: ../Never_Let_Me_Go.php:159
+#: ../Never_Let_Me_Go.php:277
 #: ../templates/setting.php:84
 msgid "Are you sure to delete your account?"
 msgstr "アカウントを削除してよろしいですか？"
 
-#: ../Never_Let_Me_Go.php:159
+#: ../Never_Let_Me_Go.php:277
 msgid "Delete"
 msgstr "削除"
 
-#: ../Never_Let_Me_Go.php:187
+#: ../Never_Let_Me_Go.php:305
 msgid "Deleted User"
 msgstr "削除されたユーザー"
 
-#: ../lib/Hametuha_Library.php:231
-msgid "Uploaded file size exceeds the &quot;upload_max_filesize&quot; value defined in php.ini"
-msgstr ""
-
-#: ../lib/Hametuha_Library.php:235
-msgid "Uploaded file size exceeds"
-msgstr ""
-
-#: ../lib/Hametuha_Library.php:239
-msgid "File has been uploaded incompletely. Check your internet connection."
-msgstr ""
-
-#: ../lib/Hametuha_Library.php:243
-msgid "No file was uploaded."
-msgstr ""
-
-#: ../lib/Hametuha_Library.php:247
-msgid "No tmp directory exists. Contact to your server administrator."
-msgstr ""
-
-#: ../lib/Hametuha_Library.php:251
-msgid "Failed to save the uploaded file. Contact to your server administrator."
-msgstr ""
-
-#: ../lib/Hametuha_Library.php:255
-msgid "PHP stops uploading."
-msgstr ""
-
-#: ../lib/Hametuha_Library.php:263
-msgid "File isn't uploaded."
-msgstr ""
-
-#: ../lib/Hametuha_Library.php:472
-#, php-format
-msgid "Admin Template file dosen't exist. [FILE NAME: %s]"
-msgstr "管理画面テンプレートが存在しません [FILE NAME: %s]"
+#: ../Never_Let_Me_Go.php:420
+msgid "This Plugin allows your user to delete his/her own account. If you want, you can also display somehow painfull thank-you message on his resignation."
+msgstr "このプラグインはユーザーが自分のアカウントを削除できるようにします。必要ならば、ユーザーが退会するときに悲しそうなサンキューメッセージを表示することもできます。"
 
 #: ../templates/setting.php:10
 msgid "Allow user to self delete"
@@ -235,3 +202,5 @@ msgstr "たとえば、&quot;address&quot;というuser_metaを削除できま�
 msgid "Furthermore, You can call action hook for other plugins."
 msgstr "さら、他のプラグインのためにアクションフックを呼び出すこともできます。"
 
+#~ msgid "Admin Template file dosen't exist. [FILE NAME: %s]"
+#~ msgstr "管理画面テンプレートが存在しません [FILE NAME: %s]"

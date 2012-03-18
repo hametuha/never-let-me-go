@@ -217,6 +217,8 @@ EOS;
 		if(is_admin() && isset($_GET['page']) && $_GET['page'] == 'nlmg'){
 			add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
 		}
+		//Add Action links on plugin lists.
+		add_filter('plugin_action_links', array($this, 'plugin_page_link'), 500, 2);
 	}
 	
 	/**
@@ -245,6 +247,20 @@ EOS;
 		wp_enqueue_script('syntax-init', $this->url."assets/onload.js", array('syntax-php'), $this->version);
 		wp_register_style('syntax-core', $this->url."assets/shCore.css", array(), '3.0.83');
 		wp_enqueue_style('syntax-theme-default', $this->url."assets/shThemeDefault.css", array('syntax-core'), '3.0.83');
+	}
+	
+	/**
+	 * Add action link on plugin lists
+	 * @param array $links
+	 * @param string $file
+	 * @return string 
+	 */
+	public function plugin_page_link($links, $file){
+		if(false !== strpos($file, "never-let-me-go")){
+			$link = '<a href="'.admin_url('options-general.php?page=nlmg').'">'.__('Settings').'</a>';
+			array_unshift( $links, $link);
+		}
+		return $links;
 	}
 	
 	/**
@@ -396,6 +412,13 @@ EOS;
 		return __($text, $this->domain);
 	}
 	
+	/**
+	 * Poedit用
+	 * @return string
+	 */
+	public function ___(){
+		return $this->_('This Plugin allows your user to delete his/her own account. If you want, you can also display somehow painfull thank-you message on his resignation.');
+	}
 	
 	/**
 	 * $_GETに値が設定されていたら返す
