@@ -95,18 +95,7 @@ class Never_Let_Me_Go{
 				$this->option[$key] = $saved_option[$key];
 			}
 		}
-		//アクチベーションフックがあれば登録
-		if(method_exists($this, "activate")){
-			register_activation_hook($base_file, array($this, "activate"));
-		}
-		//デアクチベーションフックがあれば登録
-		if(method_exists($this, "deactivate")){
-			register_deactivation_hook($base_file, array($this, "deactivate"));
-		}
-		//共通フックを登録
-		if(method_exists($this, "init")){
-			add_action("init", array($this, "init"));
-		}
+		
 		//テンプレートリダイレクトフック
 		add_action("template_redirect", array($this, "template_redirect"));
 		
@@ -128,15 +117,16 @@ class Never_Let_Me_Go{
 		//Register Hook on Resign page
 		if($this->option['enable'] && $this->option['resign_page'] && is_page($this->option['resign_page'])){
 			if(is_user_logged_in() ){
-				if((FORCE_SSL_ADMIN || FORCE_SSL_LOGIN) && !is_ssl){
+				if((FORCE_SSL_ADMIN || FORCE_SSL_LOGIN) && !is_ssl()){
 					header("Location: ".  str_replace('http:', 'https:', get_permalink($this->option['resign_page'])));
 				}else{
-					if($this->verify_nonce('resign_public')){
+					if($this->verify_nonce('resign_public_'.get_current_user_id())){
+						//Get Resign Page
+						$curpage = get_post($this->option['resign_page']);
 						//Completed resigning and show message.
 						$this->delete_current_user();
 						//If paged, show 2nd page. If not, redirect to login page.
-						global $numpages;
-						if($numpages > 1){
+						if($curpage && count(preg_split("/<!--*?nextpage*?-->/", $curpage->post_content)) >= 2){
 							add_filter('the_content', array($this, 'show_thankyou'), 1);
 						}else{
 							header('Location: '.wp_login_url());
@@ -161,8 +151,9 @@ class Never_Let_Me_Go{
 	 * @return string
 	 */
 	public function show_thankyou($content){
-		global $pages, $numpages;
+		global $pages, $numpages, $multipage;
 		$numpages = 1;
+		$multipage = false;
 		if(isset($pages[1])){
 			return $pages[1];
 		}else{
@@ -176,10 +167,10 @@ class Never_Let_Me_Go{
 	 * @return string
 	 */
 	public function show_resign_form($content){
-		global $numpages, $multipage, $more, $pagenow;
+		global $pages, $numpages, $multipage, $more, $pagenow;
 		$perma_link = (FORCE_SSL_LOGIN || FORCE_SSL_ADMIN) ? str_replace('http:', 'https:', get_permalink()) : get_permalink();
 		$url = (false !== strpos('?', $perma_link)) ? $perma_link."&amp;resign=complete": $perma_link."?resign=complete";
-		$nonce = wp_nonce_field($this->nonce_action('resign_public'), "_".$this->name."_nonce", false, false);
+		$nonce = wp_nonce_field($this->nonce_action('resign_public_'.get_current_user_id()), "_".$this->name."_nonce", false, false);
 		$label = $this->_("Delete Account");
 		$form = <<<EOS
 			<form id="nlmg-resign-form" method="post" action="{$url}">
@@ -213,7 +204,7 @@ EOS;
 			}
 		}
 		//Delete account on admin panel
-		if(defined('IS_PROFILE_PAGE') && is_user_logged_in() && wp_verify_nonce($this->get('_wpnonce'), 'nlmg_delete_on_admin')){
+		if(defined('IS_PROFILE_PAGE') && IS_PROFILE_PAGE && is_user_logged_in() && wp_verify_nonce($this->get('_wpnonce'), 'nlmg_delete_on_admin')){
 			$this->delete_current_user();
 			$url = wp_login_url();
 			header('Location: '.$url);
