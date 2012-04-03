@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Never Let Me Go\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-19 00:22+0900\n"
-"PO-Revision-Date: 2012-03-19 00:22+0900\n"
+"POT-Creation-Date: 2012-04-03 17:24+0900\n"
+"PO-Revision-Date: 2012-04-03 17:25+0900\n"
 "Last-Translator: Takahashi Fumiki <info@takahashifumiki.com>\n"
 "Language-Team: Hametuha inc. <info@hametuha.co.jp>\n"
 "MIME-Version: 1.0\n"
@@ -17,46 +17,55 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../Never_Let_Me_Go.php:174
-#: ../Never_Let_Me_Go.php:272
+#: ../Never_Let_Me_Go.php:177
+#: ../Never_Let_Me_Go.php:283
 msgid "Delete Account"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:201
+#: ../Never_Let_Me_Go.php:205
 msgid "Option updated."
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:203
+#: ../Never_Let_Me_Go.php:207
 msgid "Option failed to updated."
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:229
+#: ../Never_Let_Me_Go.php:233
 #: ../templates/setting.php:4
 msgid "Never Let Me Go setting"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:229
+#: ../Never_Let_Me_Go.php:233
 msgid "Resign Setting"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:274
+#: ../Never_Let_Me_Go.php:255
+msgid "No results"
+msgstr ""
+
+#: ../Never_Let_Me_Go.php:256
+#, php-format
+msgid "%% found."
+msgstr ""
+
+#: ../Never_Let_Me_Go.php:285
 msgid "You can delete your account by putting the button below."
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:277
-#: ../templates/setting.php:84
+#: ../Never_Let_Me_Go.php:288
+#: ../templates/setting.php:101
 msgid "Are you sure to delete your account?"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:277
+#: ../Never_Let_Me_Go.php:288
 msgid "Delete"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:305
+#: ../Never_Let_Me_Go.php:316
 msgid "Deleted User"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:420
+#: ../Never_Let_Me_Go.php:460
 msgid "This Plugin allows your user to delete his/her own account. If you want, you can also display somehow painfull thank-you message on his resignation."
 msgstr ""
 
@@ -94,6 +103,7 @@ msgstr ""
 
 #: ../templates/setting.php:44
 #: ../templates/setting.php:51
+#: ../templates/setting.php:69
 msgid "Delete from database"
 msgstr ""
 
@@ -102,7 +112,7 @@ msgid "Advanced"
 msgstr ""
 
 #: ../templates/setting.php:48
-#: ../templates/setting.php:94
+#: ../templates/setting.php:111
 msgid "Make user account unavailable and keep data"
 msgstr ""
 
@@ -116,89 +126,106 @@ msgid "To delete related information, see description below.<br />Please be care
 msgstr ""
 
 #: ../templates/setting.php:57
+msgid "Assign to"
+msgstr ""
+
+#: ../templates/setting.php:60
+msgid "User ID"
+msgstr ""
+
+#: ../templates/setting.php:64
+msgid "Input user name or e-mail to find user ID"
+msgstr ""
+
+#: ../templates/setting.php:69
+#, php-format
+msgid "If you choose <strong>%s</strong>, You can assign resigning user's contents to particular user. i.e. in CGM site, assigning resigning's contents to the pseudo user(deleted user)."
+msgstr ""
+
+#: ../templates/setting.php:74
 msgid "Destroy Level"
 msgstr ""
 
-#: ../templates/setting.php:61
-#: ../templates/setting.php:68
+#: ../templates/setting.php:78
+#: ../templates/setting.php:85
 msgid "Nothing changed."
 msgstr ""
 
-#: ../templates/setting.php:62
+#: ../templates/setting.php:79
 msgid "Make credential hashed"
 msgstr ""
 
-#: ../templates/setting.php:68
+#: ../templates/setting.php:85
 #, php-format
 msgid "User information will be changed when user delete his own account.<br />If you don't want this, you can keep infomration by select \"%s\"."
 msgstr ""
 
-#: ../templates/setting.php:77
+#: ../templates/setting.php:94
 msgid "How to create Resign Page"
 msgstr ""
 
-#: ../templates/setting.php:79
+#: ../templates/setting.php:96
 msgid "If you choose some resign page to publicly display, you can make show messag before resigning and after."
 msgstr ""
 
-#: ../templates/setting.php:80
+#: ../templates/setting.php:97
 msgid "Split assigned page's content with &lt;!--nextpage--&gt;.<br /> 1st page will be shown before resigning and 2nd after."
 msgstr ""
 
-#: ../templates/setting.php:81
+#: ../templates/setting.php:98
 msgid "Here is an example:"
 msgstr ""
 
-#: ../templates/setting.php:83
+#: ../templates/setting.php:100
 msgid "You are about to resign from our web magazine."
 msgstr ""
 
-#: ../templates/setting.php:85
+#: ../templates/setting.php:102
 msgid "All of your data on our service will be deleted and can't be restored."
 msgstr ""
 
-#: ../templates/setting.php:87
+#: ../templates/setting.php:104
 msgid "Your account has been deleted successfully."
 msgstr ""
 
-#: ../templates/setting.php:88
+#: ../templates/setting.php:105
 msgid "We miss you and hope to see you again."
 msgstr ""
 
-#: ../templates/setting.php:92
+#: ../templates/setting.php:109
 msgid "How to treat user data"
 msgstr ""
 
-#: ../templates/setting.php:94
+#: ../templates/setting.php:111
 #, php-format
 msgid "In case you choose <strong>\"%s\"</strong>, Your user's data will remain on your database."
 msgstr ""
 
-#: ../templates/setting.php:95
+#: ../templates/setting.php:112
 msgid "But in most cases, you might want personal data like email or address to be deleted."
 msgstr ""
 
-#: ../templates/setting.php:96
+#: ../templates/setting.php:113
 msgid "For this purpose, action hook is available. Write the code below in your theme's <em>functions.php</em>."
 msgstr ""
 
-#: ../templates/setting.php:100
+#: ../templates/setting.php:117
 msgid "This function are executed when user delete himself with this plugin"
 msgstr ""
 
-#: ../templates/setting.php:101
+#: ../templates/setting.php:118
 msgid "User id to delete"
 msgstr ""
 
-#: ../templates/setting.php:105
+#: ../templates/setting.php:122
 msgid "Now you get user_id and manage data how you like."
 msgstr ""
 
-#: ../templates/setting.php:106
+#: ../templates/setting.php:123
 msgid "For example, you can delete user_meta &quot;address&quot;"
 msgstr ""
 
-#: ../templates/setting.php:108
+#: ../templates/setting.php:125
 msgid "Furthermore, You can call action hook for other plugins."
 msgstr ""
 

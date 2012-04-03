@@ -54,6 +54,23 @@
 				</td>
 			</tr>
 			<tr>
+				<th><label><?php $this->e('Assign to'); ?></label></th>
+				<td>
+					<label>
+						<?php $this->e('User ID'); ?>
+						<input type="text" class="small-text" id="nlmg_assign_to" name="nlmg_assign_to" value="<?php echo intval($this->option['assign_to']); ?>" />
+					</label>
+					<div class="inc-search-container">
+						<input type="text" class="regular-text" id="user-inc-search" placeholder="<?php $this->e('Input user name or e-mail to find user ID'); ?>" />
+						<img class="loader toggle" src="<?php echo $this->url; ?>assets/ajax-loader.gif" width="16" height="11" /> 
+						<ul id="user-inc-search-result"></ul>
+					</p>
+					<p class="description">
+						<?php printf($this->_('If you choose <strong>%s</strong>, You can assign resigning user\'s contents to particular user. i.e. in CGM site, assigning resigning\'s contents to the pseudo user(deleted user).'), $this->_('Delete from database')); ?>
+					</p>
+				</td>
+			</tr>
+			<tr>
 				<th><label for="nlmg_destroy_level"><?php $this->e('Destroy Level');?></label>
 				<td>
 					<select id="nlmg_destroy_level" name="nlmg_destroy_level">

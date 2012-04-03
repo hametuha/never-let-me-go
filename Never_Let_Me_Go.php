@@ -52,6 +52,7 @@ class Never_Let_Me_Go{
 	protected $default_option = array(
 		'enable' => 0,
 		'resign_page' => 0,
+		'assign_to' => 0,
 		'keep_account' => 0,
 		'destroy_level' => 1
 	);
@@ -108,6 +109,8 @@ class Never_Let_Me_Go{
 		add_action("admin_notice", array($this, "admin_notice"));
 		//Register Domain
 		load_plugin_textdomain($this->domain, false, basename($this->dir).DIRECTORY_SEPARATOR."language");
+		//Ajax Action for incremental search
+		add_action('wp_ajax_nlmg_user_search', array($this, 'inc_search'));
 	}
 	
 	/**
@@ -197,6 +200,7 @@ EOS;
 			$this->option['resign_page'] = (int) $this->post('nlmg_resign_page');
 			$this->option['keep_account'] = (int) $this->post('nlmg_keep_account');
 			$this->option['destroy_level'] = (int) $this->post('nlmg_destroy_level');
+			$this->option['assign_to'] = (int) $this->post('nlmg_assign_to');
 			if(update_option($this->name.'_option', $this->option)){
 				$this->add_message($this->_('Option updated.'));
 			}else{
@@ -245,8 +249,15 @@ EOS;
 		wp_register_script('syntax-core', $this->url."assets/shCore.js", array('xregexp'), '3.0.83', !is_admin());
 		wp_register_script('syntax-php', $this->url."assets/shBrushPhp.js", array('syntax-core'), '3.0.83', !is_admin());
 		wp_enqueue_script('syntax-init', $this->url."assets/onload.js", array('syntax-php'), $this->version);
+		wp_localize_script('syntax-init', 'NLMG', array(
+			'endpoint' => admin_url('admin-ajax.php'),
+			'action' => 'nlmg_user_search',
+			'noResults' => $this->_('No results'),
+			'found' => $this->_('%% found.')
+		));
 		wp_register_style('syntax-core', $this->url."assets/shCore.css", array(), '3.0.83');
 		wp_enqueue_style('syntax-theme-default', $this->url."assets/shThemeDefault.css", array('syntax-core'), '3.0.83');
+		wp_enqueue_style('nlmg-ajax', $this->url.'assets/admin.css', array(), $this->version);
 	}
 	
 	/**
@@ -324,10 +335,39 @@ EOS;
 			do_action('never_let_me_go', $user_ID);
 		}else{
 			require_once ABSPATH."/wp-admin/includes/user.php";
-			wp_delete_user($user_ID);
+			$assign_to = $this->option['assign_to'] ? $this->option['assign_to'] : null;
+			wp_delete_user($user_ID, apply_filters('nlmg_assign_to', $assign_to));
 		}
 	}
 	
+	/**
+	 * Returns user object by incremental search
+	 * @global wpdb $wpdb 
+	 */
+	public function inc_search(){
+		$result = array(
+			'status' => false,
+			'total' => 0,
+			'results' => array()
+		);
+		if(current_user_can('manage_options')){
+			if(isset($_POST['query'])){
+				global $wpdb;
+				$query = '%'.(string)$_POST['query'].'%';
+				$sql = <<<EOS
+					SELECT SQL_CALC_FOUND_ROWS ID, display_name FROM {$wpdb->users}
+					WHERE user_login LIKE %s OR user_email LIKE %s OR display_name LIKE %s
+					LIMIT 10
+EOS;
+				$result['results'] = $wpdb->get_results($wpdb->prepare($sql, $query, $query, $query), ARRAY_A);
+				$result['total'] = (int)$wpdb->get_var("SELECT FOUND_ROWS()");
+				$result['status'] = (boolean)$result['total'];
+			}
+		}
+		header('Content-Type: application/json; charset=utf-8');
+		echo json_encode($result);
+		die();
+	}
 	
 	/**
 	 * nonce用に接頭辞をつけて返す

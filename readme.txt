@@ -3,7 +3,7 @@ Contributors: Takahashi_Fumiki
 Tags: delete, account
 Requires at least: 3.1
 Tested up to: 3.3.1
-Stable tag: 0.8.1
+Stable tag: 0.8.2
 
 
 
@@ -37,6 +37,10 @@ Nothing.
 1. Set up your resign option.
 
 == Changelog ==
+
+= 0.8.2 =
+
+* Now you can assign deleted user's contents to specific user 
 
 = 0.8.1 =
 

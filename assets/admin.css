@@ -1,0 +1,39 @@
+@charset 'utf-8';
+
+.inc-search-container{
+	position:relative;
+}
+
+.inc-search-container .toggle{
+	display: none;
+}
+
+#user-inc-search-result{
+	position: absolute;
+	left: 0;
+	top:23px;
+	border:1px solid #dfdfdf;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-bottom:none;
+	margin:0;
+	background: #f1f1f1;
+	display:none;
+	}
+	#user-inc-search-result li{
+		margin:0;
+		border-bottom:1px solid #dfdfdf;
+		}
+		#user-inc-search-result .no-result,
+		#user-inc-search-result a{
+			display:block;
+			padding:2px 3px;
+		}
+		#user-inc-search-result a{
+			text-decoration: none;
+			background: #97d5ef;
+			}
+			#user-inc-search-result a:hover{
+				background: #f7a98f;
+			}
