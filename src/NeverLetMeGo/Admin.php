@@ -85,7 +85,7 @@ class Admin extends Application
 	 */
 	public function enqueueScripts($page){
 		if( 'settings_page_nlmg' == $page ){
-			$ext = WP_DEBUG ? '.min' : '';
+			$ext = WP_DEBUG ? '' : '.min';
 			wp_register_script('xregexp', $this->url."assets/js/xregexp.js", array(), "1.5.0", true);
 			wp_register_script('syntax-core', $this->url."assets/js/shCore{$ext}.js", array('xregexp'), '3.0.83', true);
 			wp_register_script('syntax-php', $this->url."assets/js/shBrushPhp{$ext}.js", array('syntax-core'), '3.0.83', true);
