@@ -2,71 +2,74 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Never Let Me Go\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-03 17:24+0900\n"
-"PO-Revision-Date: 2012-04-03 17:25+0900\n"
+"POT-Creation-Date: 2014-12-22 17:29+0900\n"
+"PO-Revision-Date: 2014-12-22 17:29+0900\n"
 "Last-Translator: Takahashi Fumiki <info@takahashifumiki.com>\n"
 "Language-Team: Hametuha inc. <info@hametuha.co.jp>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;e\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-Country: UNITED STATES\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../Never_Let_Me_Go.php:177
-#: ../Never_Let_Me_Go.php:283
-msgid "Delete Account"
+#: ../never-let-me-go.php:60
+msgid ""
+"This Plugin allows your user to delete his/her own account. If you want, you "
+"can also display somehow painfull thank-you message on his resignation."
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:205
-msgid "Option updated."
-msgstr ""
-
-#: ../Never_Let_Me_Go.php:207
-msgid "Option failed to updated."
-msgstr ""
-
-#: ../Never_Let_Me_Go.php:233
-#: ../templates/setting.php:4
+#: ../src/NeverLetMeGo/Admin.php:42 ../templates/setting.php:4
 msgid "Never Let Me Go setting"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:233
+#: ../src/NeverLetMeGo/Admin.php:42
 msgid "Resign Setting"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:255
+#: ../src/NeverLetMeGo/Admin.php:62
+msgid "Option updated."
+msgstr ""
+
+#: ../src/NeverLetMeGo/Admin.php:64
+msgid "Option failed to updated."
+msgstr ""
+
+#: ../src/NeverLetMeGo/Admin.php:96
 msgid "No results"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:256
+#: ../src/NeverLetMeGo/Admin.php:97
 #, php-format
 msgid "%% found."
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:285
+#: ../src/NeverLetMeGo/Admin.php:159 ../src/NeverLetMeGo/Page.php:77
+msgid "Delete Account"
+msgstr ""
+
+#: ../src/NeverLetMeGo/Admin.php:161
 msgid "You can delete your account by putting the button below."
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:288
-#: ../templates/setting.php:101
-msgid "Are you sure to delete your account?"
+#: ../src/NeverLetMeGo/Admin.php:164
+msgid "Are you sure to delete your account? This action is not cancelable."
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:288
+#: ../src/NeverLetMeGo/Admin.php:164
 msgid "Delete"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:316
-msgid "Deleted User"
+#: ../src/NeverLetMeGo/Page.php:86
+msgid "Are you sure to delete account?"
 msgstr ""
 
-#: ../Never_Let_Me_Go.php:460
-msgid "This Plugin allows your user to delete his/her own account. If you want, you can also display somehow painfull thank-you message on his resignation."
+#: ../src/NeverLetMeGo/Pattern/Application.php:73
+msgid "Deleted User"
 msgstr ""
 
 #: ../templates/setting.php:10
@@ -90,7 +93,9 @@ msgid "No resign page"
 msgstr ""
 
 #: ../templates/setting.php:35
-msgid "Resign page means the static page which have form to resign. <br />If not specified, user can delete himself on profile page of admin panel."
+msgid ""
+"Resign page means the static page which have form to resign. <br />If not "
+"specified, user can delete himself on profile page of admin panel."
 msgstr ""
 
 #: ../templates/setting.php:40
@@ -101,8 +106,7 @@ msgstr ""
 msgid "Normal"
 msgstr ""
 
-#: ../templates/setting.php:44
-#: ../templates/setting.php:51
+#: ../templates/setting.php:44 ../templates/setting.php:51
 #: ../templates/setting.php:69
 msgid "Delete from database"
 msgstr ""
@@ -111,18 +115,22 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: ../templates/setting.php:48
-#: ../templates/setting.php:111
+#: ../templates/setting.php:48 ../templates/setting.php:112
 msgid "Make user account unavailable and keep data"
 msgstr ""
 
 #: ../templates/setting.php:51
 #, php-format
-msgid "If you choose \"%1$s\", all data related to the user will be deleted.<br /> If not, the user account will be replaced to unavailabe account and whole data will be kept in your database."
+msgid ""
+"If you choose \"%1$s\", all data related to the user will be deleted.<br /> "
+"If not, the user account will be replaced to unavailabe account and whole "
+"data will be kept in your database."
 msgstr ""
 
 #: ../templates/setting.php:52
-msgid "To delete related information, see description below.<br />Please be carefull with your country's low on other's privacy."
+msgid ""
+"To delete related information, see description below.<br />Please be "
+"carefull with your country's low on other's privacy."
 msgstr ""
 
 #: ../templates/setting.php:57
@@ -139,15 +147,17 @@ msgstr ""
 
 #: ../templates/setting.php:69
 #, php-format
-msgid "If you choose <strong>%s</strong>, You can assign resigning user's contents to particular user. i.e. in CGM site, assigning resigning's contents to the pseudo user(deleted user)."
+msgid ""
+"If you choose <strong>%s</strong>, You can assign resigning user's contents "
+"to particular user. i.e. in UGC site, assigning resigning's contents to the "
+"pseudo user(deleted user)."
 msgstr ""
 
 #: ../templates/setting.php:74
 msgid "Destroy Level"
 msgstr ""
 
-#: ../templates/setting.php:78
-#: ../templates/setting.php:85
+#: ../templates/setting.php:78 ../templates/setting.php:85
 msgid "Nothing changed."
 msgstr ""
 
@@ -157,75 +167,106 @@ msgstr ""
 
 #: ../templates/setting.php:85
 #, php-format
-msgid "User information will be changed when user delete his own account.<br />If you don't want this, you can keep infomration by select \"%s\"."
+msgid ""
+"User information will be changed when user delete his own account.<br />If "
+"you don't want this, you can keep infomration by select \"%s\"."
 msgstr ""
 
-#: ../templates/setting.php:94
+#: ../templates/setting.php:95
 msgid "How to create Resign Page"
 msgstr ""
 
-#: ../templates/setting.php:96
-msgid "If you choose some resign page to publicly display, you can make show messag before resigning and after."
-msgstr ""
-
 #: ../templates/setting.php:97
-msgid "Split assigned page's content with &lt;!--nextpage--&gt;.<br /> 1st page will be shown before resigning and 2nd after."
+msgid ""
+"If you choose some resign page to publicly display, you can make show messag "
+"before resigning and after."
 msgstr ""
 
 #: ../templates/setting.php:98
+msgid ""
+"Split assigned page's content with &lt;!--nextpage--&gt;.<br /> 1st page "
+"will be shown before resigning and 2nd after."
+msgstr ""
+
+#: ../templates/setting.php:99
 msgid "Here is an example:"
 msgstr ""
 
-#: ../templates/setting.php:100
+#: ../templates/setting.php:102
 msgid "You are about to resign from our web magazine."
 msgstr ""
 
-#: ../templates/setting.php:102
-msgid "All of your data on our service will be deleted and can't be restored."
+#: ../templates/setting.php:103
+msgid "Are you sure to delete your account?"
 msgstr ""
 
 #: ../templates/setting.php:104
+msgid "All of your data on our service will be deleted and can't be restored."
+msgstr ""
+
+#: ../templates/setting.php:106
 msgid "Your account has been deleted successfully."
 msgstr ""
 
-#: ../templates/setting.php:105
+#: ../templates/setting.php:107
 msgid "We miss you and hope to see you again."
 msgstr ""
 
-#: ../templates/setting.php:109
+#: ../templates/setting.php:110
 msgid "How to treat user data"
 msgstr ""
 
-#: ../templates/setting.php:111
-#, php-format
-msgid "In case you choose <strong>\"%s\"</strong>, Your user's data will remain on your database."
-msgstr ""
-
 #: ../templates/setting.php:112
-msgid "But in most cases, you might want personal data like email or address to be deleted."
+#, php-format
+msgid ""
+"In case you choose <strong>\"%s\"</strong>, Your user's data will remain on "
+"your database."
 msgstr ""
 
 #: ../templates/setting.php:113
-msgid "For this purpose, action hook is available. Write the code below in your theme's <em>functions.php</em>."
+msgid ""
+"But in most cases, you might want personal data like email or address to be "
+"deleted."
 msgstr ""
 
-#: ../templates/setting.php:117
-msgid "This function are executed when user delete himself with this plugin"
+#: ../templates/setting.php:114
+msgid ""
+"For this purpose, action hook is available. Write the code below in your "
+"theme's <em>functions.php</em>."
 msgstr ""
 
 #: ../templates/setting.php:118
+msgid "This function are executed when user delete himself with this plugin"
+msgstr ""
+
+#: ../templates/setting.php:119
 msgid "User id to delete"
 msgstr ""
 
-#: ../templates/setting.php:122
+#: ../templates/setting.php:123
 msgid "Now you get user_id and manage data how you like."
 msgstr ""
 
-#: ../templates/setting.php:123
+#: ../templates/setting.php:124
 msgid "For example, you can delete user_meta &quot;address&quot;"
 msgstr ""
 
-#: ../templates/setting.php:125
+#: ../templates/setting.php:126
 msgid "Furthermore, You can call action hook for other plugins."
 msgstr ""
 
+#: ../templates/setting.php:134
+msgid "Filter Hooks"
+msgstr ""
+
+#: ../templates/setting.php:139
+msgid "Button label for resign form."
+msgstr ""
+
+#: ../templates/setting.php:149
+msgid "Confirm dialog label when user click delete account button."
+msgstr ""
+
+#: ../assets/js/shCore.min.js:17
+msgid "command"
+msgstr ""

@@ -1,4 +1,4 @@
-=== Never Let Me Go ===
+# Never Let Me Go
 
 Contributors: Takahashi_Fumiki  
 Tags: delete, account  
@@ -8,7 +8,7 @@ Stable tag: 0.9.0
 
 This plugin allow your user to quit your blog and delete his own account.
 
-== Description ==
+## Description
 
 WordPress can allow your user to register by himself, but has no function to self delete.
 
@@ -18,7 +18,7 @@ You can also create **Resign Page** which displays message to your customer.
 
 **NOTICE**: Requires PHP 5.3 and over. 
 
-== Installation ==
+## Installation
 
 e.g.
 
@@ -27,40 +27,40 @@ e.g.
 3. In admin panel, Go to Resgin Setting and set up with instractions displayed.
 4. Create resigning page and write some message to your user. That's it.
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 
 Nothing.
 
-== Screenshots ==
+## Screenshots
 
 1. Set up your resign option.
 
-== Changelog ==
+## Changelog
 
-= 0.9.0 =
+### 0.9.0
 
 * Bugfix.
 * Code refactored and PHP 5.3 is required.
 
-= 0.8.2 =
+### 0.8.2
 
 * Now you can assign deleted user's contents to specific user 
 
-= 0.8.1 =
+### 0.8.1
 
 * Bugfix. thank-you message is now displayed.
 
-= 0.8 =
+### 0.8
 
 * 1st release.
 
-== Upgrade Notice ==
+## Upgrade Notice
 
-= 0.9.0 =
+### 0.9.0
 
 Since 0.9.0, PHP 5.3 and over is required. If your WordPress is running on PHP 5.2, stay outdated or update your PHP. 
 0.8.2 is the latest version which supports PHP 5.2.
 
-= 0.8 =
+### 0.8
 
 Nothing.
