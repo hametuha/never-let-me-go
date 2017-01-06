@@ -63,7 +63,7 @@
 					</label>
 					<div class="inc-search-container">
 						<input type="text" class="regular-text" id="user-inc-search" placeholder="<?php $this->i18n->e('Input user name or e-mail to find user ID'); ?>" />
-						<img class="loader toggle" src="<?php echo $this->url; ?>assets/img/ajax-loader.gif" width="16" height="11" />
+						<img class="loader toggle" src="<?php echo $this->url; ?>dist/img/ajax-loader.gif" width="16" height="11" />
 						<ul id="user-inc-search-result"></ul>
 					</div>
 					<p class="description">

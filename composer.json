@@ -1,6 +1,6 @@
 {
     "name": "fumikito/never-let-me-go",
-    "description": "If your users want to leave, let them go.",
+    "description": "If someone wants to leave your WordPress, let him go.",
     "type": "plugin",
     "license": "GPL-3.0",
     "authors": [

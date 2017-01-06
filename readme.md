@@ -6,7 +6,7 @@ Requires at least: 3.8
 Tested up to: 4.1  
 Stable tag: 0.9.0  
 
-This plugin allow your user to quit your blog and delete his own account.
+If someone wants to leave your WordPress, let him go.
 
 ## Description
 

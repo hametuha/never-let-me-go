@@ -1,6 +1,5 @@
 jQuery(document).ready(function($){
-	SyntaxHighlighter.all();
-	
+
 	var incSearch = {
 		currentChar: '',
 		timer: null,

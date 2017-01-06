@@ -86,19 +86,14 @@ class Admin extends Application
 	public function enqueueScripts($page){
 		if( 'settings_page_nlmg' == $page ){
 			$ext = WP_DEBUG ? '' : '.min';
-			wp_register_script('xregexp', $this->url."assets/js/xregexp.js", array(), "1.5.0", true);
-			wp_register_script('syntax-core', $this->url."assets/js/shCore{$ext}.js", array('xregexp'), '3.0.83', true);
-			wp_register_script('syntax-php', $this->url."assets/js/shBrushPhp{$ext}.js", array('syntax-core'), '3.0.83', true);
-			wp_enqueue_script('syntax-init', $this->url."assets/js/onload{$ext}.js", array('syntax-php'), $this->version, true);
+			wp_enqueue_script('syntax-init', $this->url."dist/js/onload.js", array(), $this->version, true);
 			wp_localize_script('syntax-init', 'NLMG', array(
 				'endpoint' => admin_url('admin-ajax.php'),
 				'action' => 'nlmg_user_search',
 				'noResults' => $this->i18n->_('No results'),
 				'found' => $this->i18n->_('%% found.')
 			));
-			wp_register_style('syntax-core', $this->url."assets/css/shCore.css", array(), '3.0.83');
-			wp_enqueue_style('syntax-theme-default', $this->url."assets/css/shThemeDefault.css", array('syntax-core'), '3.0.83');
-			wp_enqueue_style('nlmg-ajax', $this->url.'assets/css/admin.css', array(), $this->version);
+			wp_enqueue_style('nlmg-ajax', $this->url.'dist/css/admin.css', array(), $this->version);
 		}
 	}
 

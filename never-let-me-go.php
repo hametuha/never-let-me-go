@@ -2,11 +2,11 @@
 /*
 Plugin Name: Never Let Me Go
 Plugin URI: https://wordpress.org/extend/plugins/never-let-me-go/
-Author: Takahshi Fumiki
+Author: Takahshi_Fumiki
 Version: 1.0.0
 PHP Version: 5.3.0
 Author URI: https://takahashifumiki.com
-Description: This Plugin allows your user to delete his/her own account. If you want, you can also display somehow painful thank-you message on his resignation.
+Description: If someone wants to leave your WordPress, let him go.
 Text Domain: never-let-me-go
 Domain Path: /language/
 */
@@ -56,7 +56,7 @@ function _nlmg_version_notice() {
 }
 
 
-// Only for Poedit
+// Only for Poedit.
 if ( false ) {
-	__( 'This Plugin allows your user to delete his/her own account. If you want, you can also display somehow painfull thank-you message on his resignation.', 'never-let-me-go' );
+	__( 'If someone wants to leave your WordPress, let him go.', 'never-let-me-go' );
 }
