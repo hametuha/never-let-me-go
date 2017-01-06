@@ -1,7 +1,8 @@
 <?php /* @var $this NeverLetMeGo\Admin */ ?>
 <div class="wrap">
-<div id="icon-users" class="icon32"><br></div>
-<h2><?php $this->i18n->e('Never Let Me Go setting'); ?></h2>
+<h2>
+    <?php $this->i18n->e('Never Let Me Go setting'); ?>
+</h2>
 <form method="post">
 	<?php wp_nonce_field('nlmg_option'); ?>
 	<table class="form-table">
