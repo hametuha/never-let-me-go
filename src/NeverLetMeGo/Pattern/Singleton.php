@@ -30,7 +30,7 @@ abstract class Singleton
 	 *
 	 * @param array $settings
 	 *
-	 * @return self
+	 * @return static
 	 */
 	public static function getInstance( $settings = array() ){
 		$class_name = get_called_class();

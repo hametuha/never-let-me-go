@@ -32,8 +32,8 @@ if ( version_compare( phpversion(), $info['php_version'], '>=' ) ) {
 	$auto_loader = __DIR__.'/vendor/autoload.php';
 	if ( file_exists( $auto_loader ) ) {
 		require $auto_loader;
-		call_user_func( array( 'NeverLetMeGo\Admin', 'getInstance' ) );
-		call_user_func( array( 'NeverLetMeGo\Page', 'getInstance' ) );
+		call_user_func( array( 'NeverLetMeGo\\Admin', 'getInstance' ) );
+		call_user_func( array( 'NeverLetMeGo\\Page', 'getInstance' ) );
 	} else {
 		trigger_error( __( 'Composer auto loader is missing. Did you run composer install?', 'never-let-me-go' ) );
 	}

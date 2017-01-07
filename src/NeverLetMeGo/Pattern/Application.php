@@ -47,14 +47,26 @@ class Application extends Singleton {
 	}
 
 	/**
-	 * Delete current user account
+	 * Delete current_user account
 	 *
 	 * @return true|\WP_Error
 	 */
 	public function delete_current_user() {
+		$user_id = get_current_user_id();
+		return $this->delete_user( $user_id );
+	}
+
+	/**
+	 * Delete user account
+	 *
+	 * @return true|\WP_Error
+	 */
+	public function delete_user( $user_id ) {
 		/** @var \wpdb $wpdb */
 		global $wpdb;
-		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 404, __( 'User doesn\'t exist.', 'never-let-me-go' ) );
+		}
 		/**
 		 * nlmg_validate_user
 		 *
