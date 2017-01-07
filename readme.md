@@ -2,9 +2,9 @@
 
 Contributors: Takahashi_Fumiki  
 Tags: delete, account  
-Requires at least: 3.8  
-Tested up to: 4.1  
-Stable tag: 0.9.0  
+Requires at least: 4.4
+Tested up to: 4.7
+Stable tag: 1.0.0
 
 If someone wants to leave your WordPress, let him go.
 

@@ -5,7 +5,7 @@ Plugin URI: https://wordpress.org/extend/plugins/never-let-me-go/
 Author: Takahshi_Fumiki
 Version: 1.0.0
 PHP Version: 5.3.0
-Author URI: https://takahashifumiki.com
+Author URI: https://takahashifumiki.com/
 Description: If someone wants to leave your WordPress, let him go.
 Text Domain: never-let-me-go
 Domain Path: /language/
