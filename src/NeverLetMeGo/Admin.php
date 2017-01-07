@@ -71,12 +71,20 @@ class Admin extends Application {
 			}
 			// Delete account on admin panel
 			if ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE && is_user_logged_in() && $this->input->verify_nonce( 'nlmg_delete_on_admin' ) ) {
-				$this->delete_current_user();
-				wp_redirect( wp_login_url() );
-				exit;
+				$user_id = get_current_user_id();
+				$result  = $this->delete_current_user();
+				if ( is_wp_error( $result ) ) {
+					$messages = $result->get_error_messages();
+					add_action( 'admin_notices', function () use ( $messages ) {
+						printf( '<div class="error"><p>%s</p></div>', implode( '<br />', $messages ) );
+					} );
+				} else {
+					wp_redirect( $this->default_redirect_link( $user_id ) );
+					exit;
+				}
 			}
 			// Add resign button on admin panel
-			if ( $this->option['enable'] && $this->option['resign_page'] == 0 ) {
+			if ( $this->option['enable'] && ( 0 == $this->option['resign_page'] ) ) {
 				add_action( 'show_user_profile', array( $this, 'resignButton' ) );
 			}
 		}
@@ -183,7 +191,7 @@ class Admin extends Application {
         </p>
         <p class="right">
             <a class="button" href="<?php echo wp_nonce_url( admin_url( 'profile.php' ), 'nlmg_delete_on_admin' ); ?>"
-               onclick="if(!confirm('<?php echo esc_js( __( 'Are you sure to delete your account? This action is not cancelable.', 'never-let-me-go' ) ); ?>')) return false;"><?php _e( 'Delete', 'never-let-me-go' ); ?></a>
+               onclick="if(!confirm('<?php echo esc_js( $this->confirm_label() ); ?>')) return false;"><?php _e( 'Delete', 'never-let-me-go' ); ?></a>
         </p>
         <hr/>
 		<?php

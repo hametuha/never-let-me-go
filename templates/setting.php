@@ -94,7 +94,7 @@
 								'1' => __( 'Make credential hashed', 'never-let-me-go' ),
 								'0' => __( 'Keep all data', 'never-let-me-go' ),
 							) as $level => $desc
-						): ?>
+						) : ?>
                             <option value="<?php echo $level; ?>"<?php selected( $this->option['destroy_level'] == $level ) ?>><?php echo esc_html( $desc ); ?></option>
 						<?php endforeach; ?>
                     </select>
@@ -110,12 +110,22 @@
 						); ?>
                     </p>
                 </td>
-
             </tr>
             </tbody>
         </table>
 		<?php submit_button(); ?>
     </form>
+	<?php
+	/**
+	 * nlmg_after_form
+	 *
+	 * Do something on admin screen
+	 *
+	 * @since 1.0.0
+	 * @action nlmg_after_form
+	 */
+	do_action( 'nlmg_after_form' );
+	?>
     <hr/>
     <h3>
         <span class="dashicons dashicons-welcome-write-blog"></span> <?php _e( 'How to create Resign Page', 'never-let-me-go' ); ?>
