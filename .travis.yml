@@ -8,6 +8,7 @@ notifications:
 branches:
   only:
     - master
+    - /^v[0-9\.]+$/
 
 php:
   - 5.3
