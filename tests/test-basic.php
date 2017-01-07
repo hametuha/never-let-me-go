@@ -20,6 +20,8 @@ class NLMG_Basic_Test extends WP_UnitTestCase {
 
 	/**
 	 * Delete user
+	 *
+	 * @runInSeparateProcess
 	 */
 	function test_user_delete() {
 		// Create user
