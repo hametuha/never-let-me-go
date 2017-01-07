@@ -51,12 +51,12 @@
                     <label>
                         <input type="radio" name="nlmg_keep_account"
                                value="0"<?php checked( $this->option['keep_account'] == 0 ) ?> />
-                        <strong><?php _e( 'Normal' ); ?></strong>...<?php _e( 'Delete all data', 'never-let-me-go' ); ?>
+                        <strong><?php _e( 'Normal', 'never-let-me-go' ); ?></strong>...<?php _e( 'Delete all data', 'never-let-me-go' ); ?>
                     </label><br>
                     <label>
                         <input type="radio" name="nlmg_keep_account"
                                value="1"<?php checked( $this->option['keep_account'] == 1 ) ?> />
-                        <strong><?php _e( 'Advanced' ); ?></strong>...<?php _e( 'Make user account unavailable and keep data', 'never-let-me-go' ); ?>
+                        <strong><?php _e( 'Advanced', 'never-let-me-go' ); ?></strong>...<?php _e( 'Make user account unavailable and keep data', 'never-let-me-go' ); ?>
                     </label>
                     <p class="description">
 						<?php printf(
@@ -69,12 +69,12 @@
                 </td>
             </tr>
             <tr>
-                <th><label><?php _e( 'Assign to' ); ?></label></th>
+                <th><label><?php _e( 'Assign to', 'never-let-me-go' ); ?></label></th>
                 <td>
                     <label>
-						<?php _e( 'User ID' ); ?>
+						<?php _e( 'User ID', 'never-let-me-go' ); ?>
                         <input type="text" class="regular-text" id="nlmg_assign_to" name="nlmg_assign_to"
-                               placeholder="<?php _e( 'Input user ID or type to search...' ); ?>"
+                               placeholder="<?php _e( 'Input user ID or type to search...', 'never-let-me-go' ); ?>"
                                value="<?php echo is_numeric( $this->option['assign_to'] ) && $this->option['assign_to'] ? esc_attr( $this->option['assign_to'] ) : ''; ?>"/>
                     </label>
                     <p class="description">
