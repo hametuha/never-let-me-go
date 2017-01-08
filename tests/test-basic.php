@@ -10,7 +10,7 @@
  */
 class NLMG_Basic_Test extends WP_UnitTestCase {
 
-	protected $backupGlobals = true;
+	protected $backupGlobals = false;
 
 	/**
 	 * A single example test
