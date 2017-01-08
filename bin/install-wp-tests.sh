@@ -12,8 +12,8 @@ DB_HOST=${4-localhost}
 WP_VERSION=${5-latest}
 SKIP_DB_CREATE=${6-false}
 
-WP_TESTS_DIR=${WP_TESTS_DIR-/tmp/wordpress-tests-lib}
-WP_CORE_DIR=${WP_CORE_DIR-/tmp/wordpress/}
+WP_TESTS_DIR=${WP_TESTS_DIR-/tmp/wordpress-tests-nlmg}
+WP_CORE_DIR=${WP_CORE_DIR-/tmp/wordpress}
 
 download() {
     if [ `which curl` ]; then
@@ -80,6 +80,7 @@ install_test_suite() {
 		# set up testing suite
 		mkdir -p $WP_TESTS_DIR
 		svn co --quiet https://develop.svn.wordpress.org/${WP_TESTS_TAG}/tests/phpunit/includes/ $WP_TESTS_DIR/includes
+		svn co --quiet https://develop.svn.wordpress.org/${WP_TESTS_TAG}/tests/phpunit/data/ $WP_TESTS_DIR/data
 	fi
 
 	if [ ! -f wp-tests-config.php ]; then
