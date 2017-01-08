@@ -16,7 +16,9 @@ You can also create **Resign Page** which displays message to your customer.
 
 "Are you sure to delete your account? We miss you."
 
-**NOTICE**: Requires PHP 5.3 and over. 
+**NOTICE**: Requires PHP 5.3 and over.
+
+[![Build Status](https://travis-ci.org/fumikito/Never-Let-Me-Go.svg)](https://travis-ci.org/fumikito/Never-Let-Me-Go)
 
 ## Installation
 
@@ -36,6 +38,11 @@ Nothing.
 1. Set up your resign option.
 
 ## Changelog
+
+### 1.0.0
+
+* Add some hooks
+* Change development environment.
 
 ### 0.9.0
 
