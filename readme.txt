@@ -4,7 +4,7 @@ Contributors: Takahashi_Fumiki
 Tags: delete, account  
 Requires at least: 4.4
 Tested up to: 4.7
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 If someone wants to leave your WordPress, let him go.
 
@@ -39,7 +39,7 @@ We host plugin on [github](https://github.com/fumikito/Never-Let-Me-Go) and any 
 
 == Changelog ==
 
-= 1.0.2 =
+= 1.0.3 =
 
 * Automatic deploy.
 

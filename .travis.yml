@@ -6,7 +6,7 @@ notifications:
 branches:
   only:
   - master
-  - "/^v[0-9\\.]+$/"
+  - "/^v?[0-9\\.]+$/"
 php:
 - 5.6
 - 7.0
