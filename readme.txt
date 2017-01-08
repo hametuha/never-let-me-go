@@ -4,7 +4,7 @@ Contributors: Takahashi_Fumiki
 Tags: delete, account  
 Requires at least: 4.4
 Tested up to: 4.7
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 
 If someone wants to leave your WordPress, let him go.
 
@@ -16,7 +16,9 @@ You can also create **Resign Page** which displays message to your customer.
 
 "Are you sure to delete your account? We miss you."
 
-**NOTICE**: Requires PHP 5.3 and over. 
+**NOTICE**: Requires PHP 5.3 and over.
+
+[![Build Status](https://travis-ci.org/fumikito/Never-Let-Me-Go.svg)](https://travis-ci.org/fumikito/Never-Let-Me-Go)
 
 == Installation ==
 
@@ -29,13 +31,22 @@ e.g.
 
 == Frequently Asked Questions ==
 
-Nothing.
+We host plugin on [github](https://github.com/fumikito/Never-Let-Me-Go) and any issues and pull requests are welcomed!
 
 == Screenshots ==
 
 1. Set up your resign option.
 
 == Changelog ==
+
+= 1.0.1 =
+
+* Automatic deploy.
+
+= 1.0.0 =
+
+* Add some hooks
+* Change development environment.
 
 = 0.9.0 =
 
