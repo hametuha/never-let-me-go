@@ -4,9 +4,7 @@
 tests
 bin
 node_modules
-assets
 package.json
 phpunit.xml.dist
 composer.json
 composer.lock
-readme.md
