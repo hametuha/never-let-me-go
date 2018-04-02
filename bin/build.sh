@@ -5,6 +5,8 @@ set -e
 composer install --no-dev
 npm install
 npm start
+echo 'Generate readme.'
+curl -L https://raw.githubusercontent.com/fumikito/wp-readme/master/wp-readme.php | php
 rm -rf node_modules
 rm -rf .git
 rm -rf tests
