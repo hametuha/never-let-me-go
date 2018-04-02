@@ -2,9 +2,10 @@
 
 Contributors: Takahashi_Fumiki  
 Tags: delete, account  
-Requires at least: 4.4
-Tested up to: 4.7
-Stable tag: 1.0.3
+Requires at least: 4.7  
+Requires PHP: 5.3  
+Tested up to: 4.9.4  
+Stable tag: 1.0.4
 
 If someone wants to leave your WordPress, let him go.
 
@@ -38,6 +39,11 @@ We host plugin on [github](https://github.com/fumikito/Never-Let-Me-Go) and any 
 1. Set up your resign option.
 
 ## Changelog
+
+### 1.0.4
+
+* Avoid password change email to users.
+* Administrator can't leave site by default.
 
 ### 1.0.3
 

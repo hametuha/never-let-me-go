@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Never Let Me Go\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-07 22:27+0900\n"
-"PO-Revision-Date: 2017-01-07 22:37+0900\n"
+"POT-Creation-Date: 2018-04-03 01:11+0900\n"
+"PO-Revision-Date: 2018-04-03 01:11+0900\n"
 "Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
 "Language-Team: Hametuha inc. <info@hametuha.co.jp>\n"
 "Language: ja_JP\n"
@@ -13,27 +13,27 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: never-let-me-go.php:38
+#: never-let-me-go.php:43
 msgid "Composer auto loader is missing. Did you run composer install?"
 msgstr ""
 "Composerのオートローダーがありません。composer installは実行しましたか？"
 
-#: never-let-me-go.php:51
+#: never-let-me-go.php:61
 #, php-format
 msgid ""
 "<strong>Plugin Error: </strong>Never Let Me Go requires PHP 5.3 and over, "
-"but your PHP is %s. Please consider updating your PHP or downgrading this "
-"plugin to <a href=\"%s\">0.8.2</a>."
+"but your PHP is %1$s. Please consider updating your PHP or downgrading this "
+"plugin to <a href=\"%2$s\">0.8.2</a>."
 msgstr ""
 "<strong>プラグインエラー: </strong>Never Let Me Go はPHP 5.3以上が必須です。"
-"あなたの PHP は%sです。PHPをアップグレードするか、このプラグインを<a href="
-"\"%s\">0.8.2</a>までダウングレードしてください。"
+"あなたの PHP は%1$sです。PHPをアップグレードするか、このプラグインを<a href="
+"\"%2$s\">0.8.2</a>までダウングレードしてください。"
 
-#: never-let-me-go.php:61
+#: never-let-me-go.php:71
 msgid "If someone wants to leave your WordPress, let him go."
 msgstr ""
 "誰かがあなたのWordPressから去ろうとしているのなら、そうさせてあげましょう。"
@@ -92,11 +92,19 @@ msgstr "下のボタンを押すことでアカウントを削除することが
 msgid "Delete"
 msgstr "削除"
 
-#: src/NeverLetMeGo/Pattern/Application.php:102
+#: src/NeverLetMeGo/Pattern/Application.php:68
+msgid "User doesn't exist."
+msgstr "ユーザーが存在しません。"
+
+#: src/NeverLetMeGo/Pattern/Application.php:72
+msgid "You are administrator!"
+msgstr "あなたは管理者です！"
+
+#: src/NeverLetMeGo/Pattern/Application.php:123
 msgid "Deleted User"
 msgstr "削除されたユーザー"
 
-#: src/NeverLetMeGo/Pattern/Application.php:175
+#: src/NeverLetMeGo/Pattern/Application.php:205
 msgid "Are you sure to delete account?"
 msgstr "このアカウントを削除してよろしいですか？"
 

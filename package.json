@@ -1,6 +1,6 @@
 {
   "name": "never-let-me-go",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "If someone wants to leave your WordPress, let him go.",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "plugin"
   ],
   "author": "fumikito <guy@hametuha.com>",
-  "license": "GPL-3.0",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/fumikito/Never-Let-Me-Go/issues"
   },

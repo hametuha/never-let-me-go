@@ -67,6 +67,10 @@ class Application extends Singleton {
 		if ( ! $user_id ) {
 			return new \WP_Error( 404, __( 'User doesn\'t exist.', 'never-let-me-go' ) );
 		}
+		$error = new \WP_Error();
+		if ( current_user_can( 'administrator' ) ) {
+			$error->add( 400, __( 'You are administrator!', 'never-let-me-go' ) );
+		}
 		/**
 		 * nlmg_validate_user
 		 *
@@ -80,7 +84,8 @@ class Application extends Singleton {
 		 * @param int $user_id User ID to leave
 		 * @return \WP_Error
 		 */
-		$result = apply_filters( 'nlmg_validate_user', new \WP_Error(), $user_id );
+		$result = apply_filters( 'nlmg_validate_user', $error, $user_id );
+		// If error is not empty, display page.
 		if ( $result->get_error_messages() ) {
 			return $result;
 		}
@@ -189,6 +194,8 @@ class Application extends Singleton {
 	protected function confirm_label() {
 		/**
 		 * nlmg_resign_confirm_label
+		 *
+		 * Text to be displayed if user click resign button.
 		 *
 		 * @param string $confirm
 		 * @param int $user_id

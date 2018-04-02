@@ -3,7 +3,7 @@
 Plugin Name: Never Let Me Go
 Plugin URI: https://wordpress.org/plugins/never-let-me-go/
 Author: Takahshi_Fumiki
-Version: 1.0.3
+Version: 1.0.4
 PHP Version: 5.3.0
 Author URI: https://takahashifumiki.com/
 Description: If someone wants to leave your WordPress, let him go.

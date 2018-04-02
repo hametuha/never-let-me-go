@@ -7,8 +7,8 @@
         "test": "phpunit",
         "cs": [
             "phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs",
-            "phpcs --standard=phpcs.xml.dist ./app",
-            "phpcs --standard=phpcs.xml.dist ./functions"
+            "phpcs --standard=phpcs.ruleset.xml ./src",
+            "phpcs --standard=phpcs.ruleset.xml ./templates"
         ]
     },
     "authors": [

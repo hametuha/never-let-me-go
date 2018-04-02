@@ -44,12 +44,12 @@ class Page extends Application {
 			}
 			if ( is_user_logged_in() ) {
 				if ( $this->input->verify_nonce( $this->nonce_action( 'resign_public' ) ) ) {
-					// Validation
+					// Validation.
 					$user_id = get_current_user_id();
 					$result  = $this->delete_current_user();
 					if ( is_wp_error( $result ) ) {
 						$this->errors = $result;
-						// Add form to resign page
+						// Add form to resign page.
 						add_filter( 'the_content', array( $this, 'showResignForm' ) );
 					} else {
 						// Successfully deleted.
