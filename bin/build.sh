@@ -6,6 +6,8 @@ composer install --no-dev
 npm install
 npm start
 rm -rf node_modules
+rm -rf .git
+rm -rf tests
 
 if [ $TRAVIS_TAG ]; then
     echo $TRAVIS_TAG

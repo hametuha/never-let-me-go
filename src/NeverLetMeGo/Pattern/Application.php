@@ -101,19 +101,23 @@ class Application extends Singleton {
 			delete_user_meta( $user_id, $wpdb->prefix . 'user_level' );
 			switch ( $this->option['destroy_level'] ) {
 				case 0:
-					// Do nothing
+					// Do nothing.
 					break;
 				default:
 					$login = uniqid( 'nlmg.', true );
 					$pass  = wp_generate_password( 20 );
-					//Update user table
+					// Avoid password change mail.
+					add_filter( 'send_password_change_email', '__return_false', 9999 );
+					// Avoid email change mail.
+					add_filter( 'send_email_change_email', '__return_false', 9999 );
+					// Update user table.
 					$user_id = wp_update_user( array(
 						'ID'           => $user_id,
 						'user_pass'    => $pass,
 						'user_email'   => '',
 						'display_name' => __( 'Deleted User', 'never-let-me-go' ),
 					) );
-					// Update user_login
+					// Update user_login.
 					$wpdb->update(
 						$wpdb->users,
 						array(
@@ -125,7 +129,15 @@ class Application extends Singleton {
 						array( '%s' ),
 						array( '%d' )
 					);
-					//clear current user
+					/**
+					 * nlmg_after_hashing_user
+					 *
+					 * Fire action just after hashing user info to remove other info.
+					 *
+					 * @param int $user_id User ID to leave
+					 */
+					do_action( 'nlmg_after_hashing_user', $user_id );
+					// Clear current user.
 					global $current_user;
 					$current_user = null;
 					break;
@@ -136,15 +148,14 @@ class Application extends Singleton {
 			/**
 			 * nlmg_assign_to
 			 *
-			 * Validate before user remove his account.
-			 * If any error is added with `$error->add($code, $message)`,
-			 * User can't remove their account.
+			 * If you choose "delete all data", you can assign user contents to others.
+			 * This filter allows you to add conditional assignment.
 			 *
 			 * @filter nlmg_assign_to
 			 * @since 1.0.0
 			 * @param int|string User ID to be assigned. Might be 0 or empty string.
 			 * @param int $user_id User ID to leave
-			 * @return \WP_Error
+			 * @return int|string
 			 */
 			$assign_to = apply_filters( 'nlmg_assign_to', $this->option['assign_to'] ? $this->option['assign_to'] : null, $user_id );
 			return wp_delete_user( $user_id, $assign_to );

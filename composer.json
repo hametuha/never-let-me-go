@@ -3,6 +3,14 @@
     "description": "If someone wants to leave your WordPress, let him go.",
     "type": "plugin",
     "license": "GPL-3.0",
+    "scripts": {
+        "test": "phpunit",
+        "cs": [
+            "phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs",
+            "phpcs --standard=phpcs.xml.dist ./app",
+            "phpcs --standard=phpcs.xml.dist ./functions"
+        ]
+    },
     "authors": [
         {
             "name": "fumikito",
@@ -15,7 +23,9 @@
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.27",
-        "phpunit/php-code-coverage": "2.2.*"
+        "phpunit/php-code-coverage": "2.2.*",
+        "squizlabs/php_codesniffer": "~2.8",
+        "wp-coding-standards/wpcs": "~0.11"
     },
     "autoload": {
         "psr-0": {
