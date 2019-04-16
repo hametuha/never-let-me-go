@@ -23,6 +23,7 @@ class WooCommerce extends Application {
 		}
 		// Change redirect URL.
 		add_filter( 'nlmg_not_logged_in_user_redirect', [ $this, 'login_redirect' ], 10, 2 );
+		add_filter( 'nlmg_validate_user', [ $this, 'delete_filter' ], 10, 2 );
 	}
 	
 	/**
@@ -37,5 +38,28 @@ class WooCommerce extends Application {
 		return add_query_arg( [
 			'redirect_to' => $page_url,
 		], $account );
+	}
+	
+	/**
+	 * Check user can delete account.
+	 *
+	 * @param \WP_Error $errors
+	 * @param int      $user_id
+	 * @return \WP_Error
+	 */
+	public function delete_filter( $errors, $user_id ) {
+		// User has pending orders?
+		$orders = wc_get_orders( [
+			'customer_id' => $user_id,
+			'status'      => 'wc-processing',
+		] );
+		if ( $orders ) {
+			$errors->add( 'processing_orders', __( 'You have processing orders.', 'never-let-me-go' ) );
+		}
+		// User has active subscriptions?
+		if ( function_exists( 'wcs_user_has_subscription' ) && wcs_user_has_subscription( $user_id, '', 'active' ) ) {
+			$errors->add( 'has_subscriptions', __( 'You have active subscriptions.', 'never-let-me-go' ) );
+		}
+		return $errors;
 	}
 }
