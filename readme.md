@@ -1,13 +1,17 @@
 # Never Let Me Go
 
-Contributors: Takahashi_Fumiki  
+Contributors: Takahashi_Fumiki,hametuha  
 Tags: delete, account  
 Requires at least: 4.7  
-Requires PHP: 5.3  
-Tested up to: 4.9.4  
-Stable tag: 1.0.4
+Requires PHP: 5.4  
+Tested up to: 5.1.1  
+Stable tag: 1.1.0
 
-If someone wants to leave your WordPress, let him go.
+If someone wants to leave your WordPress, let them go.
+
+<!-- only:github/ -->
+[![Build Status](https://travis-ci.org/fumikito/Never-Let-Me-Go.svg)](https://travis-ci.org/fumikito/Never-Let-Me-Go)
+<!-- /only:github -->
 
 ## Description
 
@@ -15,15 +19,12 @@ WordPress can allow your user to register by himself, but has no function to sel
 
 You can also create **Resign Page** which displays message to your customer.
 
-"Are you sure to delete your account? We miss you."
-
-**NOTICE**: Requires PHP 5.3 and over.
-
-[![Build Status](https://travis-ci.org/fumikito/Never-Let-Me-Go.svg)](https://travis-ci.org/fumikito/Never-Let-Me-Go)
+> Are you sure to delete your account? We miss you.
 
 ## Installation
 
-e.g.
+Search "Never Let Me Go" in admin screen.
+Altenatively, you can install it manually like below:
 
 1. Upload `never-let-me-go` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
@@ -32,13 +33,24 @@ e.g.
 
 ## Frequently Asked Questions
 
+### How To Contribute
+
 We host plugin on [github](https://github.com/fumikito/Never-Let-Me-Go) and any issues and pull requests are welcomed!
+
+### Does this plugin is ready for Gutenberg?
+
+Maybe yes. If you find bugs, please [let us know](https://github.com/fumikito/Never-Let-Me-Go).
 
 ## Screenshots
 
 1. Set up your resign option.
 
 ## Changelog
+
+### 1.1.0
+
+* **Notice** PHP requirements is now PHP 5.4 and over.
+* Add WooCommerce compatibility.
 
 ### 1.0.4
 
@@ -72,6 +84,10 @@ We host plugin on [github](https://github.com/fumikito/Never-Let-Me-Go) and any 
 * 1st release.
 
 ## Upgrade Notice
+
+### 1.1.0
+
+Since 1.1.0, PHP .4 and over is required.
 
 ### 0.9.0
 

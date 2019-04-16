@@ -34,9 +34,10 @@ class Page extends Application {
 	 */
 	public function templateRedirect() {
 		global $pages, $numpages, $multipage, $more, $pagenow;
-		//Register Hook on Resign page
+		// Register Hook on Resign page
 		if ( is_page( $this->option['resign_page'] ) ) {
 			nocache_headers();
+			add_filter( 'wp_link_pages', [ $this, 'kill_pagination' ] );
 			// Avoid pagination.
 			if ( $numpages > 1 ) {
 				$numpages  = 1;
@@ -50,7 +51,7 @@ class Page extends Application {
 					if ( is_wp_error( $result ) ) {
 						$this->errors = $result;
 						// Add form to resign page.
-						add_filter( 'the_content', array( $this, 'showResignForm' ) );
+						add_filter( 'the_content', array( $this, 'showResignForm' ), 1 );
 					} else {
 						// Successfully deleted.
 						/**
@@ -75,7 +76,18 @@ class Page extends Application {
 				}
 			} else {
 				//User is not logged in so redirected to login page.
-				auth_redirect();
+				$current_url = get_permalink( get_queried_object() );
+				/**
+				 * nlmg_not_logged_in_user_redirect
+				 *
+				 * Redirect user to this URL.
+				 *
+				 * @param string $redirect_url
+				 * @param string $current_url
+				 * @return string
+				 */
+				$redirect_url = apply_filters( 'nlmg_not_logged_in_user_redirect', wp_login_url( $current_url ), $current_url );
+				wp_redirect( $redirect_url );
 				exit;
 			}
 		}
@@ -92,9 +104,13 @@ class Page extends Application {
 		if ( get_the_ID() == $this->option['resign_page'] ) {
 			// Check if error exists.
 			if ( $this->errors ) {
-				$message = sprintf( '<div class="error nlmg-error"><ul>%s</ul></div>', implode( ' ', array_map( function ( $error ) {
-					return sprintf( '<li>%s</li>', $error );
-				}, $this->errors->get_error_messages() ) ) );
+				$message = sprintf(
+					'<div class="error nlmg-error">%s<ul>%s</ul></div>',
+					sprintf( '<h3 class="nlmg-error-title">%s</h3>', esc_html( _x( 'Error', 'error_message', 'never-let-me-go' ) ) ),
+					implode( ' ', array_map( function ( $error ) {
+						return sprintf( '<li class="nlmg-error-item">%s</li>', wp_kses_post( $error ) );
+					}, $this->errors->get_error_messages() ) )
+				);
 				/**
 				 * nlmg_error_messages
 				 *
@@ -173,5 +189,18 @@ HTML;
 		}
 
 		return $content;
+	}
+	
+	/**
+	 * Empty pagination.
+	 *
+	 * @param string $pagination
+	 * @return string
+	 */
+	public function kill_pagination( $pagination ) {
+		if ( is_preview() ) {
+			return $pagination;
+		}
+		return '';
 	}
 }

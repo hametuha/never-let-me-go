@@ -2,13 +2,14 @@
 /*
 Plugin Name: Never Let Me Go
 Plugin URI: https://wordpress.org/plugins/never-let-me-go/
-Author: Takahshi_Fumiki
-Version: 1.0.4
-PHP Version: 5.3.0
+Author: Takahashi Fumiki
 Author URI: https://takahashifumiki.com/
-Description: If someone wants to leave your WordPress, let him go.
+Version: 1.1.0
+PHP Version: 5.4.0
+Description: If someone wants to leave your WordPress, let them go.
 Text Domain: never-let-me-go
 Domain Path: /language/
+License: GPL 3.0 or later
 */
 
 defined( 'ABSPATH' ) || die( 'Do not load directly!' );
@@ -37,8 +38,7 @@ function nlmg_plugins_loaded() {
 		$auto_loader = __DIR__ . '/vendor/autoload.php';
 		if ( file_exists( $auto_loader ) ) {
 			require $auto_loader;
-			call_user_func( array( 'NeverLetMeGo\\Admin', 'getInstance' ) );
-			call_user_func( array( 'NeverLetMeGo\\Page', 'getInstance' ) );
+			call_user_func( array( 'NeverLetMeGo', 'getInstance' ) );
 		} else {
 			trigger_error( __( 'Composer auto loader is missing. Did you run composer install?', 'never-let-me-go' ) );
 		}
@@ -63,10 +63,4 @@ function nlmg_version_notice() {
 		'https://downloads.wordpress.org/plugin/never-let-me-go.0.8.2.zip'
 	);
 	printf( '<div class="error"><p>%s</p></div>', wp_kses_post( $message ) );
-}
-
-
-// Only for Poedit.
-if ( false ) {
-	__( 'If someone wants to leave your WordPress, let him go.', 'never-let-me-go' );
 }
