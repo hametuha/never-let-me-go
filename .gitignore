@@ -6,3 +6,4 @@ dist/
 composer.lock
 readme.txt
 never-let-me-go.mo
+package-lock.json

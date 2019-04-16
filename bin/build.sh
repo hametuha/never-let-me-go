@@ -10,6 +10,11 @@ curl -L https://raw.githubusercontent.com/fumikito/wp-readme/master/wp-readme.ph
 rm -rf node_modules
 rm -rf .git
 rm -rf tests
+rm -rf .travis.yml
+rm -rf .gitignore
+rm -rf phpcs.ruleset.xml
+rm -rf phpunit.xml.dist
+rm -rf readme.md
 
 if [ $TRAVIS_TAG ]; then
     echo $TRAVIS_TAG
