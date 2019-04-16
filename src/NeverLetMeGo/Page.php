@@ -75,7 +75,18 @@ class Page extends Application {
 				}
 			} else {
 				//User is not logged in so redirected to login page.
-				auth_redirect();
+				$current_url = get_permalink( get_queried_object() );
+				/**
+				 * nlmg_not_logged_in_user_redirect
+				 *
+				 * Redirect user to this URL.
+				 *
+				 * @param string $redirect_url
+				 * @param string $current_url
+				 * @return string
+				 */
+				$redirect_url = apply_filters( 'nlmg_not_logged_in_user_redirect', wp_login_url( $current_url ), $current_url );
+				wp_redirect( $redirect_url );
 				exit;
 			}
 		}

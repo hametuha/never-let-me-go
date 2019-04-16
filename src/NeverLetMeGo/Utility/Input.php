@@ -10,9 +10,8 @@ use NeverLetMeGo\Pattern\Singleton;
  *
  * @package NeverLetMeGo\Utility
  */
-class Input extends Singleton
-{
-
+class Input extends Singleton {
+	
 	/**
 	 * Get $_GET
 	 *
@@ -20,10 +19,10 @@ class Input extends Singleton
 	 *
 	 * @return mixed|null
 	 */
-	public function get($name){
-		return isset($_GET[$name]) ? $_GET[$name] : null;
+	public function get( $name ) {
+		return isset( $_GET[ $name ] ) ? $_GET[ $name ] : null;
 	}
-
+	
 	/**
 	 * Get $_POST
 	 *
@@ -31,10 +30,10 @@ class Input extends Singleton
 	 *
 	 * @return mixed|null
 	 */
-	public function post($name){
-		return isset($_POST[$name]) ? $_POST[$name] : null;
+	public function post( $name ) {
+		return isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
 	}
-
+	
 	/**
 	 * Get $_REQUEST
 	 *
@@ -42,10 +41,10 @@ class Input extends Singleton
 	 *
 	 * @return mixed|null
 	 */
-	public function request($name){
-		return isset($_REQUEST[$name]) ? $_REQUEST[$name] : null;
+	public function request( $name ) {
+		return isset( $_REQUEST[ $name ] ) ? $_REQUEST[ $name ] : null;
 	}
-
+	
 	/**
 	 * Verify nonce
 	 *
@@ -54,7 +53,7 @@ class Input extends Singleton
 	 *
 	 * @return bool
 	 */
-	public function verify_nonce($action, $key = '_wpnonce'){
-		return wp_verify_nonce($this->request($key), $action);
+	public function verify_nonce( $action, $key = '_wpnonce' ) {
+		return wp_verify_nonce( $this->request( $key ), $action );
 	}
 }

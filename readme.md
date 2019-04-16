@@ -1,13 +1,19 @@
 # Never Let Me Go
 
-Contributors: Takahashi_Fumiki  
+<!-- only:wp>
+Contributors: Takahashi_Fumiki,hametuha  
 Tags: delete, account  
 Requires at least: 4.7  
-Requires PHP: 5.3  
-Tested up to: 4.9.4  
-Stable tag: 1.0.4
+Requires PHP: 5.4  
+Tested up to: 5.1.1  
+Stable tag: 1.1.0
+<only:wp -->
 
-If someone wants to leave your WordPress, let him go.
+<!-- only:github/ -->
+[![Build Status](https://travis-ci.org/fumikito/Never-Let-Me-Go.svg)](https://travis-ci.org/fumikito/Never-Let-Me-Go)
+<!-- /only:github -->
+
+If someone wants to leave your WordPress, let them go.
 
 ## Description
 
@@ -18,8 +24,6 @@ You can also create **Resign Page** which displays message to your customer.
 "Are you sure to delete your account? We miss you."
 
 **NOTICE**: Requires PHP 5.3 and over.
-
-[![Build Status](https://travis-ci.org/fumikito/Never-Let-Me-Go.svg)](https://travis-ci.org/fumikito/Never-Let-Me-Go)
 
 ## Installation
 

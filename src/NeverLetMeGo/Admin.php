@@ -25,7 +25,7 @@ class Admin extends Application {
 	 *
 	 * @param array $settings
 	 */
-	protected function __construct( $settings = array() ) {
+	protected function __construct( array $settings = [] ) {
 		add_action( 'admin_init', array( $this, 'adminInit' ) );
 		add_action( 'admin_menu', array( $this, 'adminMenu' ) );
 		add_action( 'admin_notices', array( $this, 'adminNotices' ) );
@@ -191,7 +191,7 @@ class Admin extends Application {
         </p>
         <p class="right">
             <a class="button" href="<?php echo wp_nonce_url( admin_url( 'profile.php' ), 'nlmg_delete_on_admin' ); ?>"
-               onclick="if(!confirm('<?php echo esc_js( $this->confirm_label() ); ?>')) return false;"><?php _e( 'Delete', 'never-let-me-go' ); ?></a>
+               onclick="if(!confirm('<?php echo esc_js( $this->confirm_label() ); ?>')) return false;"><?php esc_html_e( 'Delete', 'never-let-me-go' ); ?></a>
         </p>
         <hr/>
 		<?php

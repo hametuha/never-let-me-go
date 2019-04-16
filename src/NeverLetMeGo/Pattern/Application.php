@@ -59,6 +59,7 @@ class Application extends Singleton {
 	/**
 	 * Delete user account
 	 *
+	 * @param int $user_id
 	 * @return true|\WP_Error
 	 */
 	public function delete_user( $user_id ) {
