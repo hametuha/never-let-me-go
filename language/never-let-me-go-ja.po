@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Never Let Me Go\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-03 01:11+0900\n"
-"PO-Revision-Date: 2018-04-03 01:11+0900\n"
+"POT-Creation-Date: 2019-04-16 18:50+0900\n"
+"PO-Revision-Date: 2019-04-16 18:52+0900\n"
 "Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
 "Language-Team: Hametuha inc. <info@hametuha.co.jp>\n"
 "Language: ja_JP\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
@@ -33,11 +33,6 @@ msgstr ""
 "あなたの PHP は%1$sです。PHPをアップグレードするか、このプラグインを<a href="
 "\"%2$s\">0.8.2</a>までダウングレードしてください。"
 
-#: never-let-me-go.php:71
-msgid "If someone wants to leave your WordPress, let him go."
-msgstr ""
-"誰かがあなたのWordPressから去ろうとしているのなら、そうさせてあげましょう。"
-
 #: src/NeverLetMeGo/Admin.php:42 templates/setting.php:6
 msgid "Never Let Me Go setting"
 msgstr "Never Let Me Go設定"
@@ -56,12 +51,12 @@ msgstr "設定を更新できませんでした。"
 
 #: src/NeverLetMeGo/Admin.php:104
 msgid "No results"
-msgstr "見つかりませんでした。"
+msgstr "見つかりませんでした"
 
 #: src/NeverLetMeGo/Admin.php:105
 #, php-format
 msgid "%% found."
-msgstr "%%件が見つかりました"
+msgstr "%%件が見つかりました。"
 
 #: src/NeverLetMeGo/Admin.php:127
 #, php-format
@@ -80,7 +75,7 @@ msgstr "サポート"
 msgid "Settings"
 msgstr "設定"
 
-#: src/NeverLetMeGo/Admin.php:188 src/NeverLetMeGo/Page.php:123
+#: src/NeverLetMeGo/Admin.php:188 src/NeverLetMeGo/Page.php:139
 msgid "Delete Account"
 msgstr "アカウントを削除する"
 
@@ -92,21 +87,34 @@ msgstr "下のボタンを押すことでアカウントを削除することが
 msgid "Delete"
 msgstr "削除"
 
-#: src/NeverLetMeGo/Pattern/Application.php:68
+#: src/NeverLetMeGo/Page.php:109
+msgctxt "error_message"
+msgid "Error"
+msgstr "エラー"
+
+#: src/NeverLetMeGo/Pattern/Application.php:69
 msgid "User doesn't exist."
 msgstr "ユーザーが存在しません。"
 
-#: src/NeverLetMeGo/Pattern/Application.php:72
+#: src/NeverLetMeGo/Pattern/Application.php:73
 msgid "You are administrator!"
 msgstr "あなたは管理者です！"
 
-#: src/NeverLetMeGo/Pattern/Application.php:123
+#: src/NeverLetMeGo/Pattern/Application.php:124
 msgid "Deleted User"
 msgstr "削除されたユーザー"
 
-#: src/NeverLetMeGo/Pattern/Application.php:205
+#: src/NeverLetMeGo/Pattern/Application.php:206
 msgid "Are you sure to delete account?"
 msgstr "このアカウントを削除してよろしいですか？"
+
+#: src/NeverLetMeGo/WooCommerce.php:57
+msgid "You have processing orders. Please wait until they will finish."
+msgstr "処理中の注文があります。注文処理が完了するまでお待ちください。"
+
+#: src/NeverLetMeGo/WooCommerce.php:61
+msgid "You have active subscriptions. Please deactivate them before leaving."
+msgstr "有効な定期購入が存在します。退会処理の前に定期購入を解除してください。"
 
 #: templates/setting.php:14
 msgid "Allow user to self delete"
@@ -198,7 +206,7 @@ msgid ""
 msgstr ""
 "<strong>%s</strong>を選ぶと、退会するユーザーのコンテンツを特定のユーザーに割"
 "り当てられます。例：UGCサイトにおいて、退会するユーザーのコンテンツを仮のユー"
-"ザー（削除されたユーザーという名前のユーザー）に割り当てる"
+"ザー（削除されたユーザーという名前のユーザー）に割り当てる。"
 
 #: templates/setting.php:89
 msgid "Destroy Level"
@@ -299,7 +307,7 @@ msgstr "特定の条件を満たすユーザーを退会させない。"
 
 #: templates/setting.php:169
 msgid "Change button labels."
-msgstr "ボタンの表記を変更する"
+msgstr "ボタンの表記を変更する。"
 
 #: templates/setting.php:172
 msgid "Do something if user leaves your site."
@@ -313,6 +321,11 @@ msgid ""
 msgstr ""
 "いくつかのフックが利用可能です。詳しくは私たちのサポートサイト<a href=\"%s\" "
 "target=\"_blank\">Gianism.info</a>へお越しください。"
+
+#~ msgid "If someone wants to leave your WordPress, let him go."
+#~ msgstr ""
+#~ "誰かがあなたのWordPressから去ろうとしているのなら、そうさせてあげましょ"
+#~ "う。"
 
 #~ msgid ""
 #~ "This Plugin allows your user to delete his/her own account. If you want, "
