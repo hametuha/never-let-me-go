@@ -54,11 +54,11 @@ class WooCommerce extends Application {
 			'status'      => 'wc-processing',
 		] );
 		if ( $orders ) {
-			$errors->add( 'processing_orders', __( 'You have processing orders.', 'never-let-me-go' ) );
+			$errors->add( 'processing_orders', __( 'You have processing orders. Please wait until they will finish.', 'never-let-me-go' ) );
 		}
 		// User has active subscriptions?
 		if ( function_exists( 'wcs_user_has_subscription' ) && wcs_user_has_subscription( $user_id, '', 'active' ) ) {
-			$errors->add( 'has_subscriptions', __( 'You have active subscriptions.', 'never-let-me-go' ) );
+			$errors->add( 'has_subscriptions', __( 'You have active subscriptions. Please deactivate them before leaving.', 'never-let-me-go' ) );
 		}
 		return $errors;
 	}
