@@ -11,88 +11,91 @@ use NeverLetMeGo\Pattern\Application;
  * @package NeverLetMeGo
  */
 class Page extends Application {
-
+	
 	/**
 	 * @var \WP_Error
 	 */
 	protected $errors = null;
-
+	
 	/**
 	 * Constructor
 	 *
 	 * @param array $settings
 	 */
 	protected function __construct( $settings = array() ) {
-		if ( $this->option['enable'] && $this->option['resign_page'] ) {
+		if ( $this->option[ 'enable' ] && $this->option[ 'resign_page' ] ) {
 			// Process resign
 			add_action( 'template_redirect', array( $this, 'templateRedirect' ) );
 		}
 	}
-
+	
 	/**
 	 * Public Hook for template redirect
 	 */
 	public function templateRedirect() {
 		global $pages, $numpages, $multipage, $more, $pagenow;
 		// Register Hook on Resign page
-		if ( is_page( $this->option['resign_page'] ) ) {
-			nocache_headers();
-			add_filter( 'wp_link_pages', [ $this, 'kill_pagination' ] );
-			// Avoid pagination.
-			if ( $numpages > 1 ) {
-				$numpages  = 1;
-				$multipage = false;
-			}
-			if ( is_user_logged_in() ) {
-				if ( $this->input->verify_nonce( $this->nonce_action( 'resign_public' ) ) ) {
-					// Validation.
-					$user_id = get_current_user_id();
-					$result  = $this->delete_current_user();
-					if ( is_wp_error( $result ) ) {
-						$this->errors = $result;
-						// Add form to resign page.
-						add_filter( 'the_content', array( $this, 'showResignForm' ), 1 );
-					} else {
-						// Successfully deleted.
-						/**
-						 * Executed after user has been deleted.
-						 *
-						 * @since 0.9.0
-						 *
-						 * @param int $user_id
-						 */
-						do_action( 'never_let_me_go', $user_id );
-						// If paged, show 2nd page. If not, redirect to login page.
-						if ( count( preg_split( '/<!--*?nextpage*?-->/', get_queried_object()->post_content ) ) >= 2 ) {
-							add_filter( 'the_content', array( $this, 'showThankYou' ), 1 );
-						} else {
-							wp_redirect( $this->default_redirect_link( $user_id ) );
-							exit;
-						}
-					}
-				} else {
-					// Add form to resign page
-					add_filter( 'the_content', array( $this, 'showResignForm' ) );
-				}
+		if ( ! is_page( $this->option[ 'resign_page' ] ) ) {
+			return;
+		}
+		nocache_headers();
+		// Is user logged in?
+		if ( ! is_user_logged_in() ) {
+			//User is not logged in so redirected to login page.
+			$current_url = get_permalink( get_queried_object() );
+			/**
+			 * nlmg_not_logged_in_user_redirect
+			 *
+			 * Redirect user to this URL.
+			 *
+			 * @param string $redirect_url
+			 * @param string $current_url
+			 *
+			 * @return string
+			 */
+			$redirect_url = apply_filters( 'nlmg_not_logged_in_user_redirect', wp_login_url( $current_url ), $current_url );
+			wp_redirect( $redirect_url );
+			exit;
+		}
+		add_filter( 'wp_link_pages', [ $this, 'kill_pagination' ] );
+		// Avoid pagination.
+		if ( $numpages > 1 ) {
+			$numpages  = 1;
+			$multipage = false;
+		}
+		if ( $this->input->verify_nonce( $this->nonce_action( 'resign_public' ) ) ) {
+			// Validation.
+			$user_id = get_current_user_id();
+			$result  = $this->delete_current_user();
+			if ( is_wp_error( $result ) ) {
+				$this->errors = $result;
+				// Add form to resign page.
+				add_filter( 'the_content', array( $this, 'showResignForm' ), 1 );
 			} else {
-				//User is not logged in so redirected to login page.
-				$current_url = get_permalink( get_queried_object() );
+				// Successfully deleted.
 				/**
-				 * nlmg_not_logged_in_user_redirect
+				 * Executed after user has been deleted.
 				 *
-				 * Redirect user to this URL.
+				 * @param int $user_id
 				 *
-				 * @param string $redirect_url
-				 * @param string $current_url
-				 * @return string
+				 * @since 0.9.0
+				 *
 				 */
-				$redirect_url = apply_filters( 'nlmg_not_logged_in_user_redirect', wp_login_url( $current_url ), $current_url );
-				wp_redirect( $redirect_url );
-				exit;
+				do_action( 'never_let_me_go', $user_id );
+				// If paged, show 2nd page. If not, redirect to login page.
+				if ( count( preg_split( '/<!--*?nextpage*?-->/', get_queried_object()->post_content ) ) >= 2 ) {
+					add_filter( 'the_content', array( $this, 'showThankYou' ), 1 );
+				} else {
+					wp_redirect( $this->default_redirect_link( $user_id ) );
+					exit;
+				}
 			}
+		} else {
+			// Add form to resign page
+			add_filter( 'the_content', array( $this, 'showResignForm' ) );
 		}
 	}
-
+	
 	/**
 	 * Filter hook for resign page
 	 *
@@ -101,7 +104,7 @@ class Page extends Application {
 	 * @return string
 	 */
 	public function showResignForm( $content ) {
-		if ( get_the_ID() == $this->option['resign_page'] ) {
+		if ( get_the_ID() == $this->option[ 'resign_page' ] ) {
 			// Check if error exists.
 			if ( $this->errors ) {
 				$message = sprintf(
@@ -115,12 +118,13 @@ class Page extends Application {
 				 * nlmg_error_messages
 				 *
 				 * @filter
-				 * @since 1.0.0
 				 *
 				 * @param string $message Error message HTML markup.
 				 * @param \WP_Error $errors
 				 *
 				 * @return string
+				 * @since 1.0.0
+				 *
 				 */
 				$content = apply_filters( 'nlmg_error_messages', $message, $this->errors ) . $content;
 			}
@@ -137,7 +141,7 @@ class Page extends Application {
 			 * @return string
 			 */
 			$label = apply_filters( 'nlmg_resign_button_label', __( 'Delete Account', 'never-let-me-go' ), get_current_user_id() );
-
+			
 			$confirm = $this->confirm_label();
 			$onclick = $confirm ? sprintf( ' onclick="return confirm(\'%s\')"', esc_js( $confirm ) ) : '';
 			$form    = <<<HTML
@@ -151,26 +155,26 @@ HTML;
 			$content .= $form;
 			$content = apply_filters( 'nlmg_the_content', $content, 'resign' );
 		}
-
+		
 		return $content;
 	}
-
-
+	
+	
 	/**
 	 * Filter hook for functions page.
-	 *
-	 * @global array $pages
 	 *
 	 * @param string $content
 	 *
 	 * @return string
+	 * @global array $pages
+	 *
 	 */
 	public function showThankYou( $content ) {
-		if ( $this->option['resign_page'] == get_the_ID() ) {
+		if ( $this->option[ 'resign_page' ] == get_the_ID() ) {
 			// Cut content.
 			$contents = explode( '<!--nextpage-->', get_post()->post_content );
 			if ( count( $contents ) > 1 ) {
-				$content = $contents[1];
+				$content = $contents[ 1 ];
 			}
 			/**
 			 * nlmg_the_content
@@ -178,16 +182,17 @@ HTML;
 			 * Applied for content on resign page in the loop.
 			 *
 			 * @filter nlmg_the_content
-			 * @since 1.0.0
 			 *
 			 * @param string $content Content to display.
 			 * @param string $context 'resign' or 'thank_you'.
 			 *
 			 * @return string
+			 * @since 1.0.0
+			 *
 			 */
 			$content = apply_filters( 'nlmg_the_content', $content, 'thank_you' );
 		}
-
+		
 		return $content;
 	}
 	
@@ -195,12 +200,14 @@ HTML;
 	 * Empty pagination.
 	 *
 	 * @param string $pagination
+	 *
 	 * @return string
 	 */
 	public function kill_pagination( $pagination ) {
 		if ( is_preview() ) {
 			return $pagination;
 		}
+		
 		return '';
 	}
 }

@@ -8,7 +8,6 @@ use NeverLetMeGo\Pattern\Application;
 
 class Admin extends Application {
 
-
 	/**
 	 * @var array
 	 */
