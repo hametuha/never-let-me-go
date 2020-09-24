@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || die( 'Do not load directly!' );
 
 $info = get_file_data( __FILE__, [
 	'version' => 'Version',
-	'domain'  => 'Text Domain',
+	'domain' => 'Text Domain',
 	'php_version' => 'PHP Version',
 ] );
 
