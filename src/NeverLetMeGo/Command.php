@@ -15,6 +15,20 @@ class Command extends \WP_CLI_Command {
 	/**
 	 * Create dummy users from CSV.
 	 *
+	 * This commands create dummy users via CSV file.
+	 * Useful for test purpose.
+	 *
+	 * ## OPTIONS
+	 *
+	 * : --file=<file>
+	 * Optional. CSV data for dummy user.
+	 * Please check the layout of data/users.csv in this plugin
+	 * and you can make original CSV
+	 *
+	 * : --dry-run
+	 * Optional If set, only users data will be displayed.
+	 * Dry run before actually importing.
+	 *
 	 * @synopsis [--file=<file>] [--dry-run]
 	 * @param array $args
 	 * @param array $assoc
@@ -90,6 +104,10 @@ class Command extends \WP_CLI_Command {
 	
 	/**
 	 * Get available meta keys.
+	 *
+	 * Run this command and you can ge possible user meta from real database.
+	 * Useful for filter development.
+	 *
 	 */
 	public function meta_key() {
 		$meta_keys = Page::getInstance()->available_meta_keys();

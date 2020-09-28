@@ -4,8 +4,8 @@ Plugin Name: Never Let Me Go
 Plugin URI: https://wordpress.org/plugins/never-let-me-go/
 Author: Takahashi Fumiki
 Author URI: https://takahashifumiki.com/
-Version: 1.1.0
-PHP Version: 5.4.0
+Version: 1.2.0
+PHP Version: 5.6.0
 Description: If someone wants to leave your WordPress, let them go.
 Text Domain: never-let-me-go
 Domain Path: /language/
@@ -58,9 +58,9 @@ add_action( 'plugins_loaded', 'nlmg_plugins_loaded' );
 function nlmg_version_notice() {
 	$message = sprintf(
 		// translators: %1$s is your PHP version, %2$s is URL.
-		__( '<strong>Plugin Error: </strong>Never Let Me Go requires PHP 5.3 and over, but your PHP is %1$s. Please consider updating your PHP or downgrading this plugin to <a href="%2$s">0.8.2</a>.', 'never-let-me-go' ),
+		__( '<strong>Plugin Error: </strong>Never Let Me Go requires PHP 5.6 and over, but your PHP is %1$s. Please consider updating your PHP or downgrading this plugin to <a href="%2$s">0.8.2</a>.', 'never-let-me-go' ),
 		phpversion(),
-		'https://downloads.wordpress.org/plugin/never-let-me-go.0.8.2.zip'
+		'https://downloads.wordpress.org/plugin/never-let-me-go.1.1.0.zip'
 	);
 	printf( '<div class="error"><p>%s</p></div>', wp_kses_post( $message ) );
 }

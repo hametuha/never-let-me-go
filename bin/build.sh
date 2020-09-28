@@ -11,8 +11,8 @@ curl -L https://raw.githubusercontent.com/fumikito/wp-readme/master/wp-readme.ph
 # Remove unwanted files.
 rm -rf node_modules
 rm -rf .git
-rm -rf .travis.yml
 rm -rf .gitignore
+rm -rf .travis.yml
 rm -rf .wp-env.json
 rm -rf bin
 rm -rf node_modules
