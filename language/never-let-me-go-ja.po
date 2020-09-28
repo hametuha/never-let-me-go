@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Never Let Me Go\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-16 18:50+0900\n"
-"PO-Revision-Date: 2019-04-16 18:52+0900\n"
+"POT-Creation-Date: 2020-09-28 15:23+0900\n"
+"PO-Revision-Date: 2020-09-28 15:26+0900\n"
 "Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
 "Language-Team: Hametuha inc. <info@hametuha.co.jp>\n"
 "Language: ja_JP\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
@@ -25,40 +25,40 @@ msgstr ""
 #: never-let-me-go.php:61
 #, php-format
 msgid ""
-"<strong>Plugin Error: </strong>Never Let Me Go requires PHP 5.3 and over, "
+"<strong>Plugin Error: </strong>Never Let Me Go requires PHP 5.6 and over, "
 "but your PHP is %1$s. Please consider updating your PHP or downgrading this "
 "plugin to <a href=\"%2$s\">0.8.2</a>."
 msgstr ""
-"<strong>プラグインエラー: </strong>Never Let Me Go はPHP 5.3以上が必須です。"
+"<strong>プラグインエラー: </strong>Never Let Me Go はPHP 5.6以上が必須です。"
 "あなたの PHP は%1$sです。PHPをアップグレードするか、このプラグインを<a href="
 "\"%2$s\">0.8.2</a>までダウングレードしてください。"
 
-#: src/NeverLetMeGo/Admin.php:42 templates/setting.php:6
+#: src/NeverLetMeGo/Admin.php:41 templates/setting.php:6
 msgid "Never Let Me Go setting"
 msgstr "Never Let Me Go設定"
 
-#: src/NeverLetMeGo/Admin.php:43
+#: src/NeverLetMeGo/Admin.php:42
 msgid "Resign Setting"
 msgstr "退会設定"
 
-#: src/NeverLetMeGo/Admin.php:67
+#: src/NeverLetMeGo/Admin.php:68
 msgid "Option updated."
 msgstr "設定は更新されました。"
 
-#: src/NeverLetMeGo/Admin.php:69
+#: src/NeverLetMeGo/Admin.php:70
 msgid "Option failed to updated."
 msgstr "設定を更新できませんでした。"
 
-#: src/NeverLetMeGo/Admin.php:104
+#: src/NeverLetMeGo/Admin.php:105
 msgid "No results"
 msgstr "見つかりませんでした"
 
-#: src/NeverLetMeGo/Admin.php:105
+#: src/NeverLetMeGo/Admin.php:106
 #, php-format
 msgid "%% found."
 msgstr "%%件が見つかりました。"
 
-#: src/NeverLetMeGo/Admin.php:127
+#: src/NeverLetMeGo/Admin.php:128
 #, php-format
 msgid ""
 "<strong>[Never Let Me Go] Plugin is active but features are not enabled. "
@@ -67,44 +67,49 @@ msgstr ""
 "<strong>[Never Let Me Go] プラグインは有効化していますが、機能が無効のままで"
 "す。<a href=\"%s\">設定ページ</a>へ行ってください。</strong>"
 
-#: src/NeverLetMeGo/Admin.php:166
+#: src/NeverLetMeGo/Admin.php:167
 msgid "Support"
 msgstr "サポート"
 
-#: src/NeverLetMeGo/Admin.php:167
+#: src/NeverLetMeGo/Admin.php:168
 msgid "Settings"
 msgstr "設定"
 
-#: src/NeverLetMeGo/Admin.php:188 src/NeverLetMeGo/Page.php:139
+#: src/NeverLetMeGo/Admin.php:189 src/NeverLetMeGo/Page.php:161
 msgid "Delete Account"
 msgstr "アカウントを削除する"
 
-#: src/NeverLetMeGo/Admin.php:190
+#: src/NeverLetMeGo/Admin.php:191
 msgid "You can delete your account by putting the button below."
 msgstr "下のボタンを押すことでアカウントを削除することができます。"
 
-#: src/NeverLetMeGo/Admin.php:194
+#: src/NeverLetMeGo/Admin.php:195
 msgid "Delete"
 msgstr "削除"
 
-#: src/NeverLetMeGo/Page.php:109
+#: src/NeverLetMeGo/Page.php:130
 msgctxt "error_message"
 msgid "Error"
 msgstr "エラー"
 
-#: src/NeverLetMeGo/Pattern/Application.php:69
+#: src/NeverLetMeGo/Page.php:171
+msgid "I have consented to deleting my account."
+msgstr "アカウントの削除に同意します。"
+
+#: src/NeverLetMeGo/Pattern/Application.php:71
 msgid "User doesn't exist."
 msgstr "ユーザーが存在しません。"
 
-#: src/NeverLetMeGo/Pattern/Application.php:73
+#: src/NeverLetMeGo/Pattern/Application.php:76
 msgid "You are administrator!"
 msgstr "あなたは管理者です！"
 
-#: src/NeverLetMeGo/Pattern/Application.php:124
-msgid "Deleted User"
-msgstr "削除されたユーザー"
+#: src/NeverLetMeGo/Pattern/Application.php:130
+#, php-format
+msgid "Deleted User #%d"
+msgstr "削除されたユーザー #%d"
 
-#: src/NeverLetMeGo/Pattern/Application.php:206
+#: src/NeverLetMeGo/Pattern/Application.php:244
 msgid "Are you sure to delete account?"
 msgstr "このアカウントを削除してよろしいですか？"
 
@@ -147,26 +152,38 @@ msgstr ""
 "指定しない場合、ユーザーは管理画面のプロフィールページからのみ退会できます。"
 
 #: templates/setting.php:49
+msgid "How to Consent"
+msgstr "同意方法"
+
+#: templates/setting.php:52
+msgid "Confirm with Dialog"
+msgstr "ダイアログで確認"
+
+#: templates/setting.php:53
+msgid "Display consent checkbox"
+msgstr "同意チェックボックスを表示"
+
+#: templates/setting.php:64
 msgid "Resign Way"
 msgstr "退会方法"
 
-#: templates/setting.php:54
+#: templates/setting.php:69
 msgid "Normal"
 msgstr "通常"
 
-#: templates/setting.php:54 templates/setting.php:64 templates/setting.php:83
+#: templates/setting.php:69 templates/setting.php:79 templates/setting.php:98
 msgid "Delete all data"
 msgstr "すべてのデータを削除"
 
-#: templates/setting.php:59
+#: templates/setting.php:74
 msgid "Advanced"
 msgstr "上級者向け"
 
-#: templates/setting.php:59 templates/setting.php:104
+#: templates/setting.php:74 templates/setting.php:119
 msgid "Make user account unavailable and keep data"
 msgstr "アカウントを停止し、データを残す"
 
-#: templates/setting.php:63
+#: templates/setting.php:78
 #, php-format
 msgid ""
 "If you choose \"%1$s\", all data related to the user will be deleted from "
@@ -177,7 +194,7 @@ msgstr ""
 "削除されます。<br />指定しなかった場合、ユーザーアカウントは無効なものに置き"
 "換えられ、すべてのデータがデータベースに残ります。"
 
-#: templates/setting.php:67
+#: templates/setting.php:82
 msgid ""
 "To delete related information, see description below.<br />Please be careful "
 "with your country's low on other's privacy."
@@ -185,19 +202,19 @@ msgstr ""
 "関連する情報を削除するには、このページ下部を参考にしてください。<br />個人情"
 "報保護に関する法律に注意してください。"
 
-#: templates/setting.php:72
+#: templates/setting.php:87
 msgid "Assign to"
 msgstr "別ユーザーへの割当"
 
-#: templates/setting.php:75
+#: templates/setting.php:90
 msgid "User ID"
 msgstr "ユーザーID"
 
-#: templates/setting.php:77
+#: templates/setting.php:92
 msgid "Input user ID or type to search..."
 msgstr "ユーザーIDを入力するか、タイプして検索…"
 
-#: templates/setting.php:82
+#: templates/setting.php:97
 #, php-format
 msgid ""
 "If you choose <strong>%s</strong>, You can assign resigning user's contents "
@@ -208,19 +225,20 @@ msgstr ""
 "り当てられます。例：UGCサイトにおいて、退会するユーザーのコンテンツを仮のユー"
 "ザー（削除されたユーザーという名前のユーザー）に割り当てる。"
 
-#: templates/setting.php:89
+#: templates/setting.php:104
 msgid "Destroy Level"
 msgstr "削除レベル"
 
-#: templates/setting.php:94
+#: templates/setting.php:109
 msgid "Make credential hashed"
 msgstr "ログイン情報をハッシュ化する"
 
-#: templates/setting.php:95 templates/setting.php:109
+#: templates/setting.php:110 templates/setting.php:124
+#: templates/setting.php:144
 msgid "Keep all data"
 msgstr "すべてのデータを保持"
 
-#: templates/setting.php:103
+#: templates/setting.php:118
 #, php-format
 msgid ""
 "If you choose <strong>\"%1$s\"</strong>, user credentials will be changed "
@@ -229,7 +247,7 @@ msgstr ""
 "<strong>\"%1$s\"</strong>を選んだ場合、プライバシー保護のため、ユーザーの認証"
 "情報は削除処理のあとに不可逆的に変更されます。"
 
-#: templates/setting.php:108
+#: templates/setting.php:123
 #, php-format
 msgid ""
 "If you don't want this, you can keep information by select <strong>\"%s\"</"
@@ -238,11 +256,34 @@ msgstr ""
 "これを望まない場合、<strong>\"%s\"</strong>を選ぶことで情報をそのままにできま"
 "すが、おすすめしません。"
 
-#: templates/setting.php:131
+#: templates/setting.php:130
+msgid "Meta key allow List"
+msgstr "メタキー許可リスト"
+
+#: templates/setting.php:143
+#, php-format
+msgid ""
+"If you choose %s, please select user metas to keep. Nothing chosen, every "
+"meta will be kept. To delete all meta, keep 1 meaningless meta(e.g. "
+"rich_editing)"
+msgstr ""
+"%sを選んだ場合は残すユーザーメタを選択してください。何も選択しない場合、すべ"
+"てが残されます。すべてのユーザーメタを削除する場合は意味のないメタキー（例・"
+"rich_editing）を1つだけ選んでください。"
+
+#: templates/setting.php:148
+msgid ""
+"Notice: meta key allow list is filtered programmatically. Any settings above "
+"will be overridden."
+msgstr ""
+"注意：メタキーの許可リストはプログラムでフィルターがかけられています。上記の"
+"設定は上書きされる可能性があります。"
+
+#: templates/setting.php:170
 msgid "How to create Resign Page"
 msgstr "退会ページの作り方"
 
-#: templates/setting.php:134
+#: templates/setting.php:173
 msgid ""
 "If you choose some resign page to publicly display, you can make show messag "
 "before resigning and after."
@@ -250,14 +291,14 @@ msgstr ""
 "管理画面以外で表示する退会ページを作成すると、退会前と退会後にメッセージを表"
 "示することができます。"
 
-#: templates/setting.php:138
+#: templates/setting.php:177
 msgid ""
 "Split assigned page's content with <code>&lt;!--nextpage--&gt;</code> tag."
 msgstr ""
 "割り当てられたページのコンテンツを<code>&lt;!--nextpage--&gt;</code>で分割し"
 "てください。"
 
-#: templates/setting.php:141
+#: templates/setting.php:180
 msgid ""
 "1st page will be shown before resigning. Write some content for changing "
 "mind or inform your user about what to loose."
@@ -265,7 +306,7 @@ msgstr ""
 "1ページ目は退会前に表示されます。思いとどまるためのコンテンツを書いたり、退会"
 "によってなにを失うかお知らせしましょう。"
 
-#: templates/setting.php:144
+#: templates/setting.php:183
 msgid ""
 "User will be redirected to 2nd page after removal of their account. Write "
 "thank you message or something."
@@ -273,47 +314,47 @@ msgstr ""
 "ユーザーはアカウント削除後、2ページ目にリダイレクトされます。サンキューメッ"
 "セージなどを書いてください。"
 
-#: templates/setting.php:148
+#: templates/setting.php:187
 msgid "Below is an example:"
 msgstr "以下がその例です："
 
-#: templates/setting.php:151
+#: templates/setting.php:190
 msgid "You are about to resign from our web magazine."
 msgstr "Webマガジンを退会しようとしています。"
 
-#: templates/setting.php:153
+#: templates/setting.php:192
 msgid "Are you sure to delete your account?"
 msgstr "アカウントを削除してよろしいですか？"
 
-#: templates/setting.php:155
+#: templates/setting.php:194
 msgid "All of your data on our service will be deleted and can't be restored."
 msgstr "あなたのデータはすべて削除され、元に戻すことはできません。"
 
-#: templates/setting.php:158
+#: templates/setting.php:197
 msgid "Your account has been deleted successfully."
 msgstr "アカウントは削除されました。"
 
-#: templates/setting.php:160
+#: templates/setting.php:199
 msgid "We miss you and hope to see you again."
 msgstr "またのご利用をお待ちしています。"
 
-#: templates/setting.php:163
+#: templates/setting.php:202
 msgid "How to customize"
 msgstr "カスタマイズ方法"
 
-#: templates/setting.php:166
+#: templates/setting.php:205
 msgid "Avoid user from leaving on specific condition."
 msgstr "特定の条件を満たすユーザーを退会させない。"
 
-#: templates/setting.php:169
+#: templates/setting.php:208
 msgid "Change button labels."
 msgstr "ボタンの表記を変更する。"
 
-#: templates/setting.php:172
+#: templates/setting.php:211
 msgid "Do something if user leaves your site."
 msgstr "ユーザーがサイトを退会したら何かをする。"
 
-#: templates/setting.php:176
+#: templates/setting.php:215
 #, php-format
 msgid ""
 "There are some hooks available. For more details, please visit our support "
