@@ -63,6 +63,7 @@ class Admin extends Application {
 				$option['destroy_level']      = (int) $this->input->post( 'nlmg_destroy_level' );
 				$option['assign_to']          = (int) $this->input->post( 'nlmg_assign_to' );
 				$option['display_acceptance'] = (int) $this->input->post( 'nlmg_display_acceptance' );
+				$option['meta_to_keep']       = implode( ',', array_filter( (array) $this->input->post( 'nlmg_meta_to_keep' ) ) );
 				if ( update_option( $this->name . '_option', $option ) ) {
 					$this->add_message( __( 'Option updated.', 'never-let-me-go' ) );
 				} else {

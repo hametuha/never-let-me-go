@@ -172,7 +172,6 @@ class Page extends Application {
 				);
 			} else {
 				$acceptance = '';
-				$classes = [];
 				$confirm = $this->confirm_label();
 				$onclick = $confirm ? sprintf( ' onclick="return confirm(\'%s\')"', esc_js( $confirm ) ) : '';
 			}

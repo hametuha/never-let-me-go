@@ -40,5 +40,13 @@
       }
     }
   }
+
+  &-inline-checkbox {
+    display: inline-block;
+    margin: 0 0.5em 0.5em 0;
+    padding: 0.25em;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
 }
 

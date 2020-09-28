@@ -46,11 +46,11 @@
                 </td>
             </tr>
 			<tr>
-				<th><?php _e( 'Acceptance UI', 'never-let-me-go' ); ?></th>
+				<th><?php _e( 'How to Consent', 'never-let-me-go' ); ?></th>
 				<td>
 					<?php foreach ( [
-						__( 'Confirm with Dialog', 'neve-let-me-go' ),
-						__( 'Display checkbox', 'neve-let-me-go' ),
+						__( 'Confirm with Dialog', 'never-let-me-go' ),
+						__( 'Display consent checkbox', 'never-let-me-go' ),
 					] as $value => $label ) : ?>
 						<label style="display:block; margin-bottom: 0.5em;">
 							<input type="radio" name="nlmg_display_acceptance" id="nlmg_display_acceptance-<?php echo esc_attr( $value ) ?>"
@@ -126,6 +126,30 @@
                     </p>
                 </td>
             </tr>
+			<tr>
+				<th><?php esc_html_e( 'Meta key allow List', 'never-let-me-go' ) ?></th>
+				<td>
+					<?php
+					$keys = $this->meta_to_keep;
+					foreach ( $this->available_meta_keys() as $key => $count ) : ?>
+						<label class="nlmg-inline-checkbox">
+							<input type="checkbox" name="nlmg_meta_to_keep[]" value="<?php echo esc_attr( $key ) ?>"
+								<?php checked( in_array( $key, $keys ) ) ?> />
+							<?php echo esc_html( $key ) ?><small>(<?php echo number_format( $count ) ?>)</small>
+						</label>
+					<?php endforeach; ?>
+					<p class="description">
+						<?php printf(
+							esc_html__( 'If you choose %s, please select user metas to keep. Nothing chosen, every meta will be kept. To delete all meta, keep 1 meaningless meta(e.g. rich_editing)', 'never-let-me-go' ),
+							sprintf( '<strong>%s</strong>', esc_html__( 'Keep all data', 'never-let-me-go' ) )
+						); ?>
+						<?php if ( $this->filtered_keys() ) : ?>
+							<br />
+							<?php esc_html_e( 'Notice: meta key allow list is registered programmatically. Any settings above will be overridden.', 'never-let-me-go' ); ?>
+						<?php endif; ?>
+					</p>
+				</td>
+			</tr>
             </tbody>
         </table>
 		<?php submit_button(); ?>

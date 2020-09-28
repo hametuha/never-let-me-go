@@ -232,12 +232,22 @@ class Application extends Singleton {
 			SELECT meta_key, COUNT(umeta_id) as total
 			FROM {$wpdb->usermeta}
 			GROUP BY meta_key
+			LIMIT 100
 SQL;
 		$keys = [];
 		foreach ( $wpdb->get_results( $query ) as $row ) {
 			$keys[ $row->meta_key ] = $row->total;
 		}
 		return $keys;
+	}
+	
+	/**
+	 * Get filter keys.
+	 *
+	 * @return string[]
+	 */
+	public function filtered_keys() {
+		return apply_filters( 'nlmg_allowed_keys', [] );
 	}
 	
 	/**
