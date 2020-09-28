@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Never Let Me Go\n"
-"POT-Creation-Date: 2019-04-16 18:50+0900\n"
+"POT-Creation-Date: 2020-09-28 15:23+0900\n"
 "PO-Revision-Date: 2017-01-07 22:44+0900\n"
 "Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
 "Language-Team: Hametuha INC. <info@takahashifumiki.com>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -22,6 +22,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: dist\n"
 "X-Poedit-SearchPathExcluded-3: tests\n"
+"X-Poedit-SearchPathExcluded-4: wordpress\n"
 
 #: never-let-me-go.php:43
 msgid "Composer auto loader is missing. Did you run composer install?"
@@ -30,81 +31,86 @@ msgstr ""
 #: never-let-me-go.php:61
 #, php-format
 msgid ""
-"<strong>Plugin Error: </strong>Never Let Me Go requires PHP 5.3 and over, "
+"<strong>Plugin Error: </strong>Never Let Me Go requires PHP 5.6 and over, "
 "but your PHP is %1$s. Please consider updating your PHP or downgrading this "
 "plugin to <a href=\"%2$s\">0.8.2</a>."
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:42 templates/setting.php:6
+#: src/NeverLetMeGo/Admin.php:41 templates/setting.php:6
 msgid "Never Let Me Go setting"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:43
+#: src/NeverLetMeGo/Admin.php:42
 msgid "Resign Setting"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:67
+#: src/NeverLetMeGo/Admin.php:68
 msgid "Option updated."
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:69
+#: src/NeverLetMeGo/Admin.php:70
 msgid "Option failed to updated."
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:104
+#: src/NeverLetMeGo/Admin.php:105
 msgid "No results"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:105
+#: src/NeverLetMeGo/Admin.php:106
 #, php-format
 msgid "%% found."
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:127
+#: src/NeverLetMeGo/Admin.php:128
 #, php-format
 msgid ""
 "<strong>[Never Let Me Go] Plugin is active but features are not enabled. "
 "Please go to <a href=\"%s\">setting page</a>.</strong>"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:166
+#: src/NeverLetMeGo/Admin.php:167
 msgid "Support"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:167
+#: src/NeverLetMeGo/Admin.php:168
 msgid "Settings"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:188 src/NeverLetMeGo/Page.php:139
+#: src/NeverLetMeGo/Admin.php:189 src/NeverLetMeGo/Page.php:161
 msgid "Delete Account"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:190
+#: src/NeverLetMeGo/Admin.php:191
 msgid "You can delete your account by putting the button below."
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:194
+#: src/NeverLetMeGo/Admin.php:195
 msgid "Delete"
 msgstr ""
 
-#: src/NeverLetMeGo/Page.php:109
+#: src/NeverLetMeGo/Page.php:130
 msgctxt "error_message"
 msgid "Error"
 msgstr ""
 
-#: src/NeverLetMeGo/Pattern/Application.php:69
+#: src/NeverLetMeGo/Page.php:171
+msgid "I have consented to deleting my account."
+msgstr ""
+
+#: src/NeverLetMeGo/Pattern/Application.php:71
 msgid "User doesn't exist."
 msgstr ""
 
-#: src/NeverLetMeGo/Pattern/Application.php:73
+#: src/NeverLetMeGo/Pattern/Application.php:76
 msgid "You are administrator!"
 msgstr ""
 
-#: src/NeverLetMeGo/Pattern/Application.php:124
-msgid "Deleted User"
+#: src/NeverLetMeGo/Pattern/Application.php:130
+#, php-format
+msgid "Deleted User #%d"
 msgstr ""
 
-#: src/NeverLetMeGo/Pattern/Application.php:206
+#: src/NeverLetMeGo/Pattern/Application.php:244
 msgid "Are you sure to delete account?"
 msgstr ""
 
@@ -146,26 +152,38 @@ msgid ""
 msgstr ""
 
 #: templates/setting.php:49
+msgid "How to Consent"
+msgstr ""
+
+#: templates/setting.php:52
+msgid "Confirm with Dialog"
+msgstr ""
+
+#: templates/setting.php:53
+msgid "Display consent checkbox"
+msgstr ""
+
+#: templates/setting.php:64
 msgid "Resign Way"
 msgstr ""
 
-#: templates/setting.php:54
+#: templates/setting.php:69
 msgid "Normal"
 msgstr ""
 
-#: templates/setting.php:54 templates/setting.php:64 templates/setting.php:83
+#: templates/setting.php:69 templates/setting.php:79 templates/setting.php:98
 msgid "Delete all data"
 msgstr ""
 
-#: templates/setting.php:59
+#: templates/setting.php:74
 msgid "Advanced"
 msgstr ""
 
-#: templates/setting.php:59 templates/setting.php:104
+#: templates/setting.php:74 templates/setting.php:119
 msgid "Make user account unavailable and keep data"
 msgstr ""
 
-#: templates/setting.php:63
+#: templates/setting.php:78
 #, php-format
 msgid ""
 "If you choose \"%1$s\", all data related to the user will be deleted from "
@@ -173,25 +191,25 @@ msgid ""
 "account and whole data will be kept in your database."
 msgstr ""
 
-#: templates/setting.php:67
+#: templates/setting.php:82
 msgid ""
 "To delete related information, see description below.<br />Please be careful "
 "with your country's low on other's privacy."
 msgstr ""
 
-#: templates/setting.php:72
+#: templates/setting.php:87
 msgid "Assign to"
 msgstr ""
 
-#: templates/setting.php:75
+#: templates/setting.php:90
 msgid "User ID"
 msgstr ""
 
-#: templates/setting.php:77
+#: templates/setting.php:92
 msgid "Input user ID or type to search..."
 msgstr ""
 
-#: templates/setting.php:82
+#: templates/setting.php:97
 #, php-format
 msgid ""
 "If you choose <strong>%s</strong>, You can assign resigning user's contents "
@@ -199,100 +217,119 @@ msgid ""
 "pseudo user with name with \"deleted user\"."
 msgstr ""
 
-#: templates/setting.php:89
+#: templates/setting.php:104
 msgid "Destroy Level"
 msgstr ""
 
-#: templates/setting.php:94
+#: templates/setting.php:109
 msgid "Make credential hashed"
 msgstr ""
 
-#: templates/setting.php:95 templates/setting.php:109
+#: templates/setting.php:110 templates/setting.php:124
+#: templates/setting.php:144
 msgid "Keep all data"
 msgstr ""
 
-#: templates/setting.php:103
+#: templates/setting.php:118
 #, php-format
 msgid ""
 "If you choose <strong>\"%1$s\"</strong>, user credentials will be changed "
 "irreversibly on removal process for his privacy."
 msgstr ""
 
-#: templates/setting.php:108
+#: templates/setting.php:123
 #, php-format
 msgid ""
 "If you don't want this, you can keep information by select <strong>\"%s\"</"
 "strong> but it's not recommended."
 msgstr ""
 
-#: templates/setting.php:131
+#: templates/setting.php:130
+msgid "Meta key allow List"
+msgstr ""
+
+#: templates/setting.php:143
+#, php-format
+msgid ""
+"If you choose %s, please select user metas to keep. Nothing chosen, every "
+"meta will be kept. To delete all meta, keep 1 meaningless meta(e.g. "
+"rich_editing)"
+msgstr ""
+
+#: templates/setting.php:148
+msgid ""
+"Notice: meta key allow list is filtered programmatically. Any settings above "
+"will be overridden."
+msgstr ""
+
+#: templates/setting.php:170
 msgid "How to create Resign Page"
 msgstr ""
 
-#: templates/setting.php:134
+#: templates/setting.php:173
 msgid ""
 "If you choose some resign page to publicly display, you can make show messag "
 "before resigning and after."
 msgstr ""
 
-#: templates/setting.php:138
+#: templates/setting.php:177
 msgid ""
 "Split assigned page's content with <code>&lt;!--nextpage--&gt;</code> tag."
 msgstr ""
 
-#: templates/setting.php:141
+#: templates/setting.php:180
 msgid ""
 "1st page will be shown before resigning. Write some content for changing "
 "mind or inform your user about what to loose."
 msgstr ""
 
-#: templates/setting.php:144
+#: templates/setting.php:183
 msgid ""
 "User will be redirected to 2nd page after removal of their account. Write "
 "thank you message or something."
 msgstr ""
 
-#: templates/setting.php:148
+#: templates/setting.php:187
 msgid "Below is an example:"
 msgstr ""
 
-#: templates/setting.php:151
+#: templates/setting.php:190
 msgid "You are about to resign from our web magazine."
 msgstr ""
 
-#: templates/setting.php:153
+#: templates/setting.php:192
 msgid "Are you sure to delete your account?"
 msgstr ""
 
-#: templates/setting.php:155
+#: templates/setting.php:194
 msgid "All of your data on our service will be deleted and can't be restored."
 msgstr ""
 
-#: templates/setting.php:158
+#: templates/setting.php:197
 msgid "Your account has been deleted successfully."
 msgstr ""
 
-#: templates/setting.php:160
+#: templates/setting.php:199
 msgid "We miss you and hope to see you again."
 msgstr ""
 
-#: templates/setting.php:163
+#: templates/setting.php:202
 msgid "How to customize"
 msgstr ""
 
-#: templates/setting.php:166
+#: templates/setting.php:205
 msgid "Avoid user from leaving on specific condition."
 msgstr ""
 
-#: templates/setting.php:169
+#: templates/setting.php:208
 msgid "Change button labels."
 msgstr ""
 
-#: templates/setting.php:172
+#: templates/setting.php:211
 msgid "Do something if user leaves your site."
 msgstr ""
 
-#: templates/setting.php:176
+#: templates/setting.php:215
 #, php-format
 msgid ""
 "There are some hooks available. For more details, please visit our support "

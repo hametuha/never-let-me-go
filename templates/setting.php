@@ -11,7 +11,7 @@
         <table class="form-table">
             <tbody>
             <tr>
-                <th><label><?php esc_html_e( 'Allow user to self delete', 'never-let-me-go' ); ?></label>
+				<th><label><?php esc_html_e( 'Allow user to self delete', 'never-let-me-go' ); ?></label></th>
                 <td>
                     <label>
                         <input type="radio" name="nlmg_enable"
@@ -26,7 +26,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="nlmg_resign_page"><?php _e( 'Resign Page', 'never-let-me-go' ); ?></label>
+				<th><label for="nlmg_resign_page"><?php _e( 'Resign Page', 'never-let-me-go' ); ?></label></th>
                 <td>
                     <select id="nlmg_resign_page" name="nlmg_resign_page">
                         <option value="0"<?php selected( $this->option['resign_page'] == 0 ) ?>><?php esc_html_e( 'No resign page', 'never-let-me-go' ); ?></option>
@@ -45,11 +45,26 @@
                     </p>
                 </td>
             </tr>
-            <tr>
-                <th><label><?php esc_html_e( 'Resign Way', 'never-let-me-go' ); ?></label>
-                <td>
-                    <label>
-                        <input type="radio" name="nlmg_keep_account"
+			<tr>
+				<th><?php _e( 'How to Consent', 'never-let-me-go' ); ?></th>
+				<td>
+					<?php foreach ( [
+						__( 'Confirm with Dialog', 'never-let-me-go' ),
+						__( 'Display consent checkbox', 'never-let-me-go' ),
+					] as $value => $label ) : ?>
+						<label style="display:block; margin-bottom: 0.5em;">
+							<input type="radio" name="nlmg_display_acceptance" id="nlmg_display_acceptance-<?php echo esc_attr( $value ) ?>"
+								value="<?php echo esc_attr( $value ) ?>"<?php checked( $value, $this->option['display_acceptance'] ) ?> />
+							<?php echo esc_html( $label ); ?>
+						</label>
+					<?php endforeach; ?>
+				</td>
+			</tr>
+			<tr>
+				<th><label><?php esc_html_e( 'Resign Way', 'never-let-me-go' ); ?></label></th>
+				<td>
+					<label>
+						<input type="radio" name="nlmg_keep_account"
                                value="0"<?php checked( $this->option['keep_account'] == 0 ) ?> />
                         <strong><?php esc_html_e( 'Normal', 'never-let-me-go' ); ?></strong>...<?php _e( 'Delete all data', 'never-let-me-go' ); ?>
                     </label><br>
@@ -86,7 +101,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="nlmg_destroy_level"><?php _e( 'Destroy Level', 'never-let-me-go' ); ?></label>
+				<th><label for="nlmg_destroy_level"><?php _e( 'Destroy Level', 'never-let-me-go' ); ?></label></th>
                 <td>
                     <select id="nlmg_destroy_level" name="nlmg_destroy_level">
 						<?php foreach (
@@ -111,6 +126,30 @@
                     </p>
                 </td>
             </tr>
+			<tr>
+				<th><?php esc_html_e( 'Meta key allow List', 'never-let-me-go' ) ?></th>
+				<td>
+					<?php
+					$keys = $this->meta_to_keep;
+					foreach ( $this->available_meta_keys() as $key => $count ) : ?>
+						<label class="nlmg-inline-checkbox">
+							<input type="checkbox" name="nlmg_meta_to_keep[]" value="<?php echo esc_attr( $key ) ?>"
+								<?php checked( in_array( $key, $keys ) ) ?> />
+							<?php echo esc_html( $key ) ?><small>(<?php echo number_format( $count ) ?>)</small>
+						</label>
+					<?php endforeach; ?>
+					<p class="description">
+						<?php printf(
+							esc_html__( 'If you choose %s, please select user metas to keep. Nothing chosen, every meta will be kept. To delete all meta, keep 1 meaningless meta(e.g. rich_editing)', 'never-let-me-go' ),
+							sprintf( '<strong>%s</strong>', esc_html__( 'Keep all data', 'never-let-me-go' ) )
+						); ?>
+						<?php if ( $this->filtered_keys() !== $this->meta_to_keep ) : ?>
+							<br />
+							<?php esc_html_e( 'Notice: meta key allow list is filtered programmatically. Any settings above will be overridden.', 'never-let-me-go' ); ?>
+						<?php endif; ?>
+					</p>
+				</td>
+			</tr>
             </tbody>
         </table>
 		<?php submit_button(); ?>
@@ -160,7 +199,7 @@
 <?php esc_html_e( 'We miss you and hope to see you again.', 'never-let-me-go' ); ?>
 </pre>
     <hr/>
-    <h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'How to customize' ) ?></h3>
+    <h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'How to customize', 'never-let-me-go' ) ?></h3>
     <ul class="nlmg-list">
         <li>
             <?php esc_html_e( 'Avoid user from leaving on specific condition.', 'never-let-me-go' ) ?>

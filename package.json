@@ -4,8 +4,12 @@
   "description": "If someone wants to leave your WordPress, let him go.",
   "main": "index.js",
   "scripts": {
-    "start": "gulp build",
-    "watch": "gulp watch"
+    "start": "wp-env start",
+    "watch": "gulp watch",
+    "package": "gulp build",
+    "gulp": "gulp",
+    "env": "wp-env",
+    "cli": "wp-env run cli wp"
   },
   "repository": {
     "type": "git",
@@ -20,8 +24,14 @@
   "bugs": {
     "url": "https://github.com/fumikito/Never-Let-Me-Go/issues"
   },
+  "browserslist": [
+    "last 2 version",
+    "ie 11",
+    "> 3%"
+  ],
   "homepage": "https://github.com/fumikito/Never-Let-Me-Go#readme",
   "devDependencies": {
+    "@wordpress/env": "^2.0.1",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-concat": "^2.6.0",

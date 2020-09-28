@@ -2,10 +2,10 @@
 
 Contributors: Takahashi_Fumiki,hametuha  
 Tags: delete, account  
-Requires at least: 4.7  
-Requires PHP: 5.4  
-Tested up to: 5.1.1  
-Stable tag: 1.1.0
+Requires at least: 5.0  
+Requires PHP: 5.6  
+Tested up to: 5.5.1  
+Stable tag: 1.2.0
 
 If someone wants to leave your WordPress, let them go.
 
@@ -15,7 +15,7 @@ If someone wants to leave your WordPress, let them go.
 
 ## Description
 
-WordPress can allow your user to register by himself, but has no function to self delete.
+WordPress can allow your user to register by themself, but has no function to delete their own account.
 
 You can also create **Resign Page** which displays message to your customer.
 
@@ -29,7 +29,7 @@ Altenatively, you can install it manually like below:
 1. Upload `never-let-me-go` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. In admin panel, Go to Resgin Setting and set up with instractions displayed.
-4. Create resigning page and write some message to your user. That's it.
+4. Create **Resigning Page** and write some message to your user. That's it.
 
 ## Frequently Asked Questions
 
@@ -41,11 +41,21 @@ We host plugin on [github](https://github.com/fumikito/Never-Let-Me-Go) and any 
 
 Maybe yes. If you find bugs, please [let us know](https://github.com/fumikito/Never-Let-Me-Go).
 
+### Does this plugin is ready for block editor?
+
+Partially yes. Because "Resign Page" can be split via <code>Page Break</code> block. We have plan to make **Resign Button** block and more flexible laytout availability. Please send your request.
+
 ## Screenshots
 
 1. Set up your resign option.
 
 ## Changelog
+
+### 1.2.0
+
+* **Notice** PHP requirements is now PHP 5.6 and over.
+* Add consent checkbox option.
+* User meta can be filtered by allow list. If you want to keep some of user's data, customize allow list.
 
 ### 1.1.0
 
