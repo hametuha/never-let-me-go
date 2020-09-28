@@ -89,6 +89,19 @@ class Command extends \WP_CLI_Command {
 	}
 	
 	/**
+	 * Get available meta keys.
+	 */
+	public function meta_key() {
+		$meta_keys = Page::getInstance()->available_meta_keys();
+		$table = new \cli\Table();
+		$table->setHeaders( [ 'Key', 'Total' ] );
+		foreach ( $meta_keys as $key => $count ) {
+			$table->addRow( [ $key, $count ] );
+		}
+		$table->display();
+	}
+	
+	/**
 	 * Detect if property is user's default.
 	 *
 	 * @param string $key
@@ -102,6 +115,7 @@ class Command extends \WP_CLI_Command {
 			case 'first_name':
 			case 'last_name':
 			case 'description':
+			case 'locale':
 				return true;
 			default:
 				return 0 === strpos( $key, 'user_' );

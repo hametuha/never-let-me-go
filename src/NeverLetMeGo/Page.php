@@ -26,8 +26,20 @@ class Page extends Application {
 		if ( $this->option[ 'enable' ] && $this->option[ 'resign_page' ] ) {
 			// Process resign
 			add_action( 'template_redirect', array( $this, 'templateRedirect' ) );
+			// Register script
+			add_action( 'init', [ $this, 'registerAssets' ] );
 		}
 	}
+	
+	/**
+	 * Register assets.
+	 */
+	public function registerAssets() {
+		wp_register_script( 'nlmg-form', $this->url . 'dist/js/unregister-form.js', [ 'jquery' ], $this->version, true );
+		wp_register_style( 'nlmg-form', $this->url . 'dist/css/public.css', [], $this->version );
+	}
+	
+	
 	
 	/**
 	 * Public Hook for template redirect
@@ -38,7 +50,13 @@ class Page extends Application {
 		if ( ! is_page( $this->option[ 'resign_page' ] ) ) {
 			return;
 		}
+		// Avoid caching.
 		nocache_headers();
+		// Enqueue assets.
+		add_action( 'wp_enqueue_scripts', function() {
+			wp_enqueue_script( 'nlmg-form' );
+			wp_enqueue_style( 'nlmg-form' );
+		} );
 		// Is user logged in?
 		if ( ! is_user_logged_in() ) {
 			//User is not logged in so redirected to login page.
@@ -70,7 +88,7 @@ class Page extends Application {
 			if ( is_wp_error( $result ) ) {
 				$this->errors = $result;
 				// Add form to resign page.
-				add_filter( 'the_content', array( $this, 'showResignForm' ), 1 );
+				wp_enqueue_style( 'nlmg-form' );
 			} else {
 				// Successfully deleted.
 				/**
@@ -142,13 +160,30 @@ class Page extends Application {
 			 */
 			$label = apply_filters( 'nlmg_resign_button_label', __( 'Delete Account', 'never-let-me-go' ), get_current_user_id() );
 			
-			$confirm = $this->confirm_label();
-			$onclick = $confirm ? sprintf( ' onclick="return confirm(\'%s\')"', esc_js( $confirm ) ) : '';
+			// UI Class.
+			$classes = apply_filters( 'nlmg_resign_button_class', [ 'button-primary', 'button-nlmg' ] );
+			
+			// Confirmation UI
+			if ( $this->option['display_acceptance'] ) {
+				$onclick = ' disabled';
+				$acceptance = sprintf(
+					'<p class="nlmg-acceptance-block"><label class="nlmg-acceptance-label"><input type="checkbox" name="nlmg_accept_resign" id="nlmg-acceptance" class="nlmg-acceptance-checkbox" value="1" /> %s</label></p>',
+					esc_html( apply_filters( 'nlmg_acceptance_text', __( 'I have consented to deleting my account.', 'never-let-me-go' ) ) )
+				);
+			} else {
+				$acceptance = '';
+				$classes = [];
+				$confirm = $this->confirm_label();
+				$onclick = $confirm ? sprintf( ' onclick="return confirm(\'%s\')"', esc_js( $confirm ) ) : '';
+			}
+			
+			$classes = esc_attr( implode( ' ', $classes ) );
 			$form    = <<<HTML
 				<form id="nlmg-resign-form" method="post" action="{$url}">
 					{$nonce}
+					{$acceptance}
 					<p class="submit">
-						<input class="button-primary button-nlmg" type="submit" value="{$label}"{$onclick} />
+						<input id="nlmg-resign-button" class="{$classes}" type="submit" value="{$label}"{$onclick} />
 					</p>
 				</form>
 HTML;

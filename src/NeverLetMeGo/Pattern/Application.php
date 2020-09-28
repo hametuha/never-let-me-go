@@ -17,6 +17,7 @@ use NeverLetMeGo\Utility\Input;
  * @property-read string $dir
  * @property-read string $url
  * @property-read string $version
+ * @property-read string[] $meta_to_keep
  */
 class Application extends Singleton {
 	
@@ -221,6 +222,25 @@ class Application extends Singleton {
 	}
 	
 	/**
+	 * Get available meta keys.
+	 *
+	 * @return string[]
+	 */
+	public function available_meta_keys() {
+		global $wpdb;
+		$query = <<<SQL
+			SELECT meta_key, COUNT(umeta_id) as total
+			FROM {$wpdb->usermeta}
+			GROUP BY meta_key
+SQL;
+		$keys = [];
+		foreach ( $wpdb->get_results( $query ) as $row ) {
+			$keys[ $row->meta_key ] = $row->total;
+		}
+		return $keys;
+	}
+	
+	/**
 	 * Getter
 	 *
 	 * @param string $name
@@ -231,19 +251,19 @@ class Application extends Singleton {
 		switch ( $name ) {
 			case 'input':
 				return Input::getInstance();
-				break;
 			case 'nonce_key':
 				return "_{$this->name}_nonce";
-				break;
 			case 'option':
 				$option = get_option( $this->name . '_option', array() );
 				foreach (
 					array(
-						'enable'        => 0,
-						'resign_page'   => 0,
-						'assign_to'     => 0,
-						'keep_account'  => 0,
-						'destroy_level' => 1,
+						'enable'             => 0,
+						'resign_page'        => 0,
+						'assign_to'          => 0,
+						'keep_account'       => 0,
+						'destroy_level'      => 1,
+						'meta_to_keep'       => 'rich_editing',
+						'display_acceptance' => 0,
 					) as $key => $val
 				) {
 					if ( ! isset( $option[ $key ] ) ) {
@@ -252,20 +272,17 @@ class Application extends Singleton {
 				}
 				
 				return $option;
-				break;
+			case 'meta_to_keep':
+				return array_filter( explode( ',', $this->option['meta_to_keep'] ) );
 			case 'version':
 				return NLMG_VERSION;
-				break;
 			case 'dir':
 				return dirname( NLMG_BASE_FILE );
-				break;
 			case 'url':
 				return plugin_dir_url( NLMG_BASE_FILE );
-				break;
 			default:
 				// Do nothing
 				return null;
-				break;
 		}
 	}
 }

@@ -52,16 +52,17 @@ class Admin extends Application {
 	public function adminInit() {
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			//Ajax Action for incremental search
-			add_action( 'wp_ajax_nlmg_user_search', array( $this, 'incSearch' ) );
+			add_action( 'wp_ajax_nlmg_user_search', [ $this, 'incSearch' ] );
 		} else {
 			// Update options
 			if ( $this->input->verify_nonce( 'nlmg_option' ) ) {
-				$option                  = array();
-				$option['enable']        = (int) $this->input->post( 'nlmg_enable' );
-				$option['resign_page']   = (int) $this->input->post( 'nlmg_resign_page' );
-				$option['keep_account']  = (int) $this->input->post( 'nlmg_keep_account' );
-				$option['destroy_level'] = (int) $this->input->post( 'nlmg_destroy_level' );
-				$option['assign_to']     = (int) $this->input->post( 'nlmg_assign_to' );
+				$option                       = [];
+				$option['enable']             = (int) $this->input->post( 'nlmg_enable' );
+				$option['resign_page']        = (int) $this->input->post( 'nlmg_resign_page' );
+				$option['keep_account']       = (int) $this->input->post( 'nlmg_keep_account' );
+				$option['destroy_level']      = (int) $this->input->post( 'nlmg_destroy_level' );
+				$option['assign_to']          = (int) $this->input->post( 'nlmg_assign_to' );
+				$option['display_acceptance'] = (int) $this->input->post( 'nlmg_display_acceptance' );
 				if ( update_option( $this->name . '_option', $option ) ) {
 					$this->add_message( __( 'Option updated.', 'never-let-me-go' ) );
 				} else {
