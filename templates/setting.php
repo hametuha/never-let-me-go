@@ -143,9 +143,9 @@
 							esc_html__( 'If you choose %s, please select user metas to keep. Nothing chosen, every meta will be kept. To delete all meta, keep 1 meaningless meta(e.g. rich_editing)', 'never-let-me-go' ),
 							sprintf( '<strong>%s</strong>', esc_html__( 'Keep all data', 'never-let-me-go' ) )
 						); ?>
-						<?php if ( $this->filtered_keys() ) : ?>
+						<?php if ( $this->filtered_keys() !== $this->meta_to_keep ) : ?>
 							<br />
-							<?php esc_html_e( 'Notice: meta key allow list is registered programmatically. Any settings above will be overridden.', 'never-let-me-go' ); ?>
+							<?php esc_html_e( 'Notice: meta key allow list is filtered programmatically. Any settings above will be overridden.', 'never-let-me-go' ); ?>
 						<?php endif; ?>
 					</p>
 				</td>

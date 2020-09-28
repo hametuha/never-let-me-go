@@ -26,7 +26,6 @@ class Application extends Singleton {
 	 */
 	protected $name = 'never_let_me_go';
 	
-	
 	/**
 	 * nonce用に接頭辞をつけて返す
 	 *
@@ -128,7 +127,7 @@ class Application extends Singleton {
 						'ID'            => $user_id,
 						'user_pass'     => $pass,
 						'user_email'    => $login . '@example.com',
-						'display_name'  => sprintf( __( 'Deleted User %d', 'never-let-me-go' ), $user_id ),
+						'display_name'  => sprintf( __( 'Deleted User #%d', 'never-let-me-go' ), $user_id ),
 						'user_nicename' => $login,
 						'user_url'      => '',
 					] );
@@ -145,6 +144,10 @@ class Application extends Singleton {
 						array( '%s' ),
 						array( '%d' )
 					);
+					// Mask user meta.
+					if ( $this->filtered_keys() ) {
+						$this->delete_user_meta( $user_id );
+					}
 					/**
 					 * nlmg_after_hashing_user
 					 *
@@ -178,6 +181,26 @@ class Application extends Singleton {
 			
 			return wp_delete_user( $user_id, $assign_to );
 		}
+	}
+	
+	/**
+	 * Delete user meta.
+	 *
+	 * @param int $user_id
+	 * @return int Deleted meta records.
+	 */
+	public function delete_user_meta( $user_id ) {
+		global $wpdb;
+		$keys = implode( ',', array_map( function( $key ) use ( $wpdb ) {
+			return $wpdb->prepare( '%s', $key );
+		}, $this->filtered_keys() ) );
+		$sql = <<<SQL
+			DELETE FROM {$wpdb->usermeta}
+			WHERE user_id = %d
+			  AND meta_key NOT IN ({$keys})
+SQL;
+		$sql = $wpdb->prepare( $sql, $user_id );
+		return (int) $wpdb->query( $sql );
 	}
 	
 	/**
@@ -247,7 +270,7 @@ SQL;
 	 * @return string[]
 	 */
 	public function filtered_keys() {
-		return apply_filters( 'nlmg_allowed_keys', [] );
+		return apply_filters( 'nlmg_allowed_keys', $this->meta_to_keep );
 	}
 	
 	/**
