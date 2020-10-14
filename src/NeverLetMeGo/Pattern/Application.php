@@ -156,6 +156,8 @@ class Application extends Singleton {
 					 * @param int $user_id User ID to leave
 					 */
 					do_action( 'nlmg_after_hashing_user', $user_id );
+					// Clear user cache.
+					clean_user_cache( $user_id );
 					// Clear current user.
 					global $current_user;
 					$current_user = null;
