@@ -5,7 +5,7 @@ Tags: delete, account
 Requires at least: 5.0  
 Requires PHP: 5.6  
 Tested up to: 5.5.1  
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 
 If someone wants to leave your WordPress, let them go.
 
@@ -50,6 +50,10 @@ Partially yes. Because "Resign Page" can be split via <code>Page Break</code> bl
 1. Set up your resign option.
 
 ## Changelog
+
+### 1.2.2
+
+* Bugfix: Ensure user cache will be cleared.
 
 ### 1.2.1
 
@@ -99,9 +103,13 @@ Partially yes. Because "Resign Page" can be split via <code>Page Break</code> bl
 
 ## Upgrade Notice
 
+### 1.2.0
+
+Since 1.2.0, PHP 5.6 and over is required.
+
 ### 1.1.0
 
-Since 1.1.0, PHP .4 and over is required.
+Since 1.1.0, PHP 5.4 and over is required.
 
 ### 0.9.0
 

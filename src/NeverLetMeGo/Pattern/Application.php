@@ -158,6 +158,7 @@ class Application extends Singleton {
 					do_action( 'nlmg_after_hashing_user', $user_id );
 					// Clear user cache.
 					clean_user_cache( $user_id );
+					wp_cache_delete( $user_id, 'user_meta' );
 					// Clear current user.
 					global $current_user;
 					$current_user = null;
