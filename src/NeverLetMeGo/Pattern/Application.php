@@ -105,6 +105,7 @@ class Application extends Singleton {
 		 * @action nlmg_before_leave
 		 */
 		do_action( 'nlmg_before_leave', $user_id );
+		$userdata = get_userdata( $user_id );
 		wp_logout();
 		if ( $this->option[ 'keep_account' ] ) {
 			delete_user_meta( $user_id, $wpdb->prefix . 'capabilities' );
@@ -151,9 +152,10 @@ class Application extends Singleton {
 					 *
 					 * Fire action just after hashing user info to remove other info.
 					 *
-					 * @param int $user_id User ID to leave
+					 * @param int      $user_id  User ID to leave
+					 * @param \WP_User $userdata Former user data.
 					 */
-					do_action( 'nlmg_after_hashing_user', $user_id );
+					do_action( 'nlmg_after_hashing_user', $user_id, $userdata );
 					// Clear user cache.
 					clean_user_cache( $user_id );
 					wp_cache_delete( $user_id, 'user_meta' );
@@ -162,6 +164,7 @@ class Application extends Singleton {
 					$current_user = null;
 					break;
 			}
+			return true;
 		} else {
 			require_once ABSPATH . '/wp-admin/includes/user.php';
 			/**
@@ -179,8 +182,19 @@ class Application extends Singleton {
 			 * @since 1.0.0
 			 */
 			$assign_to = apply_filters( 'nlmg_assign_to', $this->option[ 'assign_to' ] ? $this->option[ 'assign_to' ] : null, $user_id );
-
-			return wp_delete_user( $user_id, $assign_to );
+			$result = wp_delete_user( $user_id, $assign_to );
+			if ( $result ) {
+				/**
+				 * nlmg_after_delete_user
+				 *
+				 * Fire action just after deleting user account.
+				 *
+				 * @param int      $user_id  User ID to leave
+				 * @param \WP_User $userdata Former user data.
+				 */
+				do_action( 'nlmg_after_delete_user', $user_id, $userdata );
+			}
+			return $result;
 		}
 	}
 

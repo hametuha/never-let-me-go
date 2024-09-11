@@ -1,11 +1,17 @@
-<?php /* @var $this NeverLetMeGo\Admin */ ?>
+<?php
+/**
+ * Template file for admin screen.
+ */
+/* @var $this NeverLetMeGo\Admin */
+?>
 <div class="wrap nlmg">
     <h2>
         <img class="nlmg-logo" src="<?php echo $this->url ?>dist/img/icon-nlmg.png" align="Never Let Me go" height="32"
-             width="32"/>
+             width="32" alt="" />
 		<?php esc_html_e( 'Never Let Me Go setting', 'never-let-me-go' ); ?>
         <div style="clear:left;"></div>
     </h2>
+
     <form method="post">
 		<?php wp_nonce_field( 'nlmg_option' ); ?>
         <table class="form-table">
@@ -26,10 +32,10 @@
                 </td>
             </tr>
             <tr>
-				<th><label for="nlmg_resign_page"><?php _e( 'Resign Page', 'never-let-me-go' ); ?></label></th>
+				<th><label for="nlmg_resign_page"><?php _e( 'Resign Screen', 'never-let-me-go' ); ?></label></th>
                 <td>
                     <select id="nlmg_resign_page" name="nlmg_resign_page">
-                        <option value="0"<?php selected( $this->option['resign_page'] == 0 ) ?>><?php esc_html_e( 'No resign page', 'never-let-me-go' ); ?></option>
+                        <option value="0"<?php selected( $this->option['resign_page'], 0 ) ?>><?php esc_html_e( 'Profile page on WP admin', 'never-let-me-go' ); ?></option>
 						<?php
 						$query = new WP_Query( 'post_type=page&post_status=any&posts_per_page=0' );
 						if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
@@ -39,9 +45,9 @@
 						wp_reset_postdata(); ?>
                     </select>
                     <p class="description">
-						<?php esc_html_e( 'Resign page means the static page which have form to resign.', 'never-let-me-go' ) ?>
-                        <br/>
-						<?php esc_html_e( 'If not specified, user can delete himself on profile page of admin panel.', 'never-let-me-go' ); ?>
+						<?php esc_html_e( 'This option specifies the way that the user leaves your site.', 'never-let-me-go' ); ?>
+						<?php esc_html_e( 'If you choose static page, you have to create paged contents. This is a legacy setting.', 'never-let-me-go' ) ?>
+						<?php esc_html_e( 'The resign button is available, so you can create a resign page with block editor.', 'never-let-me-go' ) ?>
                     </p>
                 </td>
             </tr>
@@ -79,7 +85,7 @@
 							__( 'Delete all data', 'never-let-me-go' )
 						) ); ?>
                         <br/>
-						<?php esc_html_e( 'To delete related information, see description below.<br />Please be careful with your country\'s low on other\'s privacy.', 'never-let-me-go' ); ?>
+						<?php esc_html_e( 'To delete related information, see description below. Please be careful with your country\'s low on other\'s privacy.', 'never-let-me-go' ); ?>
                     </p>
                 </td>
             </tr>
@@ -170,6 +176,7 @@
         <span class="dashicons dashicons-welcome-write-blog"></span> <?php esc_html_e( 'How to create Resign Page', 'never-let-me-go' ); ?>
     </h3>
     <p class="description">
+		<strong><?php esc_html_e( '[NOTICE] Legacy Setting', 'never-let-me-go' ); ?></strong><br />
 		<?php esc_html_e( 'If you choose some resign page to publicly display, you can make show message before resigning and after.', 'never-let-me-go' ); ?>
     </p>
     <ol class="nlmg-list">

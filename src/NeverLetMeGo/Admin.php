@@ -102,12 +102,12 @@ class Admin extends Application {
 	public function enqueueScripts( $page ) {
 		if ( 'settings_page_nlmg' == $page ) {
 			wp_enqueue_style( 'nlmg-ajax' );
-			wp_enqueue_script( 'nlmg-admin' );
 			wp_localize_script( 'nlmg-admin', 'NLMG', array(
 				'endpoint'  => admin_url( 'admin-ajax.php?action=nlmg_user_search' ),
 				'noResults' => __( 'No results', 'never-let-me-go' ),
 				'found'     => __( '%% found.', 'never-let-me-go' ),
 			) );
+			wp_enqueue_script( 'nlmg-admin' );
 		}
 	}
 

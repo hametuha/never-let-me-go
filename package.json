@@ -7,7 +7,6 @@
 		"start": "wp-env start",
 		"update": "docker compose down && wp-env start --update",
 		"stop": "docker compose down && wp-env stop",
-		"watch": "gulp watch",
 		"package": "gulp build && npm run build:css && npm run gulp dump",
 		"gulp": "gulp",
 		"env": "wp-env",
@@ -17,11 +16,13 @@
 		"build:image": "gulp build:image",
 		"build:js": "gulp build:js",
 		"build:css": "sass --style=compressed ./assets/scss/:./dist/css/ && postcss ./dist/css/**/*.css --use autoprefixer --replace",
+		"dump": "gulp dump",
 		"lint": "npm run lint:js && npm run lint:css",
 		"lint:js": "eslint ./assets/js",
 		"lint:css": "stylelint ./assets/scss/",
 		"fix:js": "eslint --fix './assets/js/**/*.js'",
-		"fix:css": "stylelint --fix assets/scss"
+		"fix:css": "stylelint --fix assets/scss",
+		"watch": "npm-watch"
 	},
 	"repository": {
 		"type": "git",
@@ -57,6 +58,7 @@
 		"gulp-sourcemaps": "^2.2.0",
 		"gulp-uglify": "^3.0.2",
 		"imagemin-pngquant": "^7.0.0",
+		"npm-watch": "^0.13.0",
 		"postcss-cli": "^11.0.0",
 		"sass": "^1.78.0",
 		"stylelint": "^14.16.1",
@@ -66,5 +68,44 @@
 	},
 	"volta": {
 		"node": "16.20.2"
+	},
+	"watch": {
+		"build:css": {
+			"extensions": "scss",
+			"patterns": [
+				"assets/scss"
+			]
+		},
+		"build:js": {
+			"extensions": "js",
+			"patterns": [
+				"assets/js"
+			]
+		},
+		"dump": {
+			"extensions": "js,css",
+			"patterns": [
+				"dist/js",
+				"dist/css"
+			]
+		},
+		"build:image": {
+			"extensions": "jpg,jpeg,gif,png,svg",
+			"patterns": [
+				"assets/image"
+			]
+		},
+		"lint:css": {
+			"extensions": "scss",
+			"patterns": [
+				"assets/scss"
+			]
+		},
+		"lint:js": {
+			"extensions": "js",
+			"patterns": [
+				"assets/js"
+			]
+		}
 	}
 }

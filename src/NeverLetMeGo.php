@@ -23,6 +23,8 @@ class NeverLetMeGo extends \NeverLetMeGo\Pattern\Application {
 		}
 		// Register script
 		add_action( 'init', [ $this, 'register_assets' ] );
+		// Register block
+		\NeverLetMeGo\ResignButton::getInstance();
 	}
 
 	/**
@@ -49,13 +51,13 @@ class NeverLetMeGo extends \NeverLetMeGo\Pattern\Application {
 			$version = $dep['hash'];
 			switch ( $dep['ext'] ) {
 				case 'css':
-					wp_enqueue_style( $dep['handle'], $url, $dep['deps'], $version, 'screen' );
+					wp_register_style( $dep['handle'], $url, $dep['deps'], $version, 'screen' );
 					break;
 				case 'js':
 					$arg = apply_filters( 'nlmg_js_args', [
 						'in_footer' => $dep['footer'],
 					], $dep['handle'] );
-					wp_enqueue_script( $dep['handle'], $url, $dep['deps'], $version, $arg );
+					wp_register_script( $dep['handle'], $url, $dep['deps'], $version, $arg );
 					break;
 			}
 		}

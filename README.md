@@ -10,12 +10,12 @@ Stable tag: nightly
 If someone wants to leave your WordPress, let them go.
 
 <!-- only:github/ -->
-[![Build Status](https://travis-ci.org/fumikito/Never-Let-Me-Go.svg)](https://travis-ci.org/fumikito/Never-Let-Me-Go)
+![Buidl Statsu](https://github.com/hametuha/never-let-me-got/.github/workflows/wordpress.yml/badge.svg)
 <!-- /only:github -->
 
 ## Description
 
-WordPress can allow your user to register by themself, but has no function to delete their own account.
+WordPress can allow your user to register by themselves, but has no function to delete their own account.
 
 You can also create **Resign Page** which displays message to your customer.
 

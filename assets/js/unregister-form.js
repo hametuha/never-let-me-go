@@ -5,14 +5,14 @@
  * @deps jquery
  */
 
-( function( $ ) {
-	'use strict';
+const $ = jQuery;
 
-	$( '#nlmg-acceptance' ).on( 'click', function() {
+$( document ).ready( function () {
+	$( '#nlmg-acceptance' ).on( 'click', function () {
 		if ( this.checked ) {
 			$( '#nlmg-resign-button' ).attr( 'disabled', null );
 		} else {
 			$( '#nlmg-resign-button' ).attr( 'disabled', true );
 		}
 	} );
-}( jQuery ) );
+} );

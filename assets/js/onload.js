@@ -4,15 +4,17 @@
  * @handle nlmg-admin
  * @deps jquery-ui-autocomplete
  */
-jQuery( document ).ready( function( $ ) {
-	'use strict';
+
+const $ = jQuery;
+
+$( document ).ready( function() {
 
 	// Incremental search
 	const $input = $( '#nlmg_assign_to' );
 	$input.autocomplete( {
 		minLength: 1,
 		source: NLMG.endpoint,
-		focus( event, ui ) {
+		focus() {
 			return false;
 		},
 		select( event, ui ) {
