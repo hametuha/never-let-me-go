@@ -52,6 +52,12 @@ Partially yes. Because "Resign Page" can be split via <code>Page Break</code> bl
 
 ## Changelog
 
+### 2.0.0
+
+- **Notice** PHP requirements is now PHP 7.2 and over.
+- **Notice** WordPress requirements is now WordPress 5.9 and over.
+- Add block editor support.
+
 ### 1.2.2
 
 * Bugfix: Ensure user cache will be cleared.

@@ -34,7 +34,13 @@ registerBlockType( 'nlmg/resign-button', {
 		const templates = [
 			[
 				'core/buttons',
-				{ align: 'center' },
+				{
+					align: 'center',
+					layout: {
+						type: 'flex',
+						justifyContent: 'center',
+					},
+				},
 				[
 					[ 'core/button', { text: __( 'Resign', 'nlmg' ) } ],
 				],
@@ -99,7 +105,7 @@ registerBlockType( 'nlmg/resign-login', {
 		const templates = [
 			[
 				'core/paragraph',
-				{ text: __( 'This page is only for logged-in users', 'never-let-me-go' ) },
+				{ content: __( 'This page is only for logged-in users', 'never-let-me-go' ) },
 			],
 		];
 		return (
