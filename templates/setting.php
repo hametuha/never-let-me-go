@@ -170,7 +170,7 @@
         <span class="dashicons dashicons-welcome-write-blog"></span> <?php esc_html_e( 'How to create Resign Page', 'never-let-me-go' ); ?>
     </h3>
     <p class="description">
-		<?php esc_html_e( 'If you choose some resign page to publicly display, you can make show messag before resigning and after.', 'never-let-me-go' ); ?>
+		<?php esc_html_e( 'If you choose some resign page to publicly display, you can make show message before resigning and after.', 'never-let-me-go' ); ?>
     </p>
     <ol class="nlmg-list">
         <li>

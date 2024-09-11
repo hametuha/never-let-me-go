@@ -1,54 +1,39 @@
-var gulp = require( 'gulp' ),
-	fs = require( 'fs' ),
-	$ = require( 'gulp-load-plugins' )(),
-	pngquant = require( 'imagemin-pngquant' );
+const gulp = require( 'gulp' );
+const $ = require( 'gulp-load-plugins' )();
+const pngquant = require( 'imagemin-pngquant' );
+const webpack = require( 'webpack-stream' );
+const webpackBundle = require( 'webpack' );
+const named = require( 'vinyl-named' );
+const { dumpSetting } = require( '@kunoichi/grab-deps' );
 
 
-// Sass tasks
-gulp.task( 'sass', function () {
-	return gulp.src( [ './assets/scss/**/*.scss' ] )
-		.pipe( $.plumber( {
-			errorHandler: $.notify.onError( '<%= error.message %>' )
-		} ) )
-		.pipe( $.sourcemaps.init( { loadMaps: true } ) )
-		.pipe( $.sassGlob() )
-		.pipe( $.sass( {
-			errLogToConsole: true,
-			outputStyle: 'compressed',
-			includePaths: [
-				'./assets/scss'
-			]
-		} ) )
-		.pipe( $.autoprefixer() )
-		.pipe( $.sourcemaps.write( './map' ) )
-		.pipe( gulp.dest( './dist/css' ) );
+// グローバルフラグ
+let plumber = true;
+
+// エラーフラグを変更
+gulp.task( 'noplumber', ( done ) => {
+	plumber = false;
+	done();
 } );
 
-
-// Minify All
+// Package jsx.
 gulp.task( 'js', function () {
-	return gulp.src( [ './assets/js/**/*.js' ] )
-		.pipe( $.sourcemaps.init( {
-			loadMaps: true
-		} ) )
-		.pipe( $.plumber( {
+	let task = gulp.src( './assets/js/**/*.js' );
+	if ( plumber ) {
+		task = task.pipe( $.plumber( {
 			errorHandler: $.notify.onError( '<%= error.message %>' )
+		} ) );
+	}
+	return task
+		.pipe( named( ( file ) => {
+			return file.relative.replace(/\.[^\.]+$/, '');
 		} ) )
-		.pipe( $.uglify() )
-		.pipe( $.sourcemaps.write( './map' ) )
-		.pipe( gulp.dest( './dist/js/' ) );
-} );
-
-
-// JS Hint
-gulp.task( 'jshint', function () {
-	return gulp.src( [ './assets/js/**/*.js' ] )
-		.pipe( $.jshint( './assets/.jshintrc' ) )
-		.pipe( $.jshint.reporter( 'jshint-stylish' ) );
+		.pipe( webpack( require( './webpack.config.js' ), webpackBundle ) )
+		.pipe( gulp.dest( './dist/js' ) );
 } );
 
 // Image min
-gulp.task( 'imagemin', function () {
+gulp.task( 'build:image', function () {
 	return gulp.src( './assets/img/**/*' )
 		.pipe( $.imagemin( {
 			progressive: true,
@@ -58,19 +43,12 @@ gulp.task( 'imagemin', function () {
 		.pipe( gulp.dest( './dist/img' ) );
 } );
 
-
-// watch
-gulp.task( 'watch', function () {
-	// Make SASS
-	gulp.watch( './assets/scss/**/*.scss', gulp.task( 'sass' ) );
-	// JS
-	gulp.watch( [ './assets/js/**/*.js' ], gulp.series( 'js', 'jshint' ) );
-	// Minify Image
-	gulp.watch( './assets/img/**/*', gulp.task( 'imagemin' ) );
+// Dump wp-dependencies.json
+gulp.task( 'dump', ( done ) => {
+	dumpSetting( 'dist' );
+	done();
 } );
 
-// Build
-gulp.task( 'build', gulp.parallel( 'js', 'sass', 'imagemin' ) );
-
-// Default Tasks
-gulp.task( 'default', gulp.task( 'watch' ) );
+// Build commands.
+gulp.task( 'build:js', gulp.series( 'noplumber', 'js' ) );
+gulp.task( 'build', gulp.parallel( 'build:js', 'build:image' ) );

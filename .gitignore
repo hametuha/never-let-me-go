@@ -11,3 +11,4 @@ package-lock.json
 /wordpress/
 .wp_install_path
 compose.yaml
+wp-dependencies.json

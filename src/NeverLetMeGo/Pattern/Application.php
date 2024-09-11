@@ -3,7 +3,6 @@
 namespace NeverLetMeGo\Pattern;
 
 
-use NeverLetMeGo\Utility\i18n;
 use NeverLetMeGo\Utility\Input;
 
 /**
@@ -11,7 +10,6 @@ use NeverLetMeGo\Utility\Input;
  *
  * @package NeverLetMeGo\Pattern
  * @property-read Input $input
- * @property-read i18n $i18n
  * @property-read string $nonce_key
  * @property-read array $option
  * @property-read string $dir
@@ -20,12 +18,12 @@ use NeverLetMeGo\Utility\Input;
  * @property-read string[] $meta_to_keep
  */
 class Application extends Singleton {
-	
+
 	/**
 	 * @var string
 	 */
 	protected $name = 'never_let_me_go';
-	
+
 	/**
 	 * nonce用に接頭辞をつけて返す
 	 *
@@ -36,7 +34,7 @@ class Application extends Singleton {
 	public function nonce_action( $action ) {
 		return $this->name . '_' . $action;
 	}
-	
+
 	/**
 	 * wp_nonce_fieldのエイリアス
 	 *
@@ -45,7 +43,7 @@ class Application extends Singleton {
 	public function nonce_field( $action ) {
 		wp_nonce_field( $this->nonce_action( $action ), $this->nonce_key );
 	}
-	
+
 	/**
 	 * Delete current_user account
 	 *
@@ -53,10 +51,10 @@ class Application extends Singleton {
 	 */
 	public function delete_current_user() {
 		$user_id = get_current_user_id();
-		
+
 		return $this->delete_user( $user_id );
 	}
-	
+
 	/**
 	 * Delete user account
 	 *
@@ -181,11 +179,11 @@ class Application extends Singleton {
 			 * @since 1.0.0
 			 */
 			$assign_to = apply_filters( 'nlmg_assign_to', $this->option[ 'assign_to' ] ? $this->option[ 'assign_to' ] : null, $user_id );
-			
+
 			return wp_delete_user( $user_id, $assign_to );
 		}
 	}
-	
+
 	/**
 	 * Delete user meta.
 	 *
@@ -205,7 +203,7 @@ SQL;
 		$sql = $wpdb->prepare( $sql, $user_id );
 		return (int) $wpdb->query( $sql );
 	}
-	
+
 	/**
 	 * Get redirect URL after remove account
 	 *
@@ -227,7 +225,7 @@ SQL;
 		 */
 		return apply_filters( 'nlmg_redirect_link', wp_login_url(), $user_id );
 	}
-	
+
 	/**
 	 * Get confirm label
 	 *
@@ -246,7 +244,7 @@ SQL;
 		 */
 		return apply_filters( 'nlmg_resign_confirm_label', __( 'Are you sure to delete account?', 'never-let-me-go' ), get_current_user_id() );
 	}
-	
+
 	/**
 	 * Get available meta keys.
 	 *
@@ -266,7 +264,7 @@ SQL;
 		}
 		return $keys;
 	}
-	
+
 	/**
 	 * Get filter keys.
 	 *
@@ -275,7 +273,7 @@ SQL;
 	public function filtered_keys() {
 		return apply_filters( 'nlmg_allowed_keys', $this->meta_to_keep );
 	}
-	
+
 	/**
 	 * Getter
 	 *
@@ -306,7 +304,7 @@ SQL;
 						$option[ $key ] = $val;
 					}
 				}
-				
+
 				return $option;
 			case 'meta_to_keep':
 				return array_filter( explode( ',', $this->option['meta_to_keep'] ) );

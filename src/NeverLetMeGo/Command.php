@@ -11,7 +11,7 @@ use WP_CLI\Iterators\Table;
  * @since 1.2.0
  */
 class Command extends \WP_CLI_Command {
-	
+
 	/**
 	 * Create dummy users from CSV.
 	 *
@@ -30,6 +30,7 @@ class Command extends \WP_CLI_Command {
 	 * Dry run before actually importing.
 	 *
 	 * @synopsis [--file=<file>] [--dry-run]
+	 * @subcommand import-dummy-users
 	 * @param array $args
 	 * @param array $assoc
 	 */
@@ -101,7 +102,7 @@ class Command extends \WP_CLI_Command {
 			\WP_CLI::success( sprintf( '%d uesrs imported.', $imported ) );
 		}
 	}
-	
+
 	/**
 	 * Get available meta keys.
 	 *
@@ -118,7 +119,7 @@ class Command extends \WP_CLI_Command {
 		}
 		$table->display();
 	}
-	
+
 	/**
 	 * Detect if property is user's default.
 	 *
