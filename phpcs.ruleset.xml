@@ -2,6 +2,9 @@
 <ruleset name="WordPress Coding Standards for Plugins">
 	<description>Generally-applicable sniffs for WordPress plugins</description>
 
+	<arg name="colors" />
+	<arg value="ps" />
+
 	<rule ref="WordPress-Core">
 		<exclude name="Generic.Files.LowercasedFilename" />
 		<exclude name="Generic.Commenting.DocComment.ShortNotCapital" />
@@ -18,4 +21,6 @@
 
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/wordpress/*</exclude-pattern>
+	<exclude-pattern>*/tests/*</exclude-pattern>
 </ruleset>

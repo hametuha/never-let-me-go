@@ -2,10 +2,10 @@
 
 Contributors: Takahashi_Fumiki,hametuha  
 Tags: delete, account  
-Requires at least: 5.0  
-Requires PHP: 5.6  
-Tested up to: 5.5.1  
-Stable tag: 1.2.2
+Requires at least: 5.9  
+Requires PHP: 7.2  
+Tested up to: 6.6  
+Stable tag: nightly
 
 If someone wants to leave your WordPress, let them go.
 
@@ -36,6 +36,7 @@ Altenatively, you can install it manually like below:
 ### How To Contribute
 
 We host plugin on [github](https://github.com/fumikito/Never-Let-Me-Go) and any issues and pull requests are welcomed!
+See [Contributing.md](https://github.com/hametuha/never-let-me-go/blob/master/Contributing.md) for more details.
 
 ### Does this plugin is ready for Gutenberg?
 

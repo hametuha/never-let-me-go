@@ -1,10 +1,13 @@
 .svn
 .DS_Store
-vendor/
-node_modules/
-dist/
+.idea
+/vendor/
+/node_modules/
+/dist/
+/tests/
 composer.lock
 readme.txt
-never-let-me-go.mo
 package-lock.json
 /wordpress/
+.wp_install_path
+compose.yaml

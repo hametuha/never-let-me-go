@@ -1,14 +1,24 @@
 {
 	"core": null,
-	"plugins": [
-		"."
-	],
-	"themes": [
-		"https://downloads.wordpress.org/theme/twentytwenty.latest-stable.zip"
-	],
 	"config": {
 		"WP_DEBUG": true,
-		"SCRIPT_DEBUG": true,
-		"JETPACK_DEV_DEBUG": true
+		"WP_DEBUG_LOG": true,
+		"WP_DEBUG_DISPLAY": true,
+		"WPMS_ON": true,
+		"WPMS_SMTP_HOST": "mailhog",
+		"WPMS_SMTP_PORT": 1025,
+		"WPMS_MAILER": "smtp"
+	},
+	"plugins": [
+		".",
+		"https://downloads.wordpress.org/plugin/query-monitor.latest-stable.zip",
+		"https://downloads.wordpress.org/plugin/wp-mail-smtp.zip"
+	],
+	"themes": [
+		"https://downloads.wordpress.org/theme/twentytwenty.latest-stable.zip",
+		"https://downloads.wordpress.org/theme/twentytwentyfour.latest-stable.zip"
+	],
+	"lifecycleScripts": {
+		"afterStart": "bash bin/after-start-scripts.sh"
 	}
 }
