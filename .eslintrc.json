@@ -1,0 +1,16 @@
+{
+	"parser": "@babel/eslint-parser",
+
+	"env": {
+		"browser": true,
+		"jquery": true
+	},
+	"globals": {
+		"NLMG": true
+	},
+	"extends": [ "plugin:@wordpress/eslint-plugin/recommended-with-formatting" ],
+	"rules": {
+		"react-hooks/rules-of-hooks": 0,
+		"camelcase": 0
+	}
+}

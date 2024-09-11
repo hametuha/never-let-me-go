@@ -1,0 +1,24 @@
+/*!
+ * Resing block CSS for  editor.
+ *
+ * @handle nlmg-resign-block-editor
+ * @deps nlmg-resign-block
+ */
+
+.nlmg-resign-block-label {
+	display: inline-block;
+	padding: 0.25em 0.5em;
+	line-height: 1;
+	background: #000;
+	color: #fff;
+	opacity: 0.5;
+}
+
+.wp-block-nlmg-resign-login {
+	margin-top: var(--wp--style--block-gap, 40px);
+}
+
+.wp-block-nlmg-resign-block {
+	padding: 10px;
+	border: 1px dashed rgba(0, 0, 0, 0.3);
+}

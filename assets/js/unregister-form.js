@@ -1,13 +1,13 @@
 /*!
  * Unregister form of Never Let Me Go helper.
  *
- * @package nlmg
+ * @handle nlmg-form
+ * @deps jquery
  */
 
-( function ( $ ) {
+const $ = jQuery;
 
-	'use strict';
-
+$( document ).ready( function() {
 	$( '#nlmg-acceptance' ).on( 'click', function() {
 		if ( this.checked ) {
 			$( '#nlmg-resign-button' ).attr( 'disabled', null );
@@ -15,6 +15,4 @@
 			$( '#nlmg-resign-button' ).attr( 'disabled', true );
 		}
 	} );
-
-
-} )( jQuery );
+} );

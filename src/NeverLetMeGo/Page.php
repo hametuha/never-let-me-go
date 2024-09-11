@@ -11,12 +11,12 @@ use NeverLetMeGo\Pattern\Application;
  * @package NeverLetMeGo
  */
 class Page extends Application {
-	
+
 	/**
 	 * @var \WP_Error
 	 */
 	protected $errors = null;
-	
+
 	/**
 	 * Constructor
 	 *
@@ -26,21 +26,9 @@ class Page extends Application {
 		if ( $this->option[ 'enable' ] && $this->option[ 'resign_page' ] ) {
 			// Process resign
 			add_action( 'template_redirect', array( $this, 'templateRedirect' ) );
-			// Register script
-			add_action( 'init', [ $this, 'registerAssets' ] );
 		}
 	}
-	
-	/**
-	 * Register assets.
-	 */
-	public function registerAssets() {
-		wp_register_script( 'nlmg-form', $this->url . 'dist/js/unregister-form.js', [ 'jquery' ], $this->version, true );
-		wp_register_style( 'nlmg-form', $this->url . 'dist/css/public.css', [], $this->version );
-	}
-	
-	
-	
+
 	/**
 	 * Public Hook for template redirect
 	 */
@@ -87,19 +75,7 @@ class Page extends Application {
 			$result  = $this->delete_current_user();
 			if ( is_wp_error( $result ) ) {
 				$this->errors = $result;
-				// Add form to resign page.
-				wp_enqueue_style( 'nlmg-form' );
 			} else {
-				// Successfully deleted.
-				/**
-				 * Executed after user has been deleted.
-				 *
-				 * @param int $user_id
-				 *
-				 * @since 0.9.0
-				 *
-				 */
-				do_action( 'never_let_me_go', $user_id );
 				// If paged, show 2nd page. If not, redirect to login page.
 				if ( count( preg_split( '/<!--*?nextpage*?-->/', get_queried_object()->post_content ) ) >= 2 ) {
 					add_filter( 'the_content', array( $this, 'showThankYou' ), 1 );
@@ -113,7 +89,7 @@ class Page extends Application {
 			add_filter( 'the_content', array( $this, 'showResignForm' ) );
 		}
 	}
-	
+
 	/**
 	 * Filter hook for resign page
 	 *
@@ -159,10 +135,10 @@ class Page extends Application {
 			 * @return string
 			 */
 			$label = apply_filters( 'nlmg_resign_button_label', __( 'Delete Account', 'never-let-me-go' ), get_current_user_id() );
-			
+
 			// UI Class.
 			$classes = apply_filters( 'nlmg_resign_button_class', [ 'button-primary', 'button-nlmg' ] );
-			
+
 			// Confirmation UI
 			if ( $this->option['display_acceptance'] ) {
 				$onclick = ' disabled';
@@ -175,7 +151,7 @@ class Page extends Application {
 				$confirm = $this->confirm_label();
 				$onclick = $confirm ? sprintf( ' onclick="return confirm(\'%s\')"', esc_js( $confirm ) ) : '';
 			}
-			
+
 			$classes = esc_attr( implode( ' ', $classes ) );
 			$form    = <<<HTML
 				<form id="nlmg-resign-form" method="post" action="{$url}">
@@ -189,11 +165,11 @@ HTML;
 			$content .= $form;
 			$content = apply_filters( 'nlmg_the_content', $content, 'resign' );
 		}
-		
+
 		return $content;
 	}
-	
-	
+
+
 	/**
 	 * Filter hook for functions page.
 	 *
@@ -226,10 +202,10 @@ HTML;
 			 */
 			$content = apply_filters( 'nlmg_the_content', $content, 'thank_you' );
 		}
-		
+
 		return $content;
 	}
-	
+
 	/**
 	 * Empty pagination.
 	 *
@@ -241,7 +217,7 @@ HTML;
 		if ( is_preview() ) {
 			return $pagination;
 		}
-		
+
 		return '';
 	}
 }

@@ -5,7 +5,9 @@ namespace NeverLetMeGo;
 
 use NeverLetMeGo\Pattern\Application;
 
-
+/**
+ * Setting screen controller.
+ */
 class Admin extends Application {
 
 	/**
@@ -59,6 +61,7 @@ class Admin extends Application {
 				$option                       = [];
 				$option['enable']             = (int) $this->input->post( 'nlmg_enable' );
 				$option['resign_page']        = (int) $this->input->post( 'nlmg_resign_page' );
+				$option['trash_bin']          = (int) $this->input->post( 'nlmg_trash_bin' );
 				$option['keep_account']       = (int) $this->input->post( 'nlmg_keep_account' );
 				$option['destroy_level']      = (int) $this->input->post( 'nlmg_destroy_level' );
 				$option['assign_to']          = (int) $this->input->post( 'nlmg_assign_to' );
@@ -99,13 +102,13 @@ class Admin extends Application {
 	 */
 	public function enqueueScripts( $page ) {
 		if ( 'settings_page_nlmg' == $page ) {
-			wp_enqueue_script( 'nlmg-admin', $this->url . 'dist/js/onload.js', array( 'jquery-ui-autocomplete' ), $this->version, true );
+			wp_enqueue_style( 'nlmg-ajax' );
 			wp_localize_script( 'nlmg-admin', 'NLMG', array(
 				'endpoint'  => admin_url( 'admin-ajax.php?action=nlmg_user_search' ),
 				'noResults' => __( 'No results', 'never-let-me-go' ),
 				'found'     => __( '%% found.', 'never-let-me-go' ),
 			) );
-			wp_enqueue_style( 'nlmg-ajax', $this->url . 'dist/css/admin.css', array(), $this->version );
+			wp_enqueue_script( 'nlmg-admin' );
 		}
 	}
 

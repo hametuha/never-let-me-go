@@ -2,20 +2,20 @@
 
 Contributors: Takahashi_Fumiki,hametuha  
 Tags: delete, account  
-Requires at least: 5.0  
-Requires PHP: 5.6  
-Tested up to: 5.5.1  
-Stable tag: 1.2.2
+Requires at least: 5.9  
+Requires PHP: 7.2  
+Tested up to: 6.6  
+Stable tag: nightly
 
 If someone wants to leave your WordPress, let them go.
 
 <!-- only:github/ -->
-[![Build Status](https://travis-ci.org/fumikito/Never-Let-Me-Go.svg)](https://travis-ci.org/fumikito/Never-Let-Me-Go)
+![Buidl Statsu](https://github.com/hametuha/never-let-me-got/.github/workflows/wordpress.yml/badge.svg)
 <!-- /only:github -->
 
 ## Description
 
-WordPress can allow your user to register by themself, but has no function to delete their own account.
+WordPress can allow your user to register by themselves, but has no function to delete their own account.
 
 You can also create **Resign Page** which displays message to your customer.
 
@@ -36,6 +36,7 @@ Altenatively, you can install it manually like below:
 ### How To Contribute
 
 We host plugin on [github](https://github.com/fumikito/Never-Let-Me-Go) and any issues and pull requests are welcomed!
+See [Contributing.md](https://github.com/hametuha/never-let-me-go/blob/master/Contributing.md) for more details.
 
 ### Does this plugin is ready for Gutenberg?
 
@@ -50,6 +51,12 @@ Partially yes. Because "Resign Page" can be split via <code>Page Break</code> bl
 1. Set up your resign option.
 
 ## Changelog
+
+### 2.0.0
+
+- **Notice** PHP requirements is now PHP 7.2 and over.
+- **Notice** WordPress requirements is now WordPress 5.9 and over.
+- Add block editor support.
 
 ### 1.2.2
 

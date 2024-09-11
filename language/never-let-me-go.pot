@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Never Let Me Go\n"
-"POT-Creation-Date: 2020-09-28 15:23+0900\n"
+"POT-Creation-Date: 2024-09-12 03:00+0900\n"
 "PO-Revision-Date: 2017-01-07 22:44+0900\n"
 "Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
 "Language-Team: Hametuha INC. <info@takahashifumiki.com>\n"
@@ -10,13 +10,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
@@ -24,94 +24,91 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: wordpress\n"
 
-#: never-let-me-go.php:43
-msgid "Composer auto loader is missing. Did you run composer install?"
-msgstr ""
-
-#: never-let-me-go.php:61
-#, php-format
-msgid ""
-"<strong>Plugin Error: </strong>Never Let Me Go requires PHP 5.6 and over, "
-"but your PHP is %1$s. Please consider updating your PHP or downgrading this "
-"plugin to <a href=\"%2$s\">0.8.2</a>."
-msgstr ""
-
-#: src/NeverLetMeGo/Admin.php:41 templates/setting.php:6
+#: src/NeverLetMeGo/Admin.php:43 templates/setting.php:11
 msgid "Never Let Me Go setting"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:42
+#: src/NeverLetMeGo/Admin.php:44
 msgid "Resign Setting"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:68
+#: src/NeverLetMeGo/Admin.php:71
 msgid "Option updated."
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:70
+#: src/NeverLetMeGo/Admin.php:73
 msgid "Option failed to updated."
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:105
+#: src/NeverLetMeGo/Admin.php:108
 msgid "No results"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:106
+#: src/NeverLetMeGo/Admin.php:109
 #, php-format
 msgid "%% found."
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:128
+#: src/NeverLetMeGo/Admin.php:131
 #, php-format
 msgid ""
 "<strong>[Never Let Me Go] Plugin is active but features are not enabled. "
 "Please go to <a href=\"%s\">setting page</a>.</strong>"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:167
+#: src/NeverLetMeGo/Admin.php:170
 msgid "Support"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:168
+#: src/NeverLetMeGo/Admin.php:171
 msgid "Settings"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:189 src/NeverLetMeGo/Page.php:161
+#: src/NeverLetMeGo/Admin.php:192 src/NeverLetMeGo/Page.php:137
 msgid "Delete Account"
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:191
+#: src/NeverLetMeGo/Admin.php:194
 msgid "You can delete your account by putting the button below."
 msgstr ""
 
-#: src/NeverLetMeGo/Admin.php:195
+#: src/NeverLetMeGo/Admin.php:198
 msgid "Delete"
 msgstr ""
 
-#: src/NeverLetMeGo/Page.php:130
+#: src/NeverLetMeGo/Page.php:106
 msgctxt "error_message"
 msgid "Error"
 msgstr ""
 
-#: src/NeverLetMeGo/Page.php:171
+#: src/NeverLetMeGo/Page.php:147
 msgid "I have consented to deleting my account."
 msgstr ""
 
-#: src/NeverLetMeGo/Pattern/Application.php:71
+#: src/NeverLetMeGo/Pattern/Application.php:67
+#: src/NeverLetMeGo/ResignButton.php:81
+msgid "Failed to delete account."
+msgstr ""
+
+#: src/NeverLetMeGo/Pattern/Application.php:88
 msgid "User doesn't exist."
 msgstr ""
 
-#: src/NeverLetMeGo/Pattern/Application.php:76
+#: src/NeverLetMeGo/Pattern/Application.php:92
 msgid "You are administrator!"
 msgstr ""
 
-#: src/NeverLetMeGo/Pattern/Application.php:130
+#: src/NeverLetMeGo/Pattern/Application.php:146
 #, php-format
 msgid "Deleted User #%d"
 msgstr ""
 
-#: src/NeverLetMeGo/Pattern/Application.php:244
+#: src/NeverLetMeGo/Pattern/Application.php:278
 msgid "Are you sure to delete account?"
+msgstr ""
+
+#: src/NeverLetMeGo/TranshBin.php:73
+msgid "Leaving User"
 msgstr ""
 
 #: src/NeverLetMeGo/WooCommerce.php:57
@@ -122,68 +119,86 @@ msgstr ""
 msgid "You have active subscriptions. Please deactivate them before leaving."
 msgstr ""
 
-#: templates/setting.php:14
+#: templates/setting.php:20
 msgid "Allow user to self delete"
 msgstr ""
 
-#: templates/setting.php:19
+#: templates/setting.php:25
 msgid "Disabled"
 msgstr ""
 
-#: templates/setting.php:24
+#: templates/setting.php:30
 msgid "Enabled"
 msgstr ""
 
-#: templates/setting.php:29
-msgid "Resign Page"
+#: templates/setting.php:35
+msgid "Resign Screen"
 msgstr ""
 
-#: templates/setting.php:32
-msgid "No resign page"
+#: templates/setting.php:38
+msgid "Profile page on WP admin"
 msgstr ""
 
-#: templates/setting.php:42
-msgid "Resign page means the static page which have form to resign."
-msgstr ""
-
-#: templates/setting.php:44
-msgid ""
-"If not specified, user can delete himself on profile page of admin panel."
+#: templates/setting.php:48
+msgid "This option specifies the way that the user leaves your site."
 msgstr ""
 
 #: templates/setting.php:49
+msgid ""
+"If you choose static page, you have to create paged contents. This is a "
+"legacy setting."
+msgstr ""
+
+#: templates/setting.php:50
+msgid ""
+"The resign button is available, so you can create a resign page with block "
+"editor."
+msgstr ""
+
+#: templates/setting.php:55
 msgid "How to Consent"
 msgstr ""
 
-#: templates/setting.php:52
+#: templates/setting.php:58
 msgid "Confirm with Dialog"
 msgstr ""
 
-#: templates/setting.php:53
+#: templates/setting.php:59
 msgid "Display consent checkbox"
 msgstr ""
 
-#: templates/setting.php:64
-msgid "Resign Way"
-msgstr ""
-
-#: templates/setting.php:69
-msgid "Normal"
-msgstr ""
-
-#: templates/setting.php:69 templates/setting.php:79 templates/setting.php:98
-msgid "Delete all data"
+#: templates/setting.php:70
+msgid "Trash bin"
 msgstr ""
 
 #: templates/setting.php:74
+msgid ""
+"When a number greater than 0 is entered, the user attempting to leave will "
+"be assigned the role labeled ‘Leaving User’, and their account will be "
+"deleted after the specified number of days has passed."
+msgstr ""
+
+#: templates/setting.php:79
+msgid "Deletion Way"
+msgstr ""
+
+#: templates/setting.php:84
+msgid "Normal"
+msgstr ""
+
+#: templates/setting.php:84 templates/setting.php:94 templates/setting.php:113
+msgid "Delete all data"
+msgstr ""
+
+#: templates/setting.php:89
 msgid "Advanced"
 msgstr ""
 
-#: templates/setting.php:74 templates/setting.php:119
+#: templates/setting.php:89 templates/setting.php:134
 msgid "Make user account unavailable and keep data"
 msgstr ""
 
-#: templates/setting.php:78
+#: templates/setting.php:93
 #, php-format
 msgid ""
 "If you choose \"%1$s\", all data related to the user will be deleted from "
@@ -191,25 +206,25 @@ msgid ""
 "account and whole data will be kept in your database."
 msgstr ""
 
-#: templates/setting.php:82
+#: templates/setting.php:97
 msgid ""
-"To delete related information, see description below.<br />Please be careful "
-"with your country's low on other's privacy."
+"To delete related information, see description below. Please be careful with "
+"your country's low on other's privacy."
 msgstr ""
 
-#: templates/setting.php:87
+#: templates/setting.php:102
 msgid "Assign to"
 msgstr ""
 
-#: templates/setting.php:90
+#: templates/setting.php:105
 msgid "User ID"
 msgstr ""
 
-#: templates/setting.php:92
+#: templates/setting.php:107
 msgid "Input user ID or type to search..."
 msgstr ""
 
-#: templates/setting.php:97
+#: templates/setting.php:112
 #, php-format
 msgid ""
 "If you choose <strong>%s</strong>, You can assign resigning user's contents "
@@ -217,38 +232,38 @@ msgid ""
 "pseudo user with name with \"deleted user\"."
 msgstr ""
 
-#: templates/setting.php:104
+#: templates/setting.php:119
 msgid "Destroy Level"
 msgstr ""
 
-#: templates/setting.php:109
+#: templates/setting.php:124
 msgid "Make credential hashed"
 msgstr ""
 
-#: templates/setting.php:110 templates/setting.php:124
-#: templates/setting.php:144
+#: templates/setting.php:125 templates/setting.php:139
+#: templates/setting.php:159
 msgid "Keep all data"
 msgstr ""
 
-#: templates/setting.php:118
+#: templates/setting.php:133
 #, php-format
 msgid ""
 "If you choose <strong>\"%1$s\"</strong>, user credentials will be changed "
 "irreversibly on removal process for his privacy."
 msgstr ""
 
-#: templates/setting.php:123
+#: templates/setting.php:138
 #, php-format
 msgid ""
 "If you don't want this, you can keep information by select <strong>\"%s\"</"
 "strong> but it's not recommended."
 msgstr ""
 
-#: templates/setting.php:130
+#: templates/setting.php:145
 msgid "Meta key allow List"
 msgstr ""
 
-#: templates/setting.php:143
+#: templates/setting.php:158
 #, php-format
 msgid ""
 "If you choose %s, please select user metas to keep. Nothing chosen, every "
@@ -256,82 +271,140 @@ msgid ""
 "rich_editing)"
 msgstr ""
 
-#: templates/setting.php:148
+#: templates/setting.php:163
 msgid ""
 "Notice: meta key allow list is filtered programmatically. Any settings above "
 "will be overridden."
 msgstr ""
 
-#: templates/setting.php:170
+#: templates/setting.php:185
 msgid "How to create Resign Page"
 msgstr ""
 
-#: templates/setting.php:173
-msgid ""
-"If you choose some resign page to publicly display, you can make show messag "
-"before resigning and after."
+#: templates/setting.php:188
+msgid "[NOTICE] Legacy Setting"
 msgstr ""
 
-#: templates/setting.php:177
+#: templates/setting.php:189
+msgid ""
+"If you choose some resign page to publicly display, you can make show "
+"message before resigning and after."
+msgstr ""
+
+#: templates/setting.php:193
 msgid ""
 "Split assigned page's content with <code>&lt;!--nextpage--&gt;</code> tag."
 msgstr ""
 
-#: templates/setting.php:180
+#: templates/setting.php:196
 msgid ""
 "1st page will be shown before resigning. Write some content for changing "
 "mind or inform your user about what to loose."
 msgstr ""
 
-#: templates/setting.php:183
+#: templates/setting.php:199
 msgid ""
 "User will be redirected to 2nd page after removal of their account. Write "
 "thank you message or something."
 msgstr ""
 
-#: templates/setting.php:187
+#: templates/setting.php:203
 msgid "Below is an example:"
 msgstr ""
 
-#: templates/setting.php:190
+#: templates/setting.php:206
 msgid "You are about to resign from our web magazine."
 msgstr ""
 
-#: templates/setting.php:192
+#: templates/setting.php:208
 msgid "Are you sure to delete your account?"
 msgstr ""
 
-#: templates/setting.php:194
+#: templates/setting.php:210
 msgid "All of your data on our service will be deleted and can't be restored."
 msgstr ""
 
-#: templates/setting.php:197
+#: templates/setting.php:213
 msgid "Your account has been deleted successfully."
 msgstr ""
 
-#: templates/setting.php:199
+#: templates/setting.php:215
 msgid "We miss you and hope to see you again."
 msgstr ""
 
-#: templates/setting.php:202
+#: templates/setting.php:218
 msgid "How to customize"
 msgstr ""
 
-#: templates/setting.php:205
+#: templates/setting.php:221
 msgid "Avoid user from leaving on specific condition."
 msgstr ""
 
-#: templates/setting.php:208
+#: templates/setting.php:224
 msgid "Change button labels."
 msgstr ""
 
-#: templates/setting.php:211
+#: templates/setting.php:227
 msgid "Do something if user leaves your site."
 msgstr ""
 
-#: templates/setting.php:215
+#: templates/setting.php:231
 #, php-format
 msgid ""
 "There are some hooks available. For more details, please visit our support "
 "site <a href=\"%s\" target=\"_blank\">Gianism.info</a>"
+msgstr ""
+
+#: assets/js/resign-button.js:16
+msgid "NLMG/Resign Button"
+msgstr ""
+
+#: assets/js/resign-button.js:19
+msgid ""
+"Resign button. Only displayed to logged in users. Users will be redirected "
+"to the url of button."
+msgstr ""
+
+#: assets/js/resign-button.js:27
+msgid "Accept the terms of service and leave the site."
+msgstr ""
+
+#: assets/js/resign-button.js:39
+msgid "Resign"
+msgstr ""
+
+#: assets/js/resign-button.js:46
+msgid "Acceptance"
+msgstr ""
+
+#: assets/js/resign-button.js:48
+msgid "Acceptance text on check box."
+msgstr ""
+
+#: assets/js/resign-button.js:53
+msgid "If user logged in:"
+msgstr ""
+
+#: assets/js/resign-button.js:89
+msgid "NLMG/Resign Login"
+msgstr ""
+
+#: assets/js/resign-button.js:92
+msgid "Notice for not logged in users."
+msgstr ""
+
+#: assets/js/resign-button.js:102
+msgid "This page is only for logged-in users"
+msgstr ""
+
+#: assets/js/resign-button.js:107
+msgid "Else:"
+msgstr ""
+
+#: assets/js/resign-button.js:125
+msgid "NLMG/Resign Block"
+msgstr ""
+
+#: assets/js/resign-button.js:126
+msgid "This block displays resign button for logged-in users."
 msgstr ""
