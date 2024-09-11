@@ -11,7 +11,6 @@ const $ = jQuery;
 const { apiFetch } = wp;
 
 $( document ).ready( function() {
-
 	$( '.wp-block-nlmg-resign-button' ).each( function( i, div ) {
 		const $button = $( div ).find( '.wp-block-button__link' );
 
@@ -39,7 +38,7 @@ $( document ).ready( function() {
 			apiFetch( {
 				path: 'nlmg/v1/resign',
 				method: 'POST',
-			} ).then( ( res ) => {
+			} ).then( () => {
 				window.location.href = link;
 			} ).catch( ( res ) => {
 				// Display messages.

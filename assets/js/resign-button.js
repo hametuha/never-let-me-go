@@ -27,17 +27,17 @@ registerBlockType( 'nlmg/resign-button', {
 			default: __( 'Accept the terms of service and leave the site.', 'never-let-me-go' ),
 			source: 'html',
 			selector: '.nlmg-acceptance-text',
-		}
+		},
 	},
 	edit( { attributes, setAttributes } ) {
 		const blockProps = useBlockProps();
 		const templates = [
 			[
 				'core/buttons',
-				{  align: 'center' },
+				{ align: 'center' },
 				[
 					[ 'core/button', { text: __( 'Resign', 'nlmg' ) } ],
-				]
+				],
 			],
 		];
 		return (
@@ -52,7 +52,7 @@ registerBlockType( 'nlmg/resign-button', {
 				<div { ...blockProps }>
 					<span className="nlmg-resign-block-label">{ __( 'If user logged in:', 'never-let-me-go' ) }</span>
 					<p className="nlmg-acceptance-paragraph">
-						<label className="nlmg-accesptance-label">
+						<label className="nlmg-accesptance-label" htmlFor="nlmg-acceptance">
 							<input type="checkbox" id="nlmg-acceptance" />
 							<span className="nlmg-acceptance-text">{ attributes.acceptance }</span>
 						</label>
@@ -72,7 +72,7 @@ registerBlockType( 'nlmg/resign-button', {
 		return (
 			<div { ...blockProps }>
 				<p className="nlmg-acceptance-paragraph">
-					<label className="nlmg-accesptance-label">
+					<label className="nlmg-accesptance-label" htmlFor="nlmg-acceptance">
 						<input type="checkbox" id="nlmg-acceptance" />
 						<span className="nlmg-acceptance-text">{ attributes.acceptance }</span>
 					</label>
@@ -85,7 +85,8 @@ registerBlockType( 'nlmg/resign-button', {
 
 registerBlockType( 'nlmg/resign-login', {
 	apiVersion: 2,
-	title: __( 'NLMG/Resign Login', 'never-let-me-go' ),
+	title:
+		__( 'NLMG/Resign Login', 'never-let-me-go' ),
 	icon: 'exit',
 	category: 'widgets',
 	description: __( 'Notice for not logged in users.', 'never-let-me-go' ),
@@ -93,12 +94,12 @@ registerBlockType( 'nlmg/resign-login', {
 		className: true,
 	},
 	parent: [ 'nlmg/resign-block' ],
-	edit( { setAttributes } ) {
+	edit() {
 		const blockProps = useBlockProps();
 		const templates = [
 			[
 				'core/paragraph',
-				{  text: __( 'This page is only for logged-in users', 'never-let-me-go' ) },
+				{ text: __( 'This page is only for logged-in users', 'never-let-me-go' ) },
 			],
 		];
 		return (
@@ -114,7 +115,7 @@ registerBlockType( 'nlmg/resign-login', {
 		const blockProps = useBlockProps.save();
 		const innerBlocksProps = useInnerBlocksProps.save( blockProps );
 		return (
-			<div {...innerBlocksProps} />
+			<div { ...innerBlocksProps } />
 		);
 	},
 } );
@@ -131,7 +132,7 @@ registerBlockType( 'nlmg/resign-block', {
 	attributes: {
 
 	},
-	edit( { setAttributes } ) {
+	edit() {
 		const blockProps = useBlockProps();
 		const templates = [
 			[ 'nlmg/resign-button' ],
@@ -150,7 +151,7 @@ registerBlockType( 'nlmg/resign-block', {
 		const blockProps = useBlockProps.save();
 		const innerBlocksProps = useInnerBlocksProps.save( blockProps );
 		return (
-			<div {...innerBlocksProps} />
+			<div { ...innerBlocksProps } />
 		);
 	},
 } );

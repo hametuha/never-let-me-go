@@ -8,7 +8,6 @@
 const $ = jQuery;
 
 $( document ).ready( function() {
-
 	// Incremental search
 	const $input = $( '#nlmg_assign_to' );
 	$input.autocomplete( {

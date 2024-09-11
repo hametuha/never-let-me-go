@@ -7,8 +7,8 @@
 
 const $ = jQuery;
 
-$( document ).ready( function () {
-	$( '#nlmg-acceptance' ).on( 'click', function () {
+$( document ).ready( function() {
+	$( '#nlmg-acceptance' ).on( 'click', function() {
 		if ( this.checked ) {
 			$( '#nlmg-resign-button' ).attr( 'disabled', null );
 		} else {
