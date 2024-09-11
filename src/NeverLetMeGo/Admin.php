@@ -61,6 +61,7 @@ class Admin extends Application {
 				$option                       = [];
 				$option['enable']             = (int) $this->input->post( 'nlmg_enable' );
 				$option['resign_page']        = (int) $this->input->post( 'nlmg_resign_page' );
+				$option['trash_bin']          = (int) $this->input->post( 'nlmg_trash_bin' );
 				$option['keep_account']       = (int) $this->input->post( 'nlmg_keep_account' );
 				$option['destroy_level']      = (int) $this->input->post( 'nlmg_destroy_level' );
 				$option['assign_to']          = (int) $this->input->post( 'nlmg_assign_to' );

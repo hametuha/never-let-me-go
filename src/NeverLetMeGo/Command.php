@@ -2,8 +2,6 @@
 
 namespace NeverLetMeGo;
 
-use WP_CLI\Iterators\Table;
-
 /**
  * Utility command for Never Let Me Go
  *
@@ -139,5 +137,36 @@ class Command extends \WP_CLI_Command {
 			default:
 				return 0 === strpos( $key, 'user_' );
 		}
+	}
+
+	/**
+	 * Display users in trash bin.
+	 *
+	 * @return void
+	 */
+	public function leavings() {
+		$users = new \WP_User_Query( [
+			'role' => TranshBin::getInstance()->role(),
+		] );
+		if ( empty( $users->get_results() ) ) {
+			\WP_CLI::error( 'No users in trash bin.' );
+		}
+		$table = new \cli\Table();
+		$table->setHeaders( [ 'ID', 'user_login', 'email', 'Display Name', 'Registered', 'Left At', 'Removed At' ] );
+		foreach ( $users->get_results() as $user ) {
+			$left_at = get_user_meta( $user->ID, 'nlmg_leave_date', true );
+			$date = new \DateTime( $left_at, wp_timezone() );
+			$date->add( new \DateInterval( 'P' . TranshBin::getInstance()->option['trash_bin'] . 'D' ) );
+			$table->addRow( [
+				$user->ID,
+				$user->user_login,
+				$user->user_email,
+				$user->display_name,
+				$user->user_registered,
+				$left_at,
+				$date->format( 'Y-m-d H:i:s' ),
+			] );
+		}
+		$table->display();
 	}
 }

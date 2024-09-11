@@ -76,16 +76,6 @@ class Page extends Application {
 			if ( is_wp_error( $result ) ) {
 				$this->errors = $result;
 			} else {
-				// Successfully deleted.
-				/**
-				 * Executed after user has been deleted.
-				 *
-				 * @param int $user_id
-				 *
-				 * @since 0.9.0
-				 *
-				 */
-				do_action( 'never_let_me_go', $user_id );
 				// If paged, show 2nd page. If not, redirect to login page.
 				if ( count( preg_split( '/<!--*?nextpage*?-->/', get_queried_object()->post_content ) ) >= 2 ) {
 					add_filter( 'the_content', array( $this, 'showThankYou' ), 1 );

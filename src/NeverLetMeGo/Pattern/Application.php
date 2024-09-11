@@ -3,6 +3,7 @@
 namespace NeverLetMeGo\Pattern;
 
 
+use NeverLetMeGo\TranshBin;
 use NeverLetMeGo\Utility\Input;
 
 /**
@@ -11,7 +12,16 @@ use NeverLetMeGo\Utility\Input;
  * @package NeverLetMeGo\Pattern
  * @property-read Input $input
  * @property-read string $nonce_key
- * @property-read array $option
+ * @property-read array{
+ *     enable:int,
+ *     resign_page: int,
+ *     trash_bin: int,
+ *     assign_to: int,
+ *     keep_account: int,
+ *     destroy_level: int,
+ *     meta_to_keep: string,
+ *     display_acceptance: int,
+ * } $option
  * @property-read string $dir
  * @property-read string $url
  * @property-read string $version
@@ -50,25 +60,33 @@ class Application extends Singleton {
 	 * @return true|\WP_Error
 	 */
 	public function delete_current_user() {
-		$user_id = get_current_user_id();
-
-		return $this->delete_user( $user_id );
+		$result = $this->delete_user( get_current_user_id() );
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		} elseif ( ! $result ) {
+			return new \WP_Error( 'user_deletion_failure', __( 'Failed to delete account.', 'never-let-me-go' ) );
+		}
+		// Success to delete account.
+		wp_logout();
+		global $current_user;
+		$current_user = null;
+		return true;
 	}
 
 	/**
 	 * Delete user account
 	 *
-	 * @param int $user_id
+	 * @param int $user_id User ID.
 	 *
 	 * @return true|\WP_Error
 	 */
 	public function delete_user( $user_id ) {
 		/** @var \wpdb $wpdb */
 		global $wpdb;
-		if ( ! $user_id ) {
+		$user  = get_userdata( $user_id );
+		if ( ! $user_id || ! $user ) {
 			return new \WP_Error( 404, __( 'User doesn\'t exist.', 'never-let-me-go' ) );
 		}
-		$user  = wp_get_current_user();
 		$error = new \WP_Error();
 		if ( $user->has_cap( 'activate_plugins' ) ) {
 			$error->add( 400, __( 'You are administrator!', 'never-let-me-go' ) );
@@ -99,14 +117,13 @@ class Application extends Singleton {
 		 *
 		 * Executed before leave site.
 		 *
-		 * @param int $user_id
+		 * @param int      $user_id
+		 * @param \WP_User $user
 		 *
 		 * @since 1.0.0
 		 * @action nlmg_before_leave
 		 */
-		do_action( 'nlmg_before_leave', $user_id );
-		$userdata = get_userdata( $user_id );
-		wp_logout();
+		do_action( 'nlmg_before_leave', $user_id, $user );
 		if ( $this->option[ 'keep_account' ] ) {
 			delete_user_meta( $user_id, $wpdb->prefix . 'capabilities' );
 			delete_user_meta( $user_id, $wpdb->prefix . 'user_level' );
@@ -152,19 +169,29 @@ class Application extends Singleton {
 					 *
 					 * Fire action just after hashing user info to remove other info.
 					 *
-					 * @param int      $user_id  User ID to leave
-					 * @param \WP_User $userdata Former user data.
+					 * @param int      $user_id User ID to leave
+					 * @param \WP_User $user    Former user data.
 					 */
-					do_action( 'nlmg_after_hashing_user', $user_id, $userdata );
+					do_action( 'nlmg_after_hashing_user', $user_id, $user );
 					// Clear user cache.
 					clean_user_cache( $user_id );
 					wp_cache_delete( $user_id, 'user_meta' );
-					// Clear current user.
-					global $current_user;
-					$current_user = null;
 					break;
 			}
+			// Successfully deleted.
+			/**
+			 * Executed after user has been deleted.
+			 *
+			 * @param int $user_id
+			 *
+			 * @since 0.9.0
+			 *
+			 */
+			do_action( 'never_let_me_go', $user_id, $user );
 			return true;
+		} elseif ( 0 < $this->option['trash_bin'] ) {
+			// Move to trash bin.
+			return TranshBin::getInstance()->move_to( $user_id );
 		} else {
 			require_once ABSPATH . '/wp-admin/includes/user.php';
 			/**
@@ -184,15 +211,7 @@ class Application extends Singleton {
 			$assign_to = apply_filters( 'nlmg_assign_to', $this->option[ 'assign_to' ] ? $this->option[ 'assign_to' ] : null, $user_id );
 			$result = wp_delete_user( $user_id, $assign_to );
 			if ( $result ) {
-				/**
-				 * nlmg_after_delete_user
-				 *
-				 * Fire action just after deleting user account.
-				 *
-				 * @param int      $user_id  User ID to leave
-				 * @param \WP_User $userdata Former user data.
-				 */
-				do_action( 'nlmg_after_delete_user', $user_id, $userdata );
+				do_action( 'never_let_me_go', $user_id );
 			}
 			return $result;
 		}
@@ -307,6 +326,7 @@ SQL;
 					array(
 						'enable'             => 0,
 						'resign_page'        => 0,
+						'trash_bin'          => 0,
 						'assign_to'          => 0,
 						'keep_account'       => 0,
 						'destroy_level'      => 1,

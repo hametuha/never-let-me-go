@@ -25,6 +25,8 @@ class NeverLetMeGo extends \NeverLetMeGo\Pattern\Application {
 		add_action( 'init', [ $this, 'register_assets' ] );
 		// Register block
 		\NeverLetMeGo\ResignButton::getInstance();
+		// Register transh bin
+		\NeverLetMeGo\TranshBin::getInstance();
 	}
 
 	/**

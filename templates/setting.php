@@ -32,7 +32,7 @@
                 </td>
             </tr>
             <tr>
-				<th><label for="nlmg_resign_page"><?php _e( 'Resign Screen', 'never-let-me-go' ); ?></label></th>
+				<th><label for="nlmg_resign_page"><?php esc_html_e( 'Resign Screen', 'never-let-me-go' ); ?></label></th>
                 <td>
                     <select id="nlmg_resign_page" name="nlmg_resign_page">
                         <option value="0"<?php selected( $this->option['resign_page'], 0 ) ?>><?php esc_html_e( 'Profile page on WP admin', 'never-let-me-go' ); ?></option>
@@ -52,7 +52,7 @@
                 </td>
             </tr>
 			<tr>
-				<th><?php _e( 'How to Consent', 'never-let-me-go' ); ?></th>
+				<th><?php esc_html_e( 'How to Consent', 'never-let-me-go' ); ?></th>
 				<td>
 					<?php foreach ( [
 						__( 'Confirm with Dialog', 'never-let-me-go' ),
@@ -67,7 +67,16 @@
 				</td>
 			</tr>
 			<tr>
-				<th><label><?php esc_html_e( 'Resign Way', 'never-let-me-go' ); ?></label></th>
+				<th><label for="nlmg_trash_bin"><?php esc_html_e( 'Trash bin', 'never-let-me-go' ); ?></label></th>
+				<td>
+					<input type="number" id="nlmg_trash_bin" name="nlmg_trash_bin" value="<?php echo esc_attr( $this->option['trash_bin'] ); ?>" min="0" />
+					<p class="description">
+						<?php esc_html_e( 'When a number greater than 0 is entered, the user attempting to leave will be assigned the role labeled ‘Leaving User’, and their account will be deleted after the specified number of days has passed.', 'never-let-me-go' ); ?>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<th><label><?php esc_html_e( 'Deletion Way', 'never-let-me-go' ); ?></label></th>
 				<td>
 					<label>
 						<input type="radio" name="nlmg_keep_account"
