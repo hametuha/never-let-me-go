@@ -5,7 +5,9 @@ Tags: delete, account
 Requires at least: 5.9  
 Requires PHP: 7.2  
 Tested up to: 6.6  
-Stable tag: nightly
+Stable tag: nightly  
+License: GPL 3.0 or later  
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 If someone wants to leave your WordPress, let them go.
 
