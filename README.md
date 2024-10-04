@@ -54,6 +54,10 @@ Partially yes. Because "Resign Page" can be split via <code>Page Break</code> bl
 
 ## Changelog
 
+### 2.0.1
+
+- Fix script bug of Resign Button block in case the button url is empty.
+
 ### 2.0.0
 
 - **Notice** PHP requirements is now PHP 7.2 and over.

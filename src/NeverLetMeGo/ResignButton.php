@@ -28,7 +28,7 @@ class ResignButton extends Application {
 	 * @return void
 	 */
 	public function register_blocks() {
-		wp_localize_script( 'nlmg-resing-block-helper', 'NlmgRedirect', [
+		wp_localize_script( 'nlmg-resign-block-helper', 'NlmgRedirect', [
 			'url' => home_url(),
 		] );
 		register_block_type( 'nlmg/resign-block', [
