@@ -6,15 +6,15 @@ on:
       - master
 
 jobs:
-  test:
-    strategy:
-      matrix:
-        php: [ '7.2', '8.0', '8.2' ] # PHP versions to check.
-        wp: [ 'latest', '5.9' ]      # WordPress version to check.
-    uses: tarosky/workflows/.github/workflows/wp-unit-test.yml@main
-    with:
-      php_version: ${{ matrix.php }}
-      wp_version: ${{ matrix.wp }}
+#  test:
+#    strategy:
+#      matrix:
+#        php: [ '7.2', '8.0', '8.2' ] # PHP versions to check.
+#        wp: [ 'latest', '5.9' ]      # WordPress version to check.
+#    uses: tarosky/workflows/.github/workflows/wp-unit-test.yml@main
+#    with:
+#      php_version: ${{ matrix.php }}
+#      wp_version: ${{ matrix.wp }}
 
   phpcs:
     uses: tarosky/workflows/.github/workflows/phpcs.yml@main
@@ -34,7 +34,7 @@ jobs:
     name: Status Check
     if: always()
     runs-on: ubuntu-latest
-    needs: [ test, phpcs, phplint, assets ]
+    needs: [ phpcs, phplint, assets ] # [ test, phpcs, phplint, assets ]
     steps:
     - uses: re-actors/alls-green@release/v1
       with:

@@ -189,7 +189,7 @@ class Application extends Singleton {
 			 */
 			do_action( 'never_let_me_go', $user_id, $user );
 			return true;
-		} elseif ( 0 < $this->option['trash_bin'] ) {
+		} elseif ( 0 < $this->option['trash_bin'] && ! in_array( TranshBin::getInstance()->role(), $user->roles, true ) ) {
 			// Move to trash bin.
 			return TranshBin::getInstance()->move_to( $user_id );
 		} else {
