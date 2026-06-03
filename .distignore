@@ -19,7 +19,7 @@ phpstan-bootstrap.php
 phpunit.xml.dist
 README.md
 webpack.config.js
-wordpress
+/wordpress
 bin
 tests
 data
