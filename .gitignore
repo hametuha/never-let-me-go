@@ -7,7 +7,6 @@
 /tests/
 composer.lock
 readme.txt
-package-lock.json
 /wordpress/
 .wp_install_path
 compose.yaml

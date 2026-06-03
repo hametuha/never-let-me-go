@@ -1,6 +1,5 @@
 const gulp = require( 'gulp' );
 const $ = require( 'gulp-load-plugins' )();
-const pngquant = require( 'imagemin-pngquant' );
 const webpack = require( 'webpack-stream' );
 const webpackBundle = require( 'webpack' );
 const named = require( 'vinyl-named' );
@@ -32,14 +31,11 @@ gulp.task( 'js', function () {
 		.pipe( gulp.dest( './dist/js' ) );
 } );
 
-// Image min
+// Copy images to dist.
+// 画像最適化(gulp-imagemin/gifsicle)はネイティブバイナリに依存し、
+// CIの `npm ci --ignore-scripts` 環境で動かないため単純コピーに変更。
 gulp.task( 'build:image', function () {
-	return gulp.src( './assets/img/**/*' )
-		.pipe( $.imagemin( {
-			progressive: true,
-			svgoPlugins: [ { removeViewBox: false } ],
-			use: [ pngquant() ]
-		} ) )
+	return gulp.src( './assets/img/**/*', { encoding: false } )
 		.pipe( gulp.dest( './dist/img' ) );
 } );
 
