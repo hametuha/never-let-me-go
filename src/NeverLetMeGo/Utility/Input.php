@@ -11,7 +11,7 @@ use NeverLetMeGo\Pattern\Singleton;
  * @package NeverLetMeGo\Utility
  */
 class Input extends Singleton {
-	
+
 	/**
 	 * Get $_GET
 	 *
@@ -22,7 +22,7 @@ class Input extends Singleton {
 	public function get( $name ) {
 		return isset( $_GET[ $name ] ) ? $_GET[ $name ] : null;
 	}
-	
+
 	/**
 	 * Get $_POST
 	 *
@@ -33,7 +33,7 @@ class Input extends Singleton {
 	public function post( $name ) {
 		return isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
 	}
-	
+
 	/**
 	 * Get $_REQUEST
 	 *
@@ -44,7 +44,7 @@ class Input extends Singleton {
 	public function request( $name ) {
 		return isset( $_REQUEST[ $name ] ) ? $_REQUEST[ $name ] : null;
 	}
-	
+
 	/**
 	 * Verify nonce
 	 *

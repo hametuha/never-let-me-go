@@ -9,12 +9,12 @@ namespace NeverLetMeGo\Pattern;
  * @package NeverLetMeGo\Pattern
  */
 abstract class Singleton {
-	
+
 	/**
 	 * @var array
 	 */
 	private static $instances = array();
-	
+
 	/**
 	 * Constructor
 	 *
@@ -23,7 +23,7 @@ abstract class Singleton {
 	protected function __construct( $settings = array() ) {
 		// Override this
 	}
-	
+
 	/**
 	 * Get instance
 	 *
@@ -36,8 +36,7 @@ abstract class Singleton {
 		if ( ! isset( self::$instances[ $class_name ] ) ) {
 			self::$instances[ $class_name ] = new $class_name( $settings );
 		}
-		
+
 		return self::$instances[ $class_name ];
 	}
-	
 }

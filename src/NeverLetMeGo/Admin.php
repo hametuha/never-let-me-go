@@ -101,7 +101,7 @@ class Admin extends Application {
 	 * @param string $page
 	 */
 	public function enqueueScripts( $page ) {
-		if ( 'settings_page_nlmg' == $page ) {
+		if ( 'settings_page_nlmg' === $page ) {
 			wp_enqueue_style( 'nlmg-ajax' );
 			wp_localize_script( 'nlmg-admin', 'NLMG', array(
 				'endpoint'  => admin_url( 'admin-ajax.php?action=nlmg_user_search' ),
@@ -128,6 +128,7 @@ class Admin extends Application {
 			printf(
 				'<div class="error"><p>%s</p></div>',
 				sprintf(
+					// translators: %s is the URL of the settings page.
 					__( '<strong>[Never Let Me Go] Plugin is active but features are not enabled. Please go to <a href="%s">setting page</a>.</strong>', 'never-let-me-go' ),
 					admin_url( 'options-general.php?page=nlmg' )
 				)
@@ -188,16 +189,16 @@ class Admin extends Application {
 	 */
 	public function resignButton( $user ) {
 		?>
-        <hr/>
-        <h3><?php _e( 'Delete Account', 'never-let-me-go' ); ?></h3>
-        <p>
+		<hr/>
+		<h3><?php _e( 'Delete Account', 'never-let-me-go' ); ?></h3>
+		<p>
 			<?php _e( 'You can delete your account by putting the button below.', 'never-let-me-go' ); ?>
-        </p>
-        <p class="right">
-            <a class="button" href="<?php echo wp_nonce_url( admin_url( 'profile.php' ), 'nlmg_delete_on_admin' ); ?>"
-               onclick="if(!confirm('<?php echo esc_js( $this->confirm_label() ); ?>')) return false;"><?php esc_html_e( 'Delete', 'never-let-me-go' ); ?></a>
-        </p>
-        <hr/>
+		</p>
+		<p class="right">
+			<a class="button" href="<?php echo wp_nonce_url( admin_url( 'profile.php' ), 'nlmg_delete_on_admin' ); ?>"
+				onclick="if(!confirm('<?php echo esc_js( $this->confirm_label() ); ?>')) return false;"><?php esc_html_e( 'Delete', 'never-let-me-go' ); ?></a>
+		</p>
+		<hr/>
 		<?php
 	}
 
@@ -219,8 +220,8 @@ class Admin extends Application {
 			if ( $this->input->get( 'term' ) ) {
 				/** @var \wpdb $wpdb */
 				global $wpdb;
-				$query             = '%' . $this->input->get( 'term' ) . '%';
-				$sql               = <<<SQL
+				$query  = '%' . $this->input->get( 'term' ) . '%';
+				$sql    = <<<SQL
 					SELECT SQL_CALC_FOUND_ROWS
 						ID, user_login, display_name
 					FROM {$wpdb->users}
@@ -234,6 +235,7 @@ SQL;
 					$user->avatar = get_avatar( $user->ID, '48', '', $user->display_name );
 
 					return $user;
+				// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- $sql is a fixed query with only the internal table name interpolated; user input is bound via placeholders.
 				}, $wpdb->get_results( $wpdb->prepare( $sql, $query, $query, $query ) ) );
 			}
 		}
