@@ -83,7 +83,7 @@ class Application extends Singleton {
 	public function delete_user( $user_id ) {
 		/** @var \wpdb $wpdb */
 		global $wpdb;
-		$user  = get_userdata( $user_id );
+		$user = get_userdata( $user_id );
 		if ( ! $user_id || ! $user ) {
 			return new \WP_Error( 404, __( 'User doesn\'t exist.', 'never-let-me-go' ) );
 		}
@@ -124,10 +124,10 @@ class Application extends Singleton {
 		 * @action nlmg_before_leave
 		 */
 		do_action( 'nlmg_before_leave', $user_id, $user );
-		if ( $this->option[ 'keep_account' ] ) {
+		if ( $this->option['keep_account'] ) {
 			delete_user_meta( $user_id, $wpdb->prefix . 'capabilities' );
 			delete_user_meta( $user_id, $wpdb->prefix . 'user_level' );
-			switch ( $this->option[ 'destroy_level' ] ) {
+			switch ( $this->option['destroy_level'] ) {
 				case 0:
 					// Do nothing.
 					break;
@@ -143,11 +143,12 @@ class Application extends Singleton {
 						'ID'            => $user_id,
 						'user_pass'     => $pass,
 						'user_email'    => $login . '@example.com',
+						// translators: %d is the user ID.
 						'display_name'  => sprintf( __( 'Deleted User #%d', 'never-let-me-go' ), $user_id ),
 						'user_nicename' => $login,
 						'user_url'      => '',
 					] );
-					$user_id = wp_update_user( $replaced );
+					$user_id  = wp_update_user( $replaced );
 					// Update user_login.
 					$wpdb->update(
 						$wpdb->users,
@@ -208,8 +209,8 @@ class Application extends Singleton {
 			 * @return int|string
 			 * @since 1.0.0
 			 */
-			$assign_to = apply_filters( 'nlmg_assign_to', $this->option[ 'assign_to' ] ? $this->option[ 'assign_to' ] : null, $user_id );
-			$result = wp_delete_user( $user_id, $assign_to );
+			$assign_to = apply_filters( 'nlmg_assign_to', $this->option['assign_to'] ? $this->option['assign_to'] : null, $user_id );
+			$result    = wp_delete_user( $user_id, $assign_to );
 			if ( $result ) {
 				do_action( 'never_let_me_go', $user_id );
 			}
@@ -225,16 +226,16 @@ class Application extends Singleton {
 	 */
 	public function delete_user_meta( $user_id ) {
 		global $wpdb;
-		$keys = implode( ',', array_map( function( $key ) use ( $wpdb ) {
+		$keys = implode( ',', array_map( function ( $key ) use ( $wpdb ) {
 			return $wpdb->prepare( '%s', $key );
 		}, $this->filtered_keys() ) );
-		$sql = <<<SQL
+		$sql  = <<<SQL
 			DELETE FROM {$wpdb->usermeta}
 			WHERE user_id = %d
 			  AND meta_key NOT IN ({$keys})
 SQL;
-		$sql = $wpdb->prepare( $sql, $user_id );
-		return (int) $wpdb->query( $sql );
+		$sql  = $wpdb->prepare( $sql, $user_id ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Only the internal table name and meta keys already escaped with $wpdb->prepare() are interpolated.
+		return (int) $wpdb->query( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- $sql is prepared above.
 	}
 
 	/**
@@ -291,8 +292,8 @@ SQL;
 			GROUP BY meta_key
 			LIMIT 100
 SQL;
-		$keys = [];
-		foreach ( $wpdb->get_results( $query ) as $row ) {
+		$keys  = [];
+		foreach ( $wpdb->get_results( $query ) as $row ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Fixed query; only the internal table name is interpolated.
 			$keys[ $row->meta_key ] = $row->total;
 		}
 		return $keys;

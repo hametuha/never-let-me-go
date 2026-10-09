@@ -11,7 +11,7 @@ use NeverLetMeGo\Pattern\Application;
  * @package nlmg
  */
 class WooCommerce extends Application {
-	
+
 	/**
 	 * Constructor
 	 *
@@ -25,7 +25,7 @@ class WooCommerce extends Application {
 		add_filter( 'nlmg_not_logged_in_user_redirect', [ $this, 'login_redirect' ], 10, 2 );
 		add_filter( 'nlmg_validate_user', [ $this, 'delete_filter' ], 10, 2 );
 	}
-	
+
 	/**
 	 * Redirect user to WooCommerce account page.
 	 *
@@ -39,7 +39,7 @@ class WooCommerce extends Application {
 			'redirect_to' => $page_url,
 		], $account );
 	}
-	
+
 	/**
 	 * Check user can delete account.
 	 *

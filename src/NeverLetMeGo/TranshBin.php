@@ -39,7 +39,6 @@ class TranshBin extends Application {
 			if ( wp_next_scheduled( self::CRON_HOOK ) ) {
 				wp_clear_scheduled_hook( self::CRON_HOOK );
 			}
-
 		}
 	}
 
@@ -102,10 +101,10 @@ class TranshBin extends Application {
 			$date = new \DateTime( 'now', wp_timezone() );
 			$date->sub( new \DateInterval( 'P' . $this->option['trash_bin'] . 'D' ) );
 			$should_remove = $date->format( 'Y-m-d H:i:s' );
-			$users = new \WP_User_Query( [
-				'role'    => $this->role(),
-				'orderby' => 'ID',
-				'order'   => 'ASC',
+			$users         = new \WP_User_Query( [
+				'role'       => $this->role(),
+				'orderby'    => 'ID',
+				'order'      => 'ASC',
 				'meta_query' => [
 					[
 						'key'     => 'nlmg_leave_date',

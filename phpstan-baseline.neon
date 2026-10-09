@@ -1,2 +1,145 @@
 parameters:
-    ignoreErrors: []
+	ignoreErrors:
+		-
+			message: '#^Constructor of class NeverLetMeGo has an unused parameter \$settings\.$#'
+			identifier: constructor.unusedParameter
+			count: 1
+			path: src/NeverLetMeGo.php
+
+		-
+			message: '#^Constructor of class NeverLetMeGo\\Admin has an unused parameter \$settings\.$#'
+			identifier: constructor.unusedParameter
+			count: 1
+			path: src/NeverLetMeGo/Admin.php
+
+		-
+			message: '#^Found usage of constant DOING_AJAX\. Use wp_doing_ajax\(\) instead\.$#'
+			identifier: phpstanWP.wpConstant.fetch
+			count: 1
+			path: src/NeverLetMeGo/Admin.php
+
+		-
+			message: '#^Method NeverLetMeGo\\Admin\:\:pluginPageLink\(\) should return string but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/NeverLetMeGo/Admin.php
+
+		-
+			message: '#^PHPDoc tag @param has invalid value \(\\WP_User\)\: Unexpected token "\\n\\t \*", expected variable at offset 67 on line 4$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/NeverLetMeGo/Admin.php
+
+		-
+			message: '#^Parameter \#2 \$size of function get_avatar expects int, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/NeverLetMeGo/Admin.php
+
+		-
+			message: '#^Call to method addRow\(\) on an unknown class cli\\Table\.$#'
+			identifier: class.notFound
+			count: 3
+			path: src/NeverLetMeGo/Command.php
+
+		-
+			message: '#^Call to method display\(\) on an unknown class cli\\Table\.$#'
+			identifier: class.notFound
+			count: 3
+			path: src/NeverLetMeGo/Command.php
+
+		-
+			message: '#^Call to method setHeaders\(\) on an unknown class cli\\Table\.$#'
+			identifier: class.notFound
+			count: 3
+			path: src/NeverLetMeGo/Command.php
+
+		-
+			message: '#^Instantiated class cli\\Table not found\.$#'
+			identifier: class.notFound
+			count: 3
+			path: src/NeverLetMeGo/Command.php
+
+		-
+			message: '#^Constructor of class NeverLetMeGo\\Page has an unused parameter \$settings\.$#'
+			identifier: constructor.unusedParameter
+			count: 1
+			path: src/NeverLetMeGo/Page.php
+
+		-
+			message: '#^If condition is always true\.$#'
+			identifier: if.alwaysTrue
+			count: 1
+			path: src/NeverLetMeGo/Page.php
+
+		-
+			message: '#^Expected 2 @param tags, found 1\.$#'
+			identifier: paramTag.count
+			count: 1
+			path: src/NeverLetMeGo/Pattern/Application.php
+
+		-
+			message: '#^Method NeverLetMeGo\\Pattern\\Application\:\:delete_user\(\) should return WP_Error\|true but returns bool\.$#'
+			identifier: return.type
+			count: 1
+			path: src/NeverLetMeGo/Pattern/Application.php
+
+		-
+			message: '#^Negated boolean expression is always false\.$#'
+			identifier: booleanNot.alwaysFalse
+			count: 1
+			path: src/NeverLetMeGo/Pattern/Application.php
+
+		-
+			message: '#^One or more @param tags has an invalid name or invalid syntax\.$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/NeverLetMeGo/Pattern/Application.php
+
+		-
+			message: '#^PHPDoc tag @param has invalid value \(int\|string User ID to be assigned\. Might be 0 or empty string\.\)\: Unexpected token "User", expected variable at offset 235 on line 9$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/NeverLetMeGo/Pattern/Application.php
+
+		-
+			message: '#^Constructor of class NeverLetMeGo\\Pattern\\Singleton has an unused parameter \$settings\.$#'
+			identifier: constructor.unusedParameter
+			count: 1
+			path: src/NeverLetMeGo/Pattern/Singleton.php
+
+		-
+			message: '#^Constructor of class NeverLetMeGo\\ResignButton has an unused parameter \$settings\.$#'
+			identifier: constructor.unusedParameter
+			count: 1
+			path: src/NeverLetMeGo/ResignButton.php
+
+		-
+			message: '#^Negated boolean expression is always false\.$#'
+			identifier: booleanNot.alwaysFalse
+			count: 1
+			path: src/NeverLetMeGo/ResignButton.php
+
+		-
+			message: '#^Constructor of class NeverLetMeGo\\TranshBin has an unused parameter \$settings\.$#'
+			identifier: constructor.unusedParameter
+			count: 1
+			path: src/NeverLetMeGo/TranshBin.php
+
+		-
+			message: '#^Constructor of class NeverLetMeGo\\WooCommerce has an unused parameter \$settings\.$#'
+			identifier: constructor.unusedParameter
+			count: 1
+			path: src/NeverLetMeGo/WooCommerce.php
+
+		-
+			message: '#^Function wc_get_orders not found\.$#'
+			identifier: function.notFound
+			count: 1
+			path: src/NeverLetMeGo/WooCommerce.php
+
+		-
+			message: '#^Function wc_get_page_id not found\.$#'
+			identifier: function.notFound
+			count: 1
+			path: src/NeverLetMeGo/WooCommerce.php

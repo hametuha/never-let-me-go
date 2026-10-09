@@ -34,17 +34,17 @@ class ResignButton extends Application {
 		register_block_type( 'nlmg/resign-block', [
 			'editor_script_handles' => [ 'nlmg-resign-button' ],
 			'view_script_handles'   => [ 'nlmg-resign-block-helper' ],
-			'style_handles'  => [ 'nlmg-resign-block' ],
+			'style_handles'         => [ 'nlmg-resign-block' ],
 			'editor_style_handles'  => [ 'nlmg-resign-block-editor' ],
 		] );
 		register_block_type( 'nlmg/resign-button', [
-			'render_callback' => function( $attributes = [], $content = '' ) {
+			'render_callback' => function ( $attributes = [], $content = '' ) {
 				// If user is not logged in, return empty.
 				return is_user_logged_in() ? $content : '';
 			},
 		] );
 		register_block_type( 'nlmg/resign-login', [
-			'render_callback' => function( $attributes = [], $content = '' ) {
+			'render_callback' => function ( $attributes = [], $content = '' ) {
 				// If user is logged in, return empty.
 				return is_user_logged_in() ? '' : $content;
 			},
@@ -64,7 +64,7 @@ class ResignButton extends Application {
 				'permission_callback' => function () {
 					return is_user_logged_in();
 				},
-			]
+			],
 		] );
 	}
 
