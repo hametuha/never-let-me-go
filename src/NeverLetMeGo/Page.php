@@ -98,7 +98,7 @@ class Page extends Application {
 	 * @return string
 	 */
 	public function showResignForm( $content ) {
-		if ( get_the_ID() == $this->option['resign_page'] ) {
+		if ( get_the_ID() == $this->option['resign_page'] ) { // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応
 			// Check if error exists.
 			if ( $this->errors ) {
 				$message = sprintf(
@@ -180,7 +180,7 @@ HTML;
 	 *
 	 */
 	public function showThankYou( $content ) {
-		if ( get_the_ID() == $this->option['resign_page'] ) {
+		if ( get_the_ID() == $this->option['resign_page'] ) { // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応
 			// Cut content.
 			$contents = explode( '<!--nextpage-->', get_post()->post_content );
 			if ( count( $contents ) > 1 ) {

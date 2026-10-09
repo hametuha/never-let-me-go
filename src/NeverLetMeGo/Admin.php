@@ -88,7 +88,7 @@ class Admin extends Application {
 				}
 			}
 			// Add resign button on admin panel
-			if ( $this->option['enable'] && ( 0 == $this->option['resign_page'] ) ) {
+			if ( $this->option['enable'] && ( 0 == $this->option['resign_page'] ) ) { // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応
 				add_action( 'show_user_profile', array( $this, 'resignButton' ) );
 			}
 		}
@@ -129,7 +129,7 @@ class Admin extends Application {
 				'<div class="error"><p>%s</p></div>',
 				sprintf(
 					// translators: %s is the URL of the settings page.
-					__( '<strong>[Never Let Me Go] Plugin is active but features are not enabled. Please go to <a href="%s">setting page</a>.</strong>', 'never-let-me-go' ),
+					__( '<strong>[Never Let Me Go] Plugin is active but features are not enabled. Please go to <a href="%s">setting page</a>.</strong>', 'never-let-me-go' ), // phpcs:ignore WordPress.WP.I18n.NoHtmlWrappedStrings -- 文字列を変えると既存の翻訳が外れるため。#41 で対応
 					admin_url( 'options-general.php?page=nlmg' )
 				)
 			);
@@ -144,7 +144,7 @@ class Admin extends Application {
 	 *
 	 * @return void
 	 */
-	public function add_message( $string, $error = false ) {
+	public function add_message( $string, $error = false ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.stringFound -- public メソッドの引数名変更は後方互換を壊すため。#41 で対応
 		if ( $error ) {
 			$this->admin_error[] = (string) $string;
 		} else {

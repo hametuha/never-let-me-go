@@ -21,12 +21,12 @@
 				<td>
 					<label>
 						<input type="radio" name="nlmg_enable"
-								value="0"<?php checked( 0 == $this->option['enable'] ); ?> />
+								value="0"<?php checked( 0 == $this->option['enable'] ); // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応 ?> />
 						<?php esc_html_e( 'Disabled', 'never-let-me-go' ); ?>
 					</label><br/>
 					<label>
 						<input type="radio" name="nlmg_enable"
-								value="1"<?php checked( 1 == $this->option['enable'] ); ?> />
+								value="1"<?php checked( 1 == $this->option['enable'] ); // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応 ?> />
 						<?php esc_html_e( 'Enabled', 'never-let-me-go' ); ?>
 					</label>
 				</td>
@@ -42,7 +42,7 @@
 							while ( $query->have_posts() ) :
 								$query->the_post();
 								?>
-							<option value="<?php the_ID(); ?>"<?php selected( get_the_ID() == $this->option['resign_page'] ); ?>><?php the_title(); ?></option>
+							<option value="<?php the_ID(); ?>"<?php selected( get_the_ID() == $this->option['resign_page'] ); // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応 ?>><?php the_title(); ?></option>
 													<?php
 						endwhile;
 endif;
@@ -87,12 +87,12 @@ endif;
 				<td>
 					<label>
 						<input type="radio" name="nlmg_keep_account"
-								value="0"<?php checked( 0 == $this->option['keep_account'] ); ?> />
+								value="0"<?php checked( 0 == $this->option['keep_account'] ); // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応 ?> />
 						<strong><?php esc_html_e( 'Normal', 'never-let-me-go' ); ?></strong>...<?php _e( 'Delete all data', 'never-let-me-go' ); ?>
 					</label><br>
 					<label>
 						<input type="radio" name="nlmg_keep_account"
-								value="1"<?php checked( 1 == $this->option['keep_account'] ); ?> />
+								value="1"<?php checked( 1 == $this->option['keep_account'] ); // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応 ?> />
 						<strong><?php esc_html_e( 'Advanced', 'never-let-me-go' ); ?></strong>...<?php _e( 'Make user account unavailable and keep data', 'never-let-me-go' ); ?>
 					</label>
 					<p class="description">
@@ -140,7 +140,7 @@ endif;
 							) as $level => $desc
 						) :
 							?>
-							<option value="<?php echo $level; ?>"<?php selected( $this->option['destroy_level'] == $level ); ?>><?php echo esc_html( $desc ); ?></option>
+							<option value="<?php echo $level; ?>"<?php selected( $this->option['destroy_level'] == $level ); // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応 ?>><?php echo esc_html( $desc ); ?></option>
 						<?php endforeach; ?>
 					</select>
 					<p class="description">
@@ -171,7 +171,7 @@ endif;
 						?>
 						<label class="nlmg-inline-checkbox">
 							<input type="checkbox" name="nlmg_meta_to_keep[]" value="<?php echo esc_attr( $key ); ?>"
-								<?php checked( in_array( $key, $keys ) ); ?> />
+								<?php checked( in_array( $key, $keys ) ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict -- 数値文字列のメタキーが int キーになるため。#41 で対応 ?> />
 							<?php echo esc_html( $key ); ?><small>(<?php echo number_format( $count ); ?>)</small>
 						</label>
 					<?php endforeach; ?>
