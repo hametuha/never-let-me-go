@@ -40,10 +40,10 @@ class Command extends \WP_CLI_Command {
 		\WP_CLI::line( sprintf( 'Import users from %s', $file ) );
 		$users   = [];
 		$headers = [];
-		$spl = new \SplFileObject( $file );
+		$spl     = new \SplFileObject( $file );
 		$spl->setFlags( \SplFileObject::READ_CSV );
 		$counter = 0;
-		$table = new \cli\Table();
+		$table   = new \cli\Table();
 		foreach ( $spl as $row ) {
 			$user = [];
 			if ( ! $counter ) {
@@ -55,13 +55,13 @@ class Command extends \WP_CLI_Command {
 				$table->addRow( $row );
 				// Convert each line.
 				foreach ( $row as $index => $value ) {
-					$key = $headers[ $index ];
+					$key          = $headers[ $index ];
 					$user[ $key ] = $value;
 				}
 				// Add users.
 				$users[] = $user;
 			}
-			$counter++;
+			++$counter;
 		}
 		$table->display();
 		$imported = 0;
@@ -94,7 +94,7 @@ class Command extends \WP_CLI_Command {
 					foreach ( $meta as $key => $value ) {
 						update_user_meta( $result, $key, $value );
 					}
-					$imported++;
+					++$imported;
 				}
 			}
 			\WP_CLI::success( sprintf( '%d uesrs imported.', $imported ) );
@@ -110,7 +110,7 @@ class Command extends \WP_CLI_Command {
 	 */
 	public function meta_key() {
 		$meta_keys = Page::getInstance()->available_meta_keys();
-		$table = new \cli\Table();
+		$table     = new \cli\Table();
 		$table->setHeaders( [ 'Key', 'Total' ] );
 		foreach ( $meta_keys as $key => $count ) {
 			$table->addRow( [ $key, $count ] );
@@ -155,7 +155,7 @@ class Command extends \WP_CLI_Command {
 		$table->setHeaders( [ 'ID', 'user_login', 'email', 'Display Name', 'Registered', 'Left At', 'Removed At' ] );
 		foreach ( $users->get_results() as $user ) {
 			$left_at = get_user_meta( $user->ID, 'nlmg_leave_date', true );
-			$date = new \DateTime( $left_at, wp_timezone() );
+			$date    = new \DateTime( $left_at, wp_timezone() );
 			$date->add( new \DateInterval( 'P' . TranshBin::getInstance()->option['trash_bin'] . 'D' ) );
 			$table->addRow( [
 				$user->ID,

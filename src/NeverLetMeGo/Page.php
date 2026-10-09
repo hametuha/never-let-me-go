@@ -23,7 +23,7 @@ class Page extends Application {
 	 * @param array $settings
 	 */
 	protected function __construct( $settings = array() ) {
-		if ( $this->option[ 'enable' ] && $this->option[ 'resign_page' ] ) {
+		if ( $this->option['enable'] && $this->option['resign_page'] ) {
 			// Process resign
 			add_action( 'template_redirect', array( $this, 'templateRedirect' ) );
 		}
@@ -35,13 +35,13 @@ class Page extends Application {
 	public function templateRedirect() {
 		global $pages, $numpages, $multipage, $more, $pagenow;
 		// Register Hook on Resign page
-		if ( ! is_page( $this->option[ 'resign_page' ] ) ) {
+		if ( ! is_page( $this->option['resign_page'] ) ) {
 			return;
 		}
 		// Avoid caching.
 		nocache_headers();
 		// Enqueue assets.
-		add_action( 'wp_enqueue_scripts', function() {
+		add_action( 'wp_enqueue_scripts', function () {
 			wp_enqueue_script( 'nlmg-form' );
 			wp_enqueue_style( 'nlmg-form' );
 		} );
@@ -98,7 +98,7 @@ class Page extends Application {
 	 * @return string
 	 */
 	public function showResignForm( $content ) {
-		if ( get_the_ID() == $this->option[ 'resign_page' ] ) {
+		if ( get_the_ID() == $this->option['resign_page'] ) { // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応
 			// Check if error exists.
 			if ( $this->errors ) {
 				$message = sprintf(
@@ -141,19 +141,19 @@ class Page extends Application {
 
 			// Confirmation UI
 			if ( $this->option['display_acceptance'] ) {
-				$onclick = ' disabled';
+				$onclick    = ' disabled';
 				$acceptance = sprintf(
 					'<p class="nlmg-acceptance-block"><label class="nlmg-acceptance-label"><input type="checkbox" name="nlmg_accept_resign" id="nlmg-acceptance" class="nlmg-acceptance-checkbox" value="1" /> %s</label></p>',
 					esc_html( apply_filters( 'nlmg_acceptance_text', __( 'I have consented to deleting my account.', 'never-let-me-go' ) ) )
 				);
 			} else {
 				$acceptance = '';
-				$confirm = $this->confirm_label();
-				$onclick = $confirm ? sprintf( ' onclick="return confirm(\'%s\')"', esc_js( $confirm ) ) : '';
+				$confirm    = $this->confirm_label();
+				$onclick    = $confirm ? sprintf( ' onclick="return confirm(\'%s\')"', esc_js( $confirm ) ) : '';
 			}
 
-			$classes = esc_attr( implode( ' ', $classes ) );
-			$form    = <<<HTML
+			$classes  = esc_attr( implode( ' ', $classes ) );
+			$form     = <<<HTML
 				<form id="nlmg-resign-form" method="post" action="{$url}">
 					{$nonce}
 					{$acceptance}
@@ -163,7 +163,7 @@ class Page extends Application {
 				</form>
 HTML;
 			$content .= $form;
-			$content = apply_filters( 'nlmg_the_content', $content, 'resign' );
+			$content  = apply_filters( 'nlmg_the_content', $content, 'resign' );
 		}
 
 		return $content;
@@ -180,11 +180,11 @@ HTML;
 	 *
 	 */
 	public function showThankYou( $content ) {
-		if ( $this->option[ 'resign_page' ] == get_the_ID() ) {
+		if ( get_the_ID() == $this->option['resign_page'] ) { // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- 型混在のため。#41 で対応
 			// Cut content.
 			$contents = explode( '<!--nextpage-->', get_post()->post_content );
 			if ( count( $contents ) > 1 ) {
-				$content = $contents[ 1 ];
+				$content = $contents[1];
 			}
 			/**
 			 * nlmg_the_content
