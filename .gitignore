@@ -4,7 +4,6 @@
 /vendor/
 /node_modules/
 /dist/
-composer.lock
 readme.txt
 /wordpress/
 .wp_install_path
