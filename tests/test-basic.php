@@ -33,8 +33,7 @@ class NLMG_Basic_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Delete user up to 4.7
-	 * @runInSeparateProcess
+	 * Delete user
 	 */
 	function test_delete_user() {
 		$this->delete_single_user();
