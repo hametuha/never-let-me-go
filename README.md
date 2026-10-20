@@ -2,9 +2,9 @@
 
 Contributors: Takahashi_Fumiki,hametuha  
 Tags: delete, account  
-Requires at least: 5.9  
-Requires PHP: 7.2  
-Tested up to: 6.6  
+Requires at least: 6.6  
+Requires PHP: 7.4  
+Tested up to: 7.1  
 Stable tag: nightly  
 License: GPL 3.0 or later  
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -12,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 If someone wants to leave your WordPress, let them go.
 
 <!-- only:github/ -->
-![Buidl Statsu](https://github.com/hametuha/never-let-me-got/.github/workflows/wordpress.yml/badge.svg)
+![Test Plugin](https://github.com/hametuha/never-let-me-go/actions/workflows/test.yml/badge.svg)
 <!-- /only:github -->
 
 ## Description
@@ -47,6 +47,10 @@ Maybe yes. If you find bugs, please [let us know](https://github.com/fumikito/Ne
 ### Does this plugin is ready for block editor?
 
 Partially yes. Because "Resign Page" can be split via <code>Page Break</code> block. We have plan to make **Resign Button** block and more flexible laytout availability. Please send your request.
+
+### Where do I report security bugs found in this plugin?
+
+Please do not post it publicly. Report security bugs through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/report/wordpress/plugin/never-let-me-go). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 ## Screenshots
 
