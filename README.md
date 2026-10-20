@@ -48,6 +48,10 @@ Maybe yes. If you find bugs, please [let us know](https://github.com/fumikito/Ne
 
 Partially yes. Because "Resign Page" can be split via <code>Page Break</code> block. We have plan to make **Resign Button** block and more flexible laytout availability. Please send your request.
 
+### Where do I report security bugs found in this plugin?
+
+Please do not post it publicly. Report security bugs through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/report/wordpress/plugin/never-let-me-go). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 ## Screenshots
 
 1. Set up your resign option.
