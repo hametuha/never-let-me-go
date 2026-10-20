@@ -1,28 +1,50 @@
-.browserslistrc
-.editorconfig
-.eslintrc
-.distignore
+# Version control / CI / AI agents
 .git
 .github
 .gitignore
-.node-version
-.stylelintrc.json
+.distignore
+.svn
+.claude
+CLAUDE.md
 .wordpress-org
+
+# Editor / environment
+.DS_Store
+.idea
+.editorconfig
+.node-version
+.nvmrc
 .wp-env.json
+.wp_install_path
+/wordpress
+compose*.yaml
+
+# JS/CSS toolchain (sources in assets/ are built into dist/)
+/assets
 node_modules
-composer.lock
+package.json
 package-lock.json
+gulpfile.js
+webpack.config.js
+.browserslistrc
+.eslintrc
+.eslintrc.json
+.stylelintrc.json
+
+# PHP toolchain (composer.json is kept for vendor/autoload.php)
+composer.lock
 phpcs.ruleset.xml
 phpstan.neon
 phpstan-baseline.neon
 phpstan-bootstrap.php
 phpunit.xml.dist
+
+# Tests / dev data / docs (readme.txt is generated from README.md)
+/bin
+/tests
+/data
 README.md
-webpack.config.js
-/wordpress
-bin
-tests
-data
-readme.txt.bak
-never-let-me-go.php.bak
-composer.template.yaml
+Contributing.md
+
+# Backup files
+*.bak
