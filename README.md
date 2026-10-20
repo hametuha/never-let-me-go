@@ -58,6 +58,15 @@ Please do not post it publicly. Report security bugs through the [Patchstack Vul
 
 ## Changelog
 
+### 2.1.0
+
+- **Notice** PHP requirements is now PHP 7.4 and over.
+- **Notice** WordPress requirements is now WordPress 6.6 and over.
+- Tested up to WordPress 7.1.
+- Add FAQ about how to report security vulnerabilities.
+- Fix packaging rule which could exclude bundled files from the distributed zip.
+- Code cleanup for coding standards and static analysis (no functional changes).
+
 ### 2.0.3
 
 - Bugfix: Leaving users are unintentionally assigned same role again and again.
