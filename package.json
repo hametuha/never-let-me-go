@@ -64,9 +64,6 @@
 		"webpack": "^5.94.0",
 		"webpack-stream": "^7.0.0"
 	},
-	"volta": {
-		"node": "16.20.2"
-	},
 	"watch": {
 		"build:css": {
 			"extensions": "scss",
