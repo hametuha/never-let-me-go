@@ -29,6 +29,7 @@ webpack.config.js
 .browserslistrc
 .eslintrc
 .eslintrc.json
+eslint.config.mjs
 .stylelintrc.json
 
 # PHP toolchain (composer.json is kept for vendor/autoload.php)

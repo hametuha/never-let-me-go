@@ -49,6 +49,7 @@
 		"@wordpress/stylelint-config": "^26.1.0",
 		"autoprefixer": "^10.4.20",
 		"cssnano": "^9.8.0",
+		"globals": "^17.13.0",
 		"gulp": "^5.0.1",
 		"gulp-concat": "^2.6.0",
 		"gulp-load-plugins": "^2.0.8",
