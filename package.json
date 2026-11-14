@@ -47,7 +47,7 @@
 		"@wordpress/env": "^9.0.0",
 		"@wordpress/scripts": "^29.0.0",
 		"@wordpress/stylelint-config": "^22.7.0",
-		"autoprefixer": "^10.4.20",
+		"autoprefixer": "^10.6.1",
 		"cssnano": "^7.0.1",
 		"gulp": "^4.0.0",
 		"gulp-concat": "^2.6.0",
@@ -58,10 +58,10 @@
 		"gulp-uglify": "^3.0.2",
 		"npm-watch": "^0.13.0",
 		"postcss-cli": "^11.0.0",
-		"sass": "^1.78.0",
+		"sass": "^1.105.2",
 		"stylelint": "^14.16.1",
 		"vinyl-named": "^1.1.0",
-		"webpack": "^5.94.0",
+		"webpack": "^5.112.0",
 		"webpack-stream": "^7.0.0"
 	},
 	"watch": {
