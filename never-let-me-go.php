@@ -9,7 +9,6 @@ Requires at least: 6.6
 Requires PHP: 7.4
 Description: If someone wants to leave your WordPress, let them go.
 Text Domain: never-let-me-go
-Domain Path: /language/
 License: GPL 3.0 or later
 */
 
@@ -17,7 +16,6 @@ defined( 'ABSPATH' ) || die( 'Do not load directly!' );
 
 $info = get_file_data( __FILE__, [
 	'version'     => 'Version',
-	'domain'      => 'Text Domain',
 	'php_version' => 'PHP Version',
 ] );
 
@@ -33,8 +31,6 @@ define( 'NLMG_VERSION', $info['version'] );
  * @internal
  */
 function nlmg_plugins_loaded() {
-	// Register Domain.
-	load_plugin_textdomain( 'never-let-me-go', false, basename( __DIR__ ) . DIRECTORY_SEPARATOR . 'language' );
 	$auto_loader = __DIR__ . '/vendor/autoload.php';
 	if ( file_exists( $auto_loader ) ) {
 		require $auto_loader;
