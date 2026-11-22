@@ -59,7 +59,7 @@
 		"gulp-uglify": "^3.0.2",
 		"npm-watch": "^0.13.0",
 		"postcss-cli": "^11.0.0",
-		"sass": "^1.108.1",
+		"sass": "^1.108.2",
 		"stylelint": "^14.16.1",
 		"vinyl-named": "^1.1.0",
 		"webpack": "^5.112.2",
